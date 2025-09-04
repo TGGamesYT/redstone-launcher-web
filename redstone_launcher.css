@@ -116,7 +116,7 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(135deg, hsla(0, 75%, 15%, 0.8), hsla(0, 60%, 10%, 0.6));
-            width: 100%;
+            width: device-width;
             height: 100%;
             overflow: hidden;
             display: flex;
