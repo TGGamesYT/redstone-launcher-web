@@ -257,3 +257,24 @@
                 margin-top: 0;
             }
         }
+
+.cta-button {
+            background: linear-gradient(135deg, hsl(0, 100%, 55%), hsl(0, 74%, 12%));
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+        }
