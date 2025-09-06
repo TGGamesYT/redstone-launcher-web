@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redstone Launcher - Ultimate Minecraft Launcher</title>
+    <meta name="description"
+        content="The ultimate Minecraft launcher with advanced features, profile management, and seamless gameplay experience.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Redstone Theme Colors */
+            --background: hsl(12, 6%, 6%);
+            --foreground: hsl(0, 0%, 98%);
+            --card: hsl(15, 8%, 8%);
+            --card-foreground: hsl(0, 0%, 95%);
+            --primary: hsl(0, 72%, 51%);
+            --primary-foreground: hsl(0, 0%, 98%);
+            --secondary: hsl(15, 10%, 15%);
+            --secondary-foreground: hsl(0, 0%, 90%);
+            --muted: hsl(15, 8%, 12%);
+            --muted-foreground: hsl(0, 0%, 60%);
+            --accent: hsl(0, 65%, 45%);
+            --border: hsl(15, 10%, 18%);
+
+            --redstone-primary: hsl(0, 72%, 51%);
+            --redstone-secondary: hsl(15, 65%, 45%);
+            --redstone-glow: hsl(0, 85%, 65%);
+            --redstone-dark: hsl(0, 45%, 25%);
+            --redstone-accent: hsl(20, 55%, 50%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(20px);
+            background: hsla(12, 6%, 6%, 0.8);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-left: 100px;
+        }
+
+        .logo {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--redstone-primary), var(--redstone-glow));
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px hsla(0, 72%, 51%, 0.3);
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+        }
+
+        .title {
+            background: linear-gradient(to right, var(--redstone-glow), var(--primary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .version {
+            color: var(--muted-foreground);
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+        }
+
+        .header-icons {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-icons a {
+            color: var(--foreground);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+
+        .header-icons a:hover {
+            color: var(--redstone-glow);
+            background: hsla(0, 72%, 51%, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .header-icons p {
+            color: var(--border);
+            margin: 0;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                    hsla(12, 6%, 6%, 0.9) 0%,
+                    hsla(0, 45%, 25%, 0.7) 30%,
+                    hsla(0, 72%, 51%, 0.8) 70%,
+                    hsla(0, 85%, 65%, 0.6) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(12, 6, 6, 0.6) 0%,
+                    transparent 50%,
+                    rgba(12, 6, 6, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .hero-overlay img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--redstone-glow), white, var(--redstone-primary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px hsla(0, 85%, 65%, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--foreground);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--redstone-primary), var(--redstone-glow));
+            color: var(--primary-foreground);
+            padding: 1.25rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 40px hsla(0, 72%, 51%, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 60px hsla(0, 85%, 65%, 0.5);
+        }
+
+        .features {
+            padding: 5rem 2rem;
+            background: linear-gradient(to bottom,
+                    var(--background) 0%,
+                    var(--redstone-dark) 50%,
+                    var(--background) 100%);
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-title {
+            text-align: center;
+            text-decoration: none;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            background: linear-gradient(to right, var(--redstone-primary), var(--redstone-glow));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: #1a0f0f;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--redstone-primary), var(--redstone-glow));
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--redstone-glow);
+            box-shadow: 0 20px 60px hsla(0, 72%, 51%, 0.2);
+        }
+
+        .feature-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--redstone-primary), var(--redstone-glow));
+            border-radius: 16px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 30px hsla(0, 72%, 51%, 0.3);
+        }
+
+        .feature-image {
+            width: 120px;
+            height: auto;
+            margin: 0 auto 1rem;
+            display: block;
+        }
+
+        .feature-title {
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: var(--muted-foreground);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .footer {
+            background: var(--muted);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
+        }
+
+        .footer-content p:first-child {
+            font-weight: 600;
+            color: var(--card-foreground);
+        }
+
+        .footext {
+            color: var(--muted-foreground);
+        }
+
+        .footext a {
+            color: var(--redstone-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footext a:hover {
+            color: var(--redstone-glow);
+        }
+
+        @media (max-width: 768px) {
+            .logo-section {
+                margin-left: 0;
+            }
+
+            .header {
+                padding: 1rem;
+            }
+
+            .hero-content {
+                padding: 1.5rem 1rem;
+            }
+
+            .features {
+                padding: 3rem 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card {
+                padding: 2rem;
+            }
+
+            .header-icons {
+                gap: 10px;
+            }
+
+            .header-icons a {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo-section">
+            <div class="logo"><img src="../redstone_lancher_logo.png" alt="Redstone Launcher Logo" class="icon"></div>
+            <div>
+                <span class="title">Redstone Launcher</span>
+                <span class="version">Version 1.7.6 BETA release</span>
+            </div>
+        </div>
+        <div class="header-icons">
+            <a href="donaters.html">Donaters</a>
+            <p>|</p>
+            <a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord</a>
+            <p>|</p>
+            <a href="https://www.patreon.com/redstonelauncher/join" target="_blank">Patreon</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay">
+            <img src="../redstone_launcher_banner.png" alt="Redstone Launcher Banner">
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title" style="color: red;">Redstone Launcher</h1>
+            <p class="hero-subtitle">The Supporters of <span style="color: rgb(223, 111, 111);">Redstone Launcher</span>
+            </p>
+            <a href="index.html" class="cta-button" style="text-decoration: none;">Home</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="features-container">
+            <h2 class="features-title">Supporters</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <img src="https://nmsr.nickac.dev/fullbody/f067af5e94054b269452976c3c9071db"
+                        alt="Supporter Image | waike" class="feature-image">
+                    <a href="https://waike.dev/" class="feature-title" target="_blank">waike - waikeboy</a>
+                    <p class="feature-description">Discord server booster!</p>
+                </div>
+                <div class="feature-card">
+                    <img src="https://nmsr.nickac.dev/fullbody/cc3a24b866404b138d46f2ca41a7b01c"
+                        alt="Supporter Image | siljian" class="feature-image">
+                    <h3 class="feature-title">The Blue Panda - siljan1212</h3>
+                    <p class="feature-description">Patreon subsciber! 1 month</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Redstone Launcher. All rights reserved.</p>
+            <p>The ultimate Minecraft launcher for enthusiasts and casual players alike.</p>
+        </div>
+        <div class="footext">
+            <p>&lt;/&gt; Created by <a href="https://muaves.github.io">Muavees</a> and <a
+                    href="https://tggamesyt.dev">TGGamesYT</a></p>
+        </div>
+    </footer>
+</body>
+
+</html>
