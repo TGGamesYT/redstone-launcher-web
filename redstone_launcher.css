@@ -242,6 +242,7 @@ body {
 
     .hero-overlay {
         max-height: 400px;
+        /* Mobilon kisebb magasság */
     }
 
     .hero-content {
