@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redstone Launcher - Ultimate Minecraft Launcher</title>
-    <link rel="icon" type="image/png" href="redstone_lancher_logo.png">
     <meta name="description"content="The ultimate Minecraft launcher with advanced features, profile management, and seamless gameplay experience.">
-    <meta name="author" content="Redstone Launcher Team">
+        <meta name="author" content="Redstone Launcher Team">
     <link rel="stylesheet" href="redstone_launcher.css">
 </head>
 
@@ -27,7 +26,7 @@
             <p>|</p>
             <a href="https://www.patreon.com/redstonelauncher/join" target="_blank">Patreon</a>
             <p>|</p>
-            <a href="gallery.html">Features</a>
+            <a href="gallery.html" target="_blank">Features</a>
         </div>
     </header>
 
@@ -78,8 +77,20 @@
         <div class="footext">
             <p>&lt;/&gt; Created by <a href="https://muaves.github.io">Muavees</a> and <a
                     href="https://tggamesyt.dev">TGGamesYT</a></p>
+                    <p>You can see more features <a href="gallery.html">here</a></p>
         </div>
     </footer>
 </body>
+<script>
+      function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
 
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.remove('active');
+            });
+        });
+</script>
 </html>
