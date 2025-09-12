@@ -16,16 +16,18 @@
             <div class="logo"><img src="../redstone_lancher_logo.png" alt="Redstone Launcher Logo" class="icon"></div>
             <div>
                 <span class="title">Redstone Launcher</span>
-                <span class="version">Version 1.8.3 BETA release</span>
+                <span class="version">Version 1.8.6 BETA release</span>
             </div>
+        </div>
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
         <div class="header-icons">
             <a href="donaters.html">Donaters</a>
-            <p>|</p>
             <a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord</a>
-            <p>|</p>
             <a href="https://www.patreon.com/redstonelauncher/join" target="_blank">Patreon</a>
-            <p>|</p>
             <a href="gallery.html" target="_blank">Features</a>
         </div>
     </header>
@@ -92,5 +94,10 @@
                 document.getElementById('mobileMenu').classList.remove('active');
             });
         });
+
+        function toggleMenu() {
+            const menu = document.querySelector('.header-icons');
+            menu.classList.toggle('active');
+        }
 </script>
 </html>
