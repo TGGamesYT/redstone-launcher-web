@@ -34,18 +34,32 @@ body {
 }
 
 .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: hsla(12, 6%, 6%, 0.8);
+    border-bottom: 1px solid var(--border);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    backdrop-filter: blur(20px);
-    background: hsla(12, 6%, 6%, 0.8);
-    border-bottom: 1px solid var(--border);
     z-index: 1000;
+}
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger-menu span {
+    width: 25px;
+    height: 3px;
+    background: var(--foreground);
+    border-radius: 2px;
+    transition: all 0.3s ease;
 }
 
 .mobile-menu {
@@ -120,10 +134,7 @@ body {
 
 .header-icons {
     display: flex;
-    flex-direction: row;
     gap: 15px;
-    align-items: center;
-    justify-content: center;
 }
 
 .header-icons a {
@@ -138,7 +149,6 @@ body {
 .header-icons a:hover {
     color: var(--redstone-glow);
     background: hsla(0, 72%, 51%, 0.1);
-    transform: translateY(-2px);
 }
 
 .header-icons p {
@@ -380,6 +390,27 @@ body {
 
     .header {
         padding: 1rem;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .header-icons {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: hsla(12, 6%, 6%, 0.95);
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-icons.active {
+        display: flex;
     }
 
     .hero-content {
