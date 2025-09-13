@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redstone Launcher - Ultimate Minecraft Launcher</title>
-    <link rel="icon" type="image/png" href="redstone_lancher_logo.png">
     <meta name="description"
         content="The ultimate Minecraft launcher with advanced features, profile management, and seamless gameplay experience.">
 
@@ -16,6 +16,7 @@
         }
 
         :root {
+            /* Redstone Theme Colors */
             --background: hsl(12, 6%, 6%);
             --foreground: hsl(0, 0%, 98%);
             --card: hsl(15, 8%, 8%);
@@ -170,6 +171,7 @@
             position: relative;
             z-index: 2;
             max-width: 800px;
+            padding: 1rem;
         }
 
         .hero-title {
@@ -213,10 +215,11 @@
 
         .features {
             padding: 5rem 2rem;
-            background: linear-gradient(to bottom,
-                    var(--background) 0%,
-                    var(--redstone-dark) 50%,
-                    var(--background) 100%);
+            background: linear-gradient(135deg,
+            hsla(12, 6%, 6%, 0.9) 0%,
+            hsla(0, 45%, 25%, 0.7) 30%,
+            hsla(0, 72%, 51%, 0.8) 70%,
+            hsla(0, 85%, 65%, 0.6) 100%);
         }
 
         .features-container {
@@ -225,6 +228,7 @@
         }
 
         .features-title {
+            color: white;
             text-align: center;
             text-decoration: none;
             font-size: 2.5rem;
@@ -373,6 +377,14 @@
                 padding: 0.25rem 0.5rem;
                 font-size: 0.875rem;
             }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -383,7 +395,7 @@
             <div class="logo"><img src="../redstone_lancher_logo.png" alt="Redstone Launcher Logo" class="icon"></div>
             <div>
                 <span class="title">Redstone Launcher</span>
-                <span class="version">Version 1.7.6 BETA release</span>
+                <span class="version">Version 1.8.6 BETA release</span>
             </div>
         </div>
         <div class="header-icons">
@@ -400,16 +412,15 @@
             <img src="../redstone_launcher_banner.png" alt="Redstone Launcher Banner">
         </div>
         <div class="hero-content">
-            <h1 class="hero-title" style="color: red;">Redstone Launcher</h1>
-            <p class="hero-subtitle">The Supporters of <span style="color: rgb(223, 111, 111);">Redstone Launcher</span>
-            </p>
+            <h1 class="hero-title">Redstone Launcher</h1>
+            <p class="hero-subtitle">The Supporters of <span style="color: rgb(223, 111, 111);">Redstone Launcher</span></p>
             <a href="index.html" class="cta-button" style="text-decoration: none;">Home</a>
         </div>
     </section>
 
     <section class="features">
         <div class="features-container">
-            <h2 class="features-title">Supporters</h2>
+            <h2 style="color: white; text-align: center; font-size: 40px; margin-bottom: 10px;">Supporters</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <img src="https://nmsr.nickac.dev/fullbody/f067af5e94054b269452976c3c9071db"
@@ -419,8 +430,8 @@
                 </div>
                 <div class="feature-card">
                     <img src="https://nmsr.nickac.dev/fullbody/5232fd1496d543f4b72aa1ed7295c959"
-                        alt="Supporter Image | merowinger29" class="feature-image">
-                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="feature-title" target="_blank">The Blue Panda - siljan1212</a>
+                        alt="Supporter Image | siljian" class="feature-image">
+                    <h3 class="feature-title">The Blue Panda - siljan1212</h3>
                     <p class="feature-description">Patreon subsciber! 1 month</p>
                 </div>
             </div>
