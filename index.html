@@ -8,7 +8,6 @@
     <meta name="description"content="The ultimate Minecraft launcher with advanced features, profile management, and seamless gameplay experience.">
         <meta name="author" content="Redstone Launcher Team">
     <link rel="stylesheet" href="redstone_launcher.css">
-    <link rel="icon" type="image/png" href="redstone_lancher_logo.png">
 </head>
 
 <body>
@@ -20,16 +19,21 @@
                 <span class="version">Version 1.8.6 BETA release</span>
             </div>
         </div>
-        <div class="hamburger-menu" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+        <!-- Hamburger menu button for mobile -->
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        <!-- Desktop navigation -->
         <div class="header-icons">
-            <a href="donaters.html">Donaters</a>
+            <a href="donaters.html">Donators</a>
             <a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord</a>
             <a href="https://www.patreon.com/redstonelauncher/join" target="_blank">Patreon</a>
-            <a href="gallery.html" target="_blank">Features</a>
+            <a href="gallery.html"> Features</a>
+        </div>
+        <!-- Mobile navigation -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="donaters.html">Donators</a>
+            <a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord</a>
+            <a href="https://www.patreon.com/redstonelauncher/join" target="_blank">Patreon</a>
+            <a href="gallery.html">Features</a>
         </div>
     </header>
 
@@ -85,20 +89,15 @@
     </footer>
 </body>
 <script>
-      function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu.classList.toggle('active');
-        }
-
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('mobileMenu').classList.remove('active');
-            });
+    function toggleMobileMenu() {
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenu.classList.toggle('active');
+    }
+    // Optional: close menu on link click
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.remove('active');
         });
-
-        function toggleMenu() {
-            const menu = document.querySelector('.header-icons');
-            menu.classList.toggle('active');
-        }
+    });
 </script>
 </html>
