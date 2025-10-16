@@ -6,5 +6,13 @@
     "img": "https://images.emojiterra.com/google/android-11/512px/1f525.png",
     "redirects": false,
     "showuntil": "2025-11-30"
+  },
+  "1.10.0": {
+    "title": "1.10.0",
+    "summary": "here are all the changes",
+    "description": "<h1>YOOO idk what to put on the main page</h1>\n<h2>uh changelog I guess:</h2>\n<p>NEW LOOK BABY!!</p>\n<p>would be very cool if fckin faze made it actually work but nuuhh uhh I had to debug and fix his shitty chatgpt ahh code for two full hours</p>\n<p>anyway</p>\n<p>added some open folder buttons</p>\n<p>clicking launch in the instance list opens the instance view aswell</p>\n<p>started the back/forward buttons, you can go back one page with the back one becouse some bug im lazy to fix</p>\n<p>removed the profiles button from the upper part of the sidebar and made it so the player icon on the bottom takes there.</p>\n<p>cleaned up some shi</p>\n<p>made the settings' discord presence toggle work</p>\n<p>made the modrinth installing look better (the button changing instead of an alert)</p>\n<p>idk</p>\n<p>1.10.0 hell yeahhh</p>",
+    "img": "https://redstone-launcher.com/new-logo.png",
+    "redirects": false,
+    "showuntil": "2025-11-30"
   }
 }
