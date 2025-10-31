@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Redstone Launcher — Forms</title>
+  <style>
+    :root {
+      --bg: #0f1724;
+      --card: #0b1220;
+      --accent: #ff5e57;
+      --muted: #9aa4b2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, Segoe UI, Roboto, Arial;
+      background: linear-gradient(180deg, #071028 0%, #0b1220 60%);
+      color: #e6eef8;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+    .page {
+      width: 100%;
+      max-width: 780px;
+      position: relative;
+    }
+    .backdrop {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      overflow: hidden;
+      filter: blur(12px) saturate(120%);
+      opacity: 0.35;
+      background: linear-gradient(90deg, rgba(255,94,87,0.08), rgba(0,152,255,0.06));
+      pointer-events: none;
+    }
+    header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 28px;
+    }
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), #2bb7ff);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: #02111a;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    nav a.active {
+      color: #e6eef8;
+      background: rgba(255,255,255,0.03);
+    }
+    main {
+      position: relative;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+      backdrop-filter: blur(8px);
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+    }
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .form-card {
+      background: var(--card);
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: 0.2s;
+    }
+    .form-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.1);
+    }
+    .form-card img {
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+    .form-info {
+      flex: 1;
+    }
+    .form-info h3 {
+      margin: 0 0 6px 0;
+    }
+    .form-info p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .status {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+    }
+    .open { color: #3cff93; background: rgba(60,255,147,0.08); }
+    .closed { color: #ff7b7b; background: rgba(255,94,87,0.08); }
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 640px) {
+      .form-card { flex-direction: column; align-items: flex-start; }
+      .form-card img { width: 100%; height: 140px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="backdrop" aria-hidden="true"></div>
+    <header>
+      <div class="brand">
+        <div class="logo">R</div>
+        <div>
+          <div style="font-weight:700">Redstone Launcher</div>
+          <div style="font-size:13px;color:var(--muted)">Forms</div>
+        </div>
+      </div>
+      <nav><a href="https://redstone-launcher.com" class="active">Home</a></nav>
+    </header>
+
+    <main>
+      <div class="card-list">
+
+        <a class="form-card" href="https://docs.google.com/forms/d/e/1FAIpQLSet4he7ypHSln-ikN_cq4IvilpR-ccixKnwxDSimS4iHjesYQ/viewform" target="_blank" style="text-decoration: none;"> 
+          <div class="form-info">
+            <h3>Staff Application</h3>
+            <p>Join our moderation team and help maintain a friendly environment.</p>
+          </div>
+          <div class="status open">Active</div>
+        </a>
+
+        <a class="form-card" href="https://docs.google.com/forms/d/e/1FAIpQLSeomLJpFtsVIrmE-qkyks2bTgxKwS_XcpEqXYAyTRs8oczKzg/viewform?usp=publish-editor" target="_blank" style="text-decoration: none;">
+          <div class="form-info">
+            <h3>Developer Application</h3>
+            <p>Apply as launcher or web developer to expand the Redstone Launcher.</p>
+          </div>
+          <div class="status open">Active</div>
+        </a>
+
+        <div class="form-card">
+          <div class="form-info">
+            <h3>Content Creator</h3>
+            <p>This application is currently closed. Please check back later.</p>
+          </div>
+          <div class="status closed">Closed</div>
+        </div>
+
+      </div>
+
+      <footer>© 2025 Redstone Launcher</footer>
+    </main>
+  </div>
+</body>
+</html>
