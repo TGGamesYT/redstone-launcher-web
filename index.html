@@ -69,7 +69,6 @@
             text-shadow: 0 0 20px hsla(0, 72%, 51%, 0.5);
         }
 
-        /* Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -156,7 +155,6 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        /* Hero Section */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -230,7 +228,6 @@
             margin-right: auto;
         }
 
-        /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -298,7 +295,6 @@
             animation: pulse 2s ease-in-out infinite;
         }
 
-        /* Features Section */
         .features {
             padding: 6rem 1rem;
             position: relative;
@@ -386,7 +382,6 @@
             line-height: 1.75;
         }
 
-        /* Supporters Section */
         .supporters {
             padding: 6rem 1rem;
             position: relative;
@@ -430,7 +425,6 @@
             width: 6rem;
             height: 9rem;
             border-radius: 50%;
-            border: 2px solid hsla(0, 72%, 51%, 0.2);
         }
 
         .supporter-info {
@@ -494,7 +488,6 @@
             color: var(--primary-hover);
         }
 
-        /* Footer */
         footer {
             position: relative;
             border-top: 1px solid hsla(220, 20%, 18%, 0.5);
@@ -615,7 +608,6 @@
             animation: pulse 2s ease-in-out infinite;
         }
 
-        /* Icons */
         .icon {
             width: 1.25rem;
             height: 1.25rem;
@@ -635,7 +627,6 @@
             fill: currentColor;
         }
 
-        /* Toast */
         .toast {
             position: fixed;
             bottom: 2rem;
@@ -674,7 +665,6 @@
 
 <body>
     <div class="hero-section">
-        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-bg"></div>
             <div class="hero-blob-1"></div>
@@ -730,7 +720,6 @@
         </section>
     </div>
 
-<!-- Features Section -->
 <section class="features">
     <div class="features-bg"></div>
 
@@ -815,7 +804,6 @@
     </div>
 </section>
 
-    <!-- Supporters Section -->
     <section class="supporters">
         <div class="supporters-bg"></div>
 
@@ -878,12 +866,10 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-bg"></div>
         <div class="footer-content">
             <div class="footer-grid">
-                <!-- Brand -->
                 <div class="footer-brand">
                     <h3 class="glow-text">Redstone</h3>
                     <p>The modern launcher for Minecraft. Built by the community, for the community.</p>
@@ -968,24 +954,19 @@
         </div>
     </footer>
 
-    <!-- Toast Notification -->
     <div id="toast" class="toast glass">
         <div class="toast-title" id="toast-title"></div>
         <div class="toast-description" id="toast-description"></div>
     </div>
 
     <script>
-        // Set current year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Download handler
         function handleDownload() {
             showToast('OPEN BETA RELEASE!', 'Redstone Launcher is releasing for everyone on NOVEMBER 2! ');
             console.log('Download initiated');
-            // In a real app, this would trigger an actual download
         }
 
-        // Toast notification
         function showToast(title, description) {
             const toast = document.getElementById('toast');
             document.getElementById('toast-title').textContent = title;
@@ -998,7 +979,6 @@
             }, 3000);
         }
 
-        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
