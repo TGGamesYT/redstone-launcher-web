@@ -693,7 +693,6 @@
            <button id="downloadBtn" class="btn btn-hero">Download for your OS</button>
 
                     <script>
-                        // Detect user's OS
                         function detectOS() {
                             const platform = navigator.userAgent.toLowerCase();
                             if (platform.includes("win")) return "windows";
@@ -702,11 +701,9 @@
                             return "other";
                         }
 
-                        // Handle click
                         document.getElementById("downloadBtn").addEventListener("click", () => {
                             const os = detectOS();
 
-                            // Map OS → file
                             const downloads = {
                                 windows: "https://github.com/TGGamesYT/redstone-launcher/releases/download/1.12.0corrected/RedstoneLauncher.exe",
                                 mac: "https://github.com/TGGamesYT/redstone-launcher/releases/download/1.12.0corrected/RedstoneLauncher.exe",
@@ -714,10 +711,9 @@
                                 other: "https://github.com/TGGamesYT/redstone-launcher/releases/download/1.12.0corrected/RedstoneLauncher.exe"
                             };
 
-                            // Trigger the right download
                             const link = document.createElement("a");
                             link.href = downloads[os];
-                            link.download = ""; // optional — lets browser treat it as a download
+                            link.download = ""; 
                             document.body.appendChild(link);
                             link.click();
                             document.body.removeChild(link);
