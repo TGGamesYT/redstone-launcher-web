@@ -690,16 +690,39 @@
                                 <a href="applications.html" class="btn btn-glass glass">STAFF APPLICATION! Apply Now!</a>
                 <br>
                  <div class="btn-group">
-                    <a href="https://github.com/TGGamesYT/redstone-launcher/releases/download/1.12.0corrected/RedstoneLauncher.exe" download="RedstoneLauncher.exe">
-                    <button class="btn btn-hero">
-                        <svg class="icon" viewBox="0 0 24 24">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                        Download Now!
-                    </button>
-                    </a>
+           <button id="downloadBtn" class="btn btn-hero">Download for your OS</button>
+
+                    <script>
+                        // Detect user's OS
+                        function detectOS() {
+                            const platform = navigator.userAgent.toLowerCase();
+                            if (platform.includes("win")) return "windows";
+                            if (platform.includes("mac")) return "mac";
+                            if (platform.includes("linux")) return "linux";
+                            return "other";
+                        }
+
+                        // Handle click
+                        document.getElementById("downloadBtn").addEventListener("click", () => {
+                            const os = detectOS();
+
+                            // Map OS → file
+                            const downloads = {
+                                windows: "https://github.com/TGGamesYT/redstone-launcher/releases/download/1.12.0corrected/RedstoneLauncher.exe",
+                                mac: "https://github.com/TGGamesYT/redstone-launcher/releases/download/1.12.0corrected/RedstoneLauncher.exe",
+                                linux: "https://github.com/TGGamesYT/redstone-launcher/releases/download/1.12.0corrected/RedstoneLauncher.AppImage",
+                                other: "https://github.com/TGGamesYT/redstone-launcher/releases/download/1.12.0corrected/RedstoneLauncher.exe"
+                            };
+
+                            // Trigger the right download
+                            const link = document.createElement("a");
+                            link.href = downloads[os];
+                            link.download = ""; // optional — lets browser treat it as a download
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                        });
+                    </script>
                     <a href="https://discord.gg/S9H2Z6SuEA" class="btn btn-glass glass">Discord</a>
                 </div>
 
