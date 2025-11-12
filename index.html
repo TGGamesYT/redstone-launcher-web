@@ -694,13 +694,13 @@
                     <script>
 function detectOS() {
     const ua = navigator.userAgent.toLowerCase();
-
+    if (/iphone|ipad|ipod/.test(ua)) return "iOS";
     if (ua.includes("android")) return "Android";
     if (ua.includes("cros")) return "ChromeOS";
     if (ua.includes("win")) return "Windows";
     if (ua.includes("mac")) return "macOS";
     if (ua.includes("linux")) return "Linux";
-    return "Other";
+    return "Your OS";
 }
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -725,7 +725,7 @@ window.addEventListener("DOMContentLoaded", () => {
             document.body.removeChild(link);
         });
     } else {
-        btn.textContent = `❌ Download isn't available for ${os}`;
+        btn.textContent = `Download isn't available for ${os}`;
         btn.disabled = true;
     }
 });
