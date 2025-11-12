@@ -692,31 +692,40 @@
            <button id="downloadBtn" class="btn btn-hero">Download for your OS</button>
 
                     <script>
-                        function detectOS() {
-                            const platform = navigator.userAgent.toLowerCase();
-                            if (platform.includes("win")) return "windows";
-                            if (platform.includes("mac")) return "mac";
-                            if (platform.includes("linux")) return "linux";
-                            return "other";
-                        }
+function detectOS() {
+    const platform = navigator.userAgent.toLowerCase();
+    if (platform.includes("win")) return "Windows";
+    if (platform.includes("mac")) return "macOS";
+    if (platform.includes("linux")) return "Linux";
+    return "Other";
+}
 
-                        document.getElementById("downloadBtn").addEventListener("click", () => {
-                            const os = detectOS();
+window.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("downloadBtn");
+    const os = detectOS();
 
-                            const downloads = {
-                                windows: "https://github.com/TGGamesYT/redstone-launcher/releases/download/1.12.0corrected/RedstoneLauncher.exe",
-                                mac: "https://github.com/TGGamesYT/redstone-launcher/releases/download/1.12.0corrected/RedstoneLauncher.exe",
-                                linux: "https://github.com/TGGamesYT/redstone-launcher/releases/download/1.12.0corrected/RedstoneLauncher.AppImage",
-                                other: "https://github.com/TGGamesYT/redstone-launcher/releases/download/1.12.0corrected/RedstoneLauncher.exe"
-                            };
+    const downloads = {
+        Windows: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.exe",
+        macOS: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.dmg",
+        Linux: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.AppImage"
+    };
 
-                            const link = document.createElement("a");
-                            link.href = downloads[os];
-                            link.download = ""; 
-                            document.body.appendChild(link);
-                            link.click();
-                            document.body.removeChild(link);
-                        });
+    if (downloads[os]) {
+        btn.textContent = `Download for ${os}`;
+        btn.disabled = false;
+        btn.addEventListener("click", () => {
+            const link = document.createElement("a");
+            link.href = downloads[os];
+            link.target = "_blank";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    } else {
+        btn.textContent = "❌ Download isn't available for your OS";
+        btn.disabled = true;
+    }
+});
                     </script>
                     <a href="https://discord.gg/S9H2Z6SuEA" class="btn btn-glass glass">Discord</a>
                 </div>
