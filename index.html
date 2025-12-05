@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redstone Launcher</title>
-    <meta name="description"
-        content="The modern, powerful launcher for Minecraft. Experience seamless gameplay with advanced features and stunning performance.">
     <meta name="author" content="Redstone Launcher Team">
-
     <meta property="og:title" content="Redstone Launcher - Modern Minecraft Launcher">
     <meta property="og:description"
         content="The modern, powerful launcher for Minecraft. Experience seamless gameplay with advanced features and stunning performance.">
+    <meta property="og:image" content="../img/redstonebanner.png
+" />
+    <meta name="theme-color" content="#d60505">
     <meta property="og:type" content="website">
     <link rel="shortcut icon" href="../new-logo.png" type="image/x-icon">
     <script>
@@ -729,50 +729,51 @@
                     stunning performance.
                 </p>
 
-                               
-                 <div class="btn-group">
-           <button id="downloadBtn" class="btn btn-hero">Download for your OS</button>
+
+                <div class="btn-group">
+                    <button id="downloadBtn" class="btn btn-hero">Download for your OS</button>
 
                     <script>
-function detectOS() {
-    const ua = navigator.userAgent.toLowerCase();
-    if (/iphone|ipad|ipod/.test(ua)) return "iOS";
-    if (ua.includes("android")) return "Android";
-    if (ua.includes("cros")) return "ChromeOS";
-    if (ua.includes("win")) return "Windows";
-    if (ua.includes("mac")) return "macOS";
-    if (ua.includes("linux")) return "Linux";
-    return "Your OS";
-}
+                        function detectOS() {
+                            const ua = navigator.userAgent.toLowerCase();
+                            if (/iphone|ipad|ipod/.test(ua)) return "iOS";
+                            if (ua.includes("android")) return "Android";
+                            if (ua.includes("cros")) return "ChromeOS";
+                            if (ua.includes("win")) return "Windows";
+                            if (ua.includes("mac")) return "macOS";
+                            if (ua.includes("linux")) return "Linux";
+                            return "Your OS";
+                        }
 
-window.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("downloadBtn");
-    const os = detectOS();
+                        window.addEventListener("DOMContentLoaded", () => {
+                            const btn = document.getElementById("downloadBtn");
+                            const os = detectOS();
 
-    const downloads = {
-        Windows: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.exe",
-        macOS: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.dmg",
-        Linux: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.AppImage"
-    };
+                            const downloads = {
+                                Windows: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.exe",
+                                macOS: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.dmg",
+                                Linux: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.AppImage"
+                            };
 
-    if (downloads[os]) {
-        btn.textContent = `Download for ${os}`;
-        btn.disabled = false;
-        btn.addEventListener("click", () => {
-            const link = document.createElement("a");
-            link.href = downloads[os];
-            link.target = "_blank";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        });
-    } else {
-        btn.textContent = `Download isn't available for ${os}`;
-        btn.disabled = true;
-    }
-});
+                            if (downloads[os]) {
+                                btn.textContent = `Download for ${os}`;
+                                btn.disabled = false;
+                                btn.addEventListener("click", () => {
+                                    const link = document.createElement("a");
+                                    link.href = downloads[os];
+                                    link.target = "_blank";
+                                    document.body.appendChild(link);
+                                    link.click();
+                                    document.body.removeChild(link);
+                                });
+                            } else {
+                                btn.textContent = `Download isn't available for ${os}`;
+                                btn.disabled = true;
+                            }
+                        });
                     </script>
-                    <a href="https://github.com/TGGamesYT/redstone-launcher/releases" class="btn btn-glass glass">Other Downloads</a>
+                    <a href="https://github.com/TGGamesYT/redstone-launcher/releases" class="btn btn-glass glass">Other
+                        Downloads</a>
                     <a href="https://discord.gg/S9H2Z6SuEA" class="btn btn-glass glass">Discord</a>
                 </div>
 
@@ -794,114 +795,121 @@ window.addEventListener("DOMContentLoaded", () => {
         </section>
     </div>
 
-<section class="features">
-    <div class="features-bg"></div>
+    <section class="features">
+        <div class="features-bg"></div>
 
-    <div class="section-header animate-slide-up">
-        <h2 class="section-title glow-text">Powerful Features</h2>
-        <p class="section-description">Everything you need for the ultimate Minecraft experience</p>
-    </div>
+        <div class="section-header animate-slide-up">
+            <h2 class="section-title glow-text">Powerful Features</h2>
+            <p class="section-description">Everything you need for the ultimate Minecraft experience</p>
+        </div>
 
-    <div class="features-grid">
-        <div class="feature-card glass animate-scale-in" style="animation-delay: 0s">
-            <div class="feature-icon">
-                <svg class="icon" viewBox="0 0 24 24">
-                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                </svg>
+        <div class="features-grid">
+            <div class="feature-card glass animate-scale-in" style="animation-delay: 0s">
+                <div class="feature-icon">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Dual Editions: Fancy & Fast</h3>
+                <p class="feature-description">
+                    Choose your vibe. <strong>Fancy Edition</strong> delivers a sleek, modern UI built with Electron —
+                    perfect for aesthetics and smooth visuals.
+                    <strong>Fast Edition</strong> uses NodeGui for raw performance and minimal resource use. Your
+                    launcher, your speed.
+                </p>
             </div>
-            <h3 class="feature-title">Dual Editions: Fancy & Fast</h3>
-            <p class="feature-description">
-                Choose your vibe. <strong>Fancy Edition</strong> delivers a sleek, modern UI built with Electron — perfect for aesthetics and smooth visuals. 
-                <strong>Fast Edition</strong> uses NodeGui for raw performance and minimal resource use. Your launcher, your speed.
-            </p>
-        </div>
 
-        <div class="feature-card glass animate-scale-in" style="animation-delay: 0.1s">
-            <div class="feature-icon">
-                <svg class="icon" viewBox="0 0 24 24">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                </svg>
+            <div class="feature-card glass animate-scale-in" style="animation-delay: 0.1s">
+                <div class="feature-icon">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Total Instance Freedom</h3>
+                <p class="feature-description">
+                    Create, clone, and customize every Minecraft instance your way. Separate mods, profiles, versions,
+                    and settings —
+                    complete control with zero hassle.
+                </p>
             </div>
-            <h3 class="feature-title">Total Instance Freedom</h3>
-            <p class="feature-description">
-                Create, clone, and customize every Minecraft instance your way. Separate mods, profiles, versions, and settings — 
-                complete control with zero hassle.
-            </p>
-        </div>
 
-        <div class="feature-card glass animate-scale-in" style="animation-delay: 0.2s">
-            <div class="feature-icon">
-                <svg class="icon" viewBox="0 0 24 24">
-                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
-                </svg>
+            <div class="feature-card glass animate-scale-in" style="animation-delay: 0.2s">
+                <div class="feature-icon">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Privacy First</h3>
+                <p class="feature-description">
+                    No tracking. No analytics. No hidden uploads. Everything — from your mods to your settings — stays
+                    <strong>100% local</strong> on your device. Your data belongs to you.
+                </p>
             </div>
-            <h3 class="feature-title">Privacy First</h3>
-            <p class="feature-description">
-                No tracking. No analytics. No hidden uploads. Everything — from your mods to your settings — stays 
-                <strong>100% local</strong> on your device. Your data belongs to you.
-            </p>
-        </div>
 
-        <div class="feature-card glass animate-scale-in" style="animation-delay: 0.3s">
-            <div class="feature-icon">
-                <svg class="icon" viewBox="0 0 24 24">
-                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-                </svg>
+            <div class="feature-card glass animate-scale-in" style="animation-delay: 0.3s">
+                <div class="feature-icon">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Modular Tools</h3>
+                <p class="feature-description">
+                    From world editors to resource pack optimizers, a growing suite of tools is built right in.
+                    Simplify every part of your Minecraft experience without leaving the launcher.
+                </p>
             </div>
-            <h3 class="feature-title">Modular Tools</h3>
-            <p class="feature-description">
-                From world editors to resource pack optimizers, a growing suite of tools is built right in. 
-                Simplify every part of your Minecraft experience without leaving the launcher.
-            </p>
-        </div>
 
-        <div class="feature-card glass animate-scale-in" style="animation-delay: 0.4s">
-            <div class="feature-icon">
-                <svg class="icon" viewBox="0 0 24 24">
-                    <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
-                    <rect x="9" y="9" width="6" height="6"></rect>
-                    <line x1="9" y1="1" x2="9" y2="4"></line>
-                    <line x1="15" y1="1" x2="15" y2="4"></line>
-                    <line x1="9" y1="20" x2="9" y2="23"></line>
-                    <line x1="15" y1="20" x2="15" y2="23"></line>
-                    <line x1="20" y1="9" x2="23" y2="9"></line>
-                    <line x1="20" y1="14" x2="23" y2="14"></line>
-                    <line x1="1" y1="9" x2="4" y2="9"></line>
-                    <line x1="1" y1="14" x2="4" y2="14"></line>
-                </svg>
+            <div class="feature-card glass animate-scale-in" style="animation-delay: 0.4s">
+                <div class="feature-icon">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                        <rect x="9" y="9" width="6" height="6"></rect>
+                        <line x1="9" y1="1" x2="9" y2="4"></line>
+                        <line x1="15" y1="1" x2="15" y2="4"></line>
+                        <line x1="9" y1="20" x2="9" y2="23"></line>
+                        <line x1="15" y1="20" x2="15" y2="23"></line>
+                        <line x1="20" y1="9" x2="23" y2="9"></line>
+                        <line x1="20" y1="14" x2="23" y2="14"></line>
+                        <line x1="1" y1="9" x2="4" y2="9"></line>
+                        <line x1="1" y1="14" x2="4" y2="14"></line>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Seamless Mod & Profile Management</h3>
+                <p class="feature-description">
+                    Install, update, and organize mods or entire profiles with a single click. Spend less time setting
+                    up, more time playing.
+                </p>
             </div>
-            <h3 class="feature-title">Seamless Mod & Profile Management</h3>
-            <p class="feature-description">
-                Install, update, and organize mods or entire profiles with a single click. Spend less time setting up, more time playing.
-            </p>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="gallery">
-    <div class="gallery-bg"></div>
-    
-    <div class="section-header animate-slide-up">
-        <h2 class="section-title glow-text">Feature Gallery</h2>
-        <p class="section-description">See Redstone Launcher in action</p>
-    </div>
+    <section class="gallery">
+        <div class="gallery-bg"></div>
 
-    <div class="gallery-container">
-        <div class="gallery-item animate-scale-in">
-        <img src="https://redstone-launcher.com/img/rslc_main.png" alt="asd">
+        <div class="section-header animate-slide-up">
+            <h2 class="section-title glow-text">Feature Gallery</h2>
+            <p class="section-description">See Redstone Launcher in action</p>
+        </div>
 
+        <div class="gallery-container">
+            <div class="gallery-item animate-scale-in">
+                <img src="https://redstone-launcher.com/img/rslc_main.png" alt="asd">
+
+            </div>
+            <div class="gallery-item animate-scale-in" style="animation-delay: 0.1s">
+                <img src="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/rslc_curseforge.png?raw=true"
+                    alt="asd">
+            </div>
+            <div class="gallery-item animate-scale-in" style="animation-delay: 0.2s">
+                <img src="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/rslc_instances.png?raw=true"
+                    alt="tg egy feet">
+            </div>
+            <div class="gallery-item animate-scale-in" style="animation-delay: 0.3s">
+                <img src="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/rslc_servers.png?raw=true"
+                    alt="asd">
+            </div>
         </div>
-        <div class="gallery-item animate-scale-in" style="animation-delay: 0.1s">
-            <img src="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/rslc_curseforge.png?raw=true" alt="asd">
-        </div>
-        <div class="gallery-item animate-scale-in" style="animation-delay: 0.2s">
-            <img src="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/rslc_instances.png?raw=true" alt="tg egy feet">
-        </div>
-        <div class="gallery-item animate-scale-in" style="animation-delay: 0.3s">
-            <img src="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/rslc_servers.png?raw=true" alt="asd">
-        </div>
-    </div>
-</section>
+    </section>
 
     <section class="supporters">
         <div class="supporters-bg"></div>
@@ -981,8 +989,7 @@ window.addEventListener("DOMContentLoaded", () => {
                                 </path>
                             </svg>
                         </a>
-                        <a href="mailto:contact@redstone-launcher.com" class="social-link glass"
-                            aria-label="Email">
+                        <a href="mailto:contact@redstone-launcher.com" class="social-link glass" aria-label="Email">
                             <svg class="icon icon-sm" viewBox="0 0 24 24">
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
                                 </path>
@@ -993,29 +1000,32 @@ window.addEventListener("DOMContentLoaded", () => {
                 </div>
 
                 <div class="footer-section">
-    <h4>Project</h4>
-    <ul class="footer-links">
-        <li><a href="https://github.com/TGGamesYT/redstone-launcher/releases" target="_blank">Downloads</a></li>
-        <li><a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank">Source Code</a></li>
-        <li><a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank">Report a Bug</a></li>
-    </ul>
-</div>
+                    <h4>Project</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/TGGamesYT/redstone-launcher/releases"
+                                target="_blank">Downloads</a></li>
+                        <li><a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank">Source Code</a>
+                        </li>
+                        <li><a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank">Report a
+                                Bug</a></li>
+                    </ul>
+                </div>
 
-<div class="footer-section">
-    <h4>Support</h4>
-    <ul class="footer-links">
-        <li><a href="https://www.patreon.com/redstonelauncher/join" target="_blank">Patreon</a></li>
-        <li><a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord Server</a></li>
-    </ul>
-</div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://www.patreon.com/redstonelauncher/join" target="_blank">Patreon</a></li>
+                        <li><a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord Server</a></li>
+                    </ul>
+                </div>
 
-<div class="footer-section">
-    <h4>Contact</h4>
-    <ul class="footer-links">
-        <li><a href="mailto:contact@redstone-launcher.com">Contact via email</a></li>
-        <li><a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Chat on Discord</a></li>
-    </ul>
-</div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:contact@redstone-launcher.com">Contact via email</a></li>
+                        <li><a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Chat on Discord</a></li>
+                    </ul>
+                </div>
             </div>
 
             <div class="footer-bottom">
