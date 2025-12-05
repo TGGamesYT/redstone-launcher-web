@@ -382,6 +382,48 @@
             line-height: 1.75;
         }
 
+        .gallery {
+            padding: 6rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, var(--background), hsla(0, 72%, 51%, 0.05), var(--background));
+        }
+
+        .gallery-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .gallery-item {
+            width: 100%;
+            margin-bottom: 2rem;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-20px) scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            filter: brightness(1.1);
+        }
+
         .supporters {
             padding: 6rem 1rem;
             position: relative;
@@ -832,6 +874,31 @@ window.addEventListener("DOMContentLoaded", () => {
             <p class="feature-description">
                 Install, update, and organize mods or entire profiles with a single click. Spend less time setting up, more time playing.
             </p>
+        </div>
+    </div>
+</section>
+
+<section class="gallery">
+    <div class="gallery-bg"></div>
+    
+    <div class="section-header animate-slide-up">
+        <h2 class="section-title glow-text">Feature Gallery</h2>
+        <p class="section-description">See Redstone Launcher in action</p>
+    </div>
+
+    <div class="gallery-container">
+        <div class="gallery-item animate-scale-in">
+        <img src="https://redstone-launcher.com/img/rslc_main.png" alt="asd">
+
+        </div>
+        <div class="gallery-item animate-scale-in" style="animation-delay: 0.1s">
+            <img src="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/rslc_curseforge.png?raw=true" alt="asd">
+        </div>
+        <div class="gallery-item animate-scale-in" style="animation-delay: 0.2s">
+            <img src="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/rslc_instances.png?raw=true" alt="tg egy feet">
+        </div>
+        <div class="gallery-item animate-scale-in" style="animation-delay: 0.3s">
+            <img src="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/rslc_servers.png?raw=true" alt="asd">
         </div>
     </div>
 </section>
