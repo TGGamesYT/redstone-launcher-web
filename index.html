@@ -7,8 +7,8 @@
     <title>Redstone Launcher</title>
     <meta name="author" content="Redstone Launcher Team">
     <meta property="og:title" content="Redstone Launcher">
-    <meta property="og:description"content="The best Minecraft Launcher with a crazy amount of features">
-    <meta property="og:image" content="https://redstone-launcher.com/img/redstonebanner.png"/>
+    <meta property="og:description" content="The best Minecraft Launcher with a crazy amount of features">
+    <meta property="og:image" content="https://redstone-launcher.com/img/redstonebanner.png" />
     <meta name="theme-color" content="#d60505">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
@@ -22,6 +22,28 @@
         }
     </script>
     <style>
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg,
+                    rgba(255, 0, 0, 0.6),
+                    rgba(255, 0, 80, 0.3));
+            border-radius: 10px;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(236, 3, 3, 0.411);
+        }
+
+
         * {
             margin: 0;
             padding: 0;
@@ -59,8 +81,7 @@
 
         .glass {
             background: rgba(31, 41, 55, 0.4);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -705,6 +726,15 @@
 </head>
 
 <body>
+    <div style="position:absolute; top:1rem; right:1rem; z-index:20;">
+        <select id="languageSwitcher" class="glass"
+            style="padding:0.5rem 1rem; border-radius:0.5rem; color:white; background:rgba(0,0,0,0.4); border:1px solid rgba(255, 255, 255, 0.2);">
+            <option value="en">🇬🇧 English</option>
+            <option value="hu">🇭🇺 Magyar</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="de">🇩🇪 Deutsch</option>
+        </select>
+    </div>
     <div class="hero-section">
         <section class="hero">
             <div class="hero-bg"></div>
@@ -718,19 +748,24 @@
                             d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
                         </path>
                     </svg>
-                    <span>1.12.0 Version Open Beta AVAIBLE! Yayy!</span>
+                    <span data-i18n="badge_beta">1.12.0 Version Open Beta AVAILABLE! Yayy!</span>
+
                 </div>
 
-                <h1 class="glow-text">Redstone Launcher</h1>
+                <h1 class="glow-text" data-i18n="title">Redstone Launcher</h1>
 
-                <p class="hero-description">
+                <p class="hero-description" data-i18n="hero_desc">
+
                     The modern, powerful launcher for Minecraft. Experience seamless gameplay with advanced features and
                     stunning performance.
                 </p>
 
 
                 <div class="btn-group">
-                    <button id="downloadBtn" class="btn btn-hero">Download for your OS</button>
+                    <button id="downloadBtn" class="btn btn-hero" data-i18n="download">
+                        Download for your OS
+                    </button>
+
 
                     <script>
                         function detectOS() {
@@ -779,15 +814,16 @@
                 <div class="hero-features">
                     <div class="hero-feature">
                         <div class="pulse-dot"></div>
-                        <span>Free & Open Source</span>
+                        <span data-i18n="free">Free & Open Source</span>
                     </div>
                     <div class="hero-feature">
                         <div class="pulse-dot"></div>
-                        <span>Cross-Platform</span>
+                        <span data-i18n="cross">Cross-Platform</span>
                     </div>
                     <div class="hero-feature">
                         <div class="pulse-dot"></div>
-                        <span>Regular Updates</span>
+                        <span data-i18n="updates">Regular Updates</span>
+
                     </div>
                 </div>
             </div>
@@ -798,8 +834,10 @@
         <div class="features-bg"></div>
 
         <div class="section-header animate-slide-up">
-            <h2 class="section-title glow-text">Powerful Features</h2>
-            <p class="section-description">Everything you need for the ultimate Minecraft experience</p>
+            <h2 class="section-title glow-text" data-i18n="features">Powerful Features</h2>
+            <p class="section-description" data-i18n="features_desc">
+                Everything you need for the ultimate Minecraft experience
+            </p>
         </div>
 
         <div class="features-grid">
@@ -809,8 +847,8 @@
                         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                     </svg>
                 </div>
-                <h3 class="feature-title">Dual Editions: Fancy & Fast</h3>
-                <p class="feature-description">
+                <h3 class="feature-title" data-i18n="f1_title">Dual Editions: Fancy & Fast</h3>
+                <p class="feature-description" data-i18n="f1_desc">
                     Choose your vibe. <strong>Fancy Edition</strong> delivers a sleek, modern UI built with Electron —
                     perfect for aesthetics and smooth visuals.
                     <strong>Fast Edition</strong> uses NodeGui for raw performance and minimal resource use. Your
@@ -824,11 +862,10 @@
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                     </svg>
                 </div>
-                <h3 class="feature-title">Total Instance Freedom</h3>
-                <p class="feature-description">
+                <h3 class="feature-title" data-i18n="f2_title">Total Instance Freedom</h3>
+                <p class="feature-description" data-i18n="f2_desc">
                     Create, clone, and customize every Minecraft instance your way. Separate mods, profiles, versions,
-                    and settings —
-                    complete control with zero hassle.
+                    and settings — complete control with zero hassle.
                 </p>
             </div>
 
@@ -838,8 +875,8 @@
                         <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
                     </svg>
                 </div>
-                <h3 class="feature-title">Privacy First</h3>
-                <p class="feature-description">
+                <h3 class="feature-title" data-i18n="f3_title">Privacy First</h3>
+                <p class="feature-description" data-i18n="f3_desc">
                     No tracking. No analytics. No hidden uploads. Everything — from your mods to your settings — stays
                     <strong>100% local</strong> on your device. Your data belongs to you.
                 </p>
@@ -851,8 +888,8 @@
                         <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
                     </svg>
                 </div>
-                <h3 class="feature-title">Modular Tools</h3>
-                <p class="feature-description">
+                <h3 class="feature-title" data-i18n="f4_title">Modular Tools</h3>
+                <p class="feature-description" data-i18n="f4_desc">
                     From world editors to resource pack optimizers, a growing suite of tools is built right in.
                     Simplify every part of your Minecraft experience without leaving the launcher.
                 </p>
@@ -873,14 +910,15 @@
                         <line x1="1" y1="14" x2="4" y2="14"></line>
                     </svg>
                 </div>
-                <h3 class="feature-title">Seamless Mod & Profile Management</h3>
-                <p class="feature-description">
+                <h3 class="feature-title" data-i18n="f5_title">Seamless Mod & Profile Management</h3>
+                <p class="feature-description" data-i18n="f5_desc">
                     Install, update, and organize mods or entire profiles with a single click. Spend less time setting
                     up, more time playing.
                 </p>
             </div>
         </div>
     </section>
+
 
     <section class="gallery">
         <div class="gallery-bg"></div>
@@ -893,7 +931,6 @@
         <div class="gallery-container">
             <div class="gallery-item animate-scale-in">
                 <img src="https://redstone-launcher.com/img/rslc_main.png" alt="asd">
-
             </div>
             <div class="gallery-item animate-scale-in" style="animation-delay: 0.1s">
                 <img src="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/rslc_curseforge.png?raw=true"
@@ -1073,6 +1110,203 @@
             });
         });
     </script>
+    <script>
+        const translations = {
+            en: {
+                title: "Redstone Launcher",
+                badge_beta: "1.12.0 Version Open Beta AVAILABLE! Yayy!",
+                hero_desc: "The modern, powerful launcher for Minecraft. Experience seamless gameplay with advanced features and stunning performance.",
+                download: "Download for your OS",
+                free: "Free & Open Source",
+                cross: "Cross-Platform",
+                updates: "Regular Updates",
+
+                features: "Powerful Features",
+                features_desc: "Everything you need for the ultimate Minecraft experience",
+
+                f1_title: "Dual Editions: Fancy & Fast",
+                f1_desc: "Choose your vibe. Fancy Edition offers a sleek UI built with Electron, while Fast Edition uses NodeGui for raw performance and minimal resource usage.",
+
+                f2_title: "Total Instance Freedom",
+                f2_desc: "Create, clone, and customize Minecraft instances with separate mods, profiles, versions and settings.",
+
+                f3_title: "Privacy First",
+                f3_desc: "No tracking. No analytics. Everything stays 100% local on your device.",
+
+                f4_title: "Modular Tools",
+                f4_desc: "Built-in tools like world editors and resource pack optimizers simplify your Minecraft experience.",
+
+                f5_title: "Seamless Mod & Profile Management",
+                f5_desc: "Install, update, and organize mods or entire profiles with a single click.",
+
+                gallery: "Feature Gallery",
+                gallery_desc: "See Redstone Launcher in action",
+
+                supported: "Supported by the Community",
+                supporters: "Our Supporters",
+                supporters_desc: "Special thanks to everyone who helps make Redstone Launcher possible.",
+
+                support_cta: "Want to support Redstone Launcher?",
+                become: "Become a Supporter",
+
+                footer_desc: "The modern launcher for Minecraft. Built by the community, for the community.",
+                project: "Project",
+                support: "Support",
+                contact: "Contact"
+            },
+
+            hu: {
+                title: "Redstone Launcher",
+                badge_beta: "1.12.0 verzió – Nyílt béta ELÉRHETŐ!",
+                hero_desc: "Modern és erőteljes Minecraft launcher fejlett funkciókkal és kiváló teljesítménnyel.",
+                download: "Letöltés az operációs rendszeredhez",
+                free: "Ingyenes és nyílt forráskódú",
+                cross: "Platformfüggetlen",
+                updates: "Rendszeres frissítések",
+
+                features: "Erőteljes funkciók",
+                features_desc: "Minden, ami a tökéletes Minecraft élményhez kell",
+
+                f1_title: "Két kiadás: Fancy & Fast",
+                f1_desc: "Válaszd ki a stílusod. A Fancy Edition modern felületet kínál Electron alapon, míg a Fast Edition maximális teljesítményre van optimalizálva.",
+
+                f2_title: "Teljes szabadság az instance-ek felett",
+                f2_desc: "Minecraft instance-ek létrehozása, klónozása és testreszabása külön modokkal és profilokkal.",
+
+                f3_title: "Adatvédelem mindenekelőtt",
+                f3_desc: "Nincs követés, nincs analitika. Minden adat 100%-ban a te eszközödön marad.",
+
+                f4_title: "Moduláris eszközök",
+                f4_desc: "Beépített világ szerkesztők és resource pack optimalizálók teszik egyszerűbbé a játékot.",
+
+                f5_title: "Zökkenőmentes mod- és profilkezelés",
+                f5_desc: "Modok és teljes profilok kezelése, frissítése egyetlen kattintással.",
+
+                gallery: "Funkciógaléria",
+                gallery_desc: "Nézd meg a Redstone Launchert működés közben",
+
+                supported: "Közösség által támogatva",
+                supporters: "Támogatóink",
+                supporters_desc: "Külön köszönet minden támogatónknak.",
+
+                support_cta: "Szeretnéd támogatni a Redstone Launchert?",
+                become: "Válj támogatóvá",
+
+                footer_desc: "Modern Minecraft launcher. A közösségtől, a közösségnek.",
+                project: "Projekt",
+                support: "Támogatás",
+                contact: "Kapcsolat"
+            },
+
+            it: {
+                title: "Redstone Launcher",
+                badge_beta: "Versione 1.12.0 Open Beta disponibile!",
+                hero_desc: "Launcher moderno e potente per Minecraft con funzionalità avanzate.",
+                download: "Scarica per il tuo sistema operativo",
+                free: "Gratuito e Open Source",
+                cross: "Multi-piattaforma",
+                updates: "Aggiornamenti regolari",
+
+                features: "Funzionalità avanzate",
+                features_desc: "Tutto ciò che serve per un’esperienza Minecraft perfetta",
+
+                f1_title: "Due Edizioni: Fancy & Fast",
+                f1_desc: "Fancy Edition offre un’interfaccia moderna, Fast Edition massima velocità e prestazioni.",
+
+                f2_title: "Libertà totale delle istanze",
+                f2_desc: "Crea e personalizza istanze Minecraft con mod e profili separati.",
+
+                f3_title: "Privacy prima di tutto",
+                f3_desc: "Nessun tracciamento. Tutto rimane locale sul tuo dispositivo.",
+
+                f4_title: "Strumenti modulari",
+                f4_desc: "Strumenti integrati per semplificare ogni aspetto del gioco.",
+
+                f5_title: "Gestione mod e profili fluida",
+                f5_desc: "Installa e organizza mod e profili con un solo clic.",
+
+                gallery: "Galleria",
+                gallery_desc: "Scopri Redstone Launcher in azione",
+
+                supported: "Supportato dalla community",
+                supporters: "I nostri sostenitori",
+                supporters_desc: "Grazie a tutti coloro che supportano il progetto.",
+
+                support_cta: "Vuoi supportare Redstone Launcher?",
+                become: "Diventa un sostenitore",
+
+                footer_desc: "Launcher Minecraft moderno creato dalla community.",
+                project: "Progetto",
+                support: "Supporto",
+                contact: "Contatti"
+            },
+
+            de: {
+                title: "Redstone Launcher",
+                badge_beta: "Version 1.12.0 Open Beta verfügbar!",
+                hero_desc: "Der moderne und leistungsstarke Minecraft Launcher.",
+                download: "Für dein Betriebssystem herunterladen",
+                free: "Kostenlos & Open Source",
+                cross: "Plattformübergreifend",
+                updates: "Regelmäßige Updates",
+
+                features: "Leistungsstarke Funktionen",
+                features_desc: "Alles für das ultimative Minecraft-Erlebnis",
+
+                f1_title: "Zwei Editionen: Fancy & Fast",
+                f1_desc: "Fancy Edition mit modernem UI, Fast Edition für maximale Leistung.",
+
+                f2_title: "Volle Instanzfreiheit",
+                f2_desc: "Verwalte Minecraft-Instanzen komplett getrennt und flexibel.",
+
+                f3_title: "Datenschutz zuerst",
+                f3_desc: "Keine Datenverfolgung. Alles bleibt lokal.",
+
+                f4_title: "Modulare Werkzeuge",
+                f4_desc: "Integrierte Tools machen Minecraft einfacher.",
+
+                f5_title: "Nahtloses Mod- & Profilmanagement",
+                f5_desc: "Mods und Profile mit nur einem Klick verwalten.",
+
+                gallery: "Funktionsgalerie",
+                gallery_desc: "Sieh Redstone Launcher in Aktion",
+
+                supported: "Von der Community unterstützt",
+                supporters: "Unsere Unterstützer",
+                supporters_desc: "Danke an alle Unterstützer des Projekts.",
+
+                support_cta: "Möchtest du Redstone Launcher unterstützen?",
+                become: "Unterstützer werden",
+
+                footer_desc: "Moderner Minecraft Launcher aus der Community.",
+                project: "Projekt",
+                support: "Support",
+                contact: "Kontakt"
+            }
+        };
+
+        const switcher = document.getElementById("languageSwitcher");
+        const saved = localStorage.getItem("lang") || "en";
+
+        function applyLang(lang) {
+            document.documentElement.lang = lang;
+            localStorage.setItem("lang", lang);
+
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.dataset.i18n;
+                if (translations[lang]?.[key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        if (switcher) {
+            switcher.value = saved;
+            applyLang(saved);
+            switcher.addEventListener("change", e => applyLang(e.target.value));
+        }
+    </script>
+
 </body>
 
 </html>
