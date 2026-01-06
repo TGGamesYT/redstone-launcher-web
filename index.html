@@ -1761,7 +1761,15 @@
             });
         }
 
- 
+   if (switcher) {
+            switcher.value = saved;
+
+            applyLang(saved);
+
+            switcher.addEventListener("change", e => applyLang(e.target.value));
+        } else {
+            applyLang(saved);
+        }
     </script>
 
 </body>
