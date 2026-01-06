@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#d60505">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="shortcut icon" href="../new-logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/new-logo.png" type="image/x-icon">
     <script>
         {
             "@context": "https://schema.org",
@@ -34,7 +34,7 @@
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(180deg,
                     rgba(255, 0, 0, 0.6),
-                    rgba(255, 0, 80, 0.3));
+                    rgba(255, 0, 0, 0.3));
             border-radius: 10px;
             border: 2px solid rgba(0, 0, 0, 0.3);
         }
@@ -63,6 +63,7 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background: var(--background);
+
             color: var(--foreground);
             line-height: 1.6;
             overflow-x: hidden;
@@ -71,7 +72,7 @@
 
         .hero-section {
             position: relative;
-            background-image: url('../redstone_launcher_banner.png');
+            background-image: url('https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/redstone_launcher_banner.png?raw=true');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -261,6 +262,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
+
         }
 
         .btn-hero {
@@ -722,19 +724,444 @@
                 grid-column: span 2;
             }
         }
+
+
+
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 20;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1rem;
+            font-size: 1.125rem;
+        }
+
+        .nav-brand {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            color: var(--foreground);
+        }
+
+        .nav-logo {
+            height: 32px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-title {
+            font-size: 1rem;
+            letter-spacing: 0.2px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-lang {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            padding-top: 64px;
+        }
+
+        .dropdownmenu ul,
+        .dropdownmenu li {
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+
+        .dropdownmenu ul {
+            backdrop-filter: blur(10px);
+            list-style: none;
+            width: 100%;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+
+        .dropdownmenu li {
+            float: left;
+            position: relative;
+            width: auto;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+
+        .dropdownmenu a {
+            text-align: center;
+            backdrop-filter: blur(20px);
+            color: #FFFFFF;
+            display: block;
+            font: bold 12px/20px sans-serif;
+            padding: 10px 25px;
+            text-decoration: none;
+            -webkit-transition: all .25s ease;
+            -moz-transition: all .25s ease;
+            -ms-transition: all .25s ease;
+            -o-transition: all .25s ease;
+            transition: all .25s ease;
+        }
+
+        .dropdownmenu li:hover a {
+            background: #000000;
+        }
+
+        #submenu {
+            left: 0;
+            opacity: 0;
+            position: absolute;
+            top: 35px;
+            visibility: hidden;
+            z-index: 1;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+
+        li:hover ul#submenu {
+            opacity: 1;
+            top: 40px;
+            visibility: visible;
+        }
+
+        #submenu li {
+            float: none;
+            width: 100%;
+        }
+
+        #submenu a:hover {
+            background: #DF4B05;
+        }
+
+        #submenu a {
+            background-color: #000000;
+        }
+
+        /* Mobile Navigation Styles */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 100;
+            background: transparent;
+            border: none;
+            padding: 8px;
+        }
+
+        .hamburger-line {
+            width: 24px;
+            height: 2px;
+            background: var(--foreground);
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 64px);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 15;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-nav-overlay.active {
+            opacity: 1;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, hsla(0, 86%, 46%, 0.15), var(--background));
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 19;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+            max-height: calc(100vh - 64px);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            transform: translateY(0);
+        }
+
+        .mobile-nav-list {
+            list-style: none;
+            padding: 1rem;
+            margin: 0;
+            height: 60px;
+        }
+
+        .mobile-nav-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav-item:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            padding: 1rem;
+            color: var(--foreground);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-link:hover {
+            color: var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .mobile-submenu {
+            list-style: none;
+            padding: 0 0 0 1rem;
+            margin: 0;
+            display: none;
+        }
+
+        .mobile-submenu.active {
+            display: block;
+        }
+
+        .mobile-submenu-item a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-submenu-item a:hover {
+            color: var(--primary);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .mobile-nav-arrow {
+            width: 20px;
+            height: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-nav-arrow.rotated {
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 900px) {
+            .mobile-menu-toggle {
+                display: flex;
+                position: absolute;
+                right: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .mobile-nav-overlay {
+                display: block;
+            }
+
+            .dropdownmenu>ul {
+                display: none !important;
+            }
+
+            .nav-actions {
+                position: absolute;
+                right: 60px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .nav-brand:last-of-type {
+                display: none;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <div style="position:absolute; top:1rem; right:1rem; z-index:20;">
-        <select id="languageSwitcher" class="glass"
-            style="padding:0.5rem 1rem; border-radius:0.5rem; color:white; background:rgba(0,0,0,0.4); border:1px solid rgba(255, 255, 255, 0.2);">
-            <option value="en">🇬🇧 English</option>
-            <option value="hu">🇭🇺 Magyar</option>
-            <option value="it">🇮🇹 Italiano</option>
-            <option value="de">🇩🇪 Deutsch</option>
-        </select>
-    </div>
+
+    <header>
+        <nav class="dropdownmenu"
+            style="backdrop-filter: blur(7px); background: linear-gradient(135deg, hsla(0, 86%, 46%, 0.2), var(--background));">
+            <div class="nav-brand" style="margin-right: 100px;">
+
+
+            </div>
+
+            <ul style="margin-left: 750px;">
+
+                <li><a href="https://redstone-launcher.com">Socials</a>
+                    <ul id="submenu">
+                        <li><a href="https://youtube.com/@tgdoescode" target="_blank">Youtube</a></li>
+                        <li><a href="https://github.com/TGGamesYT/redstone-launcher">Github</a></li>
+                        <li><a href="https://discord.gg/S9H2Z6SuEA">Discord</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://redstone-launcher.com" style="cursor: not-allowed;">Indicators</a>
+                    <ul id="submenu">
+                        <li><a href="" style="cursor: not-allowed; pointer-events: none; opacity: 0.6;">Blog</a></li>
+                        <li><a href="" style="cursor: not-allowed;pointer-events: none; opacity: 0.6;">New features</a>
+                        </li>
+                        <li><a href="" style="cursor: not-allowed;pointer-events: none; opacity: 0.6;">Our Team</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://redstone-launcher.com">Support & bug report</a>
+                    <ul id="submenu">
+                        <li><a href="https://discord.gg/S9H2Z6SuEA" title="You can report a bug too.">Discord
+                                support</a></li>
+                        <li><a href="https://github.com/TGGamesYT/redstone-launcher/issues">Github bug report</a></li>
+                        <li><a href="mailto:contact@redstone-launcher.com" title="You can report a bug too.">Email
+                                support</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="nav-brand">
+                <img src="../img/new-logo.png" alt="Redstone Launcher" class="nav-logo">
+                <span class="nav-title">Redstone Launcher</span>
+            </div>
+            <div class="nav-actions">
+                <select id="languageSwitcher" class="glass nav-lang">
+                    <option value="en">🇬🇧 English</option>
+                    <option value="hu">🇭🇺 Magyar</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                </select>
+            </div>
+
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+        <!-- INNENTOL VAN 900PX-TOL LEFELE -->
+        <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <ul class="mobile-nav-list">
+                <li class="mobile-nav-item">
+                    <div class="mobile-nav-header" onclick="toggleMobileSubmenu(this)">
+                        <a href="#" class="mobile-nav-link" onclick="event.preventDefault()">Socials</a>
+                        <svg class="mobile-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <ul class="mobile-submenu">
+                        <li class="mobile-submenu-item"><a href="https://youtube.com/@tgdoescode"
+                                target="_blank">Youtube</a></li>
+                        <li class="mobile-submenu-item"><a href="https://github.com/TGGamesYT/redstone-launcher"
+                                target="_blank">Github</a></li>
+                        <li class="mobile-submenu-item"><a href="https://discord.gg/S9H2Z6SuEA"
+                                target="_blank">Discord</a></li>
+                    </ul>
+                </li>
+                <li class="mobile-nav-item">
+                    <div class="mobile-nav-header" onclick="toggleMobileSubmenu(this)">
+                        <a href="#" class="mobile-nav-link" style="cursor: not-allowed;"
+                            onclick="event.preventDefault()">Indicators</a>
+                        <svg class="mobile-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <ul class="mobile-submenu">
+                        <li class="mobile-submenu-item"><a href="#"
+                                style="cursor: not-allowed; pointer-events: none; opacity: 0.6;">Blog</a></li>
+                        <li class="mobile-submenu-item"><a href="#"
+                                style="cursor: not-allowed; pointer-events: none; opacity: 0.6;">New features</a></li>
+                        <li class="mobile-submenu-item"><a href="#"
+                                style="cursor: not-allowed; pointer-events: none; opacity: 0.6;">Our Team</a></li>
+                    </ul>
+                </li>
+                <li class="mobile-nav-item">
+                    <div class="mobile-nav-header" onclick="toggleMobileSubmenu(this)">
+                        <a href="#" class="mobile-nav-link" onclick="event.preventDefault()">Support & bug report</a>
+                        <svg class="mobile-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <ul class="mobile-submenu">
+                        <li class="mobile-submenu-item"><a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord
+                                support</a></li>
+                        <li class="mobile-submenu-item"><a href="https://github.com/TGGamesYT/redstone-launcher/issues"
+                                target="_blank">Github bug report</a></li>
+                        <li class="mobile-submenu-item"><a href="mailto:contact@redstone-launcher.com">Email support</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!-- IDÁIG VAN A MOBILE-->
+    </header>
+
+
+
     <div class="hero-section">
         <section class="hero">
             <div class="hero-bg"></div>
@@ -1005,7 +1432,6 @@
                             <svg class="icon icon-sm" viewBox="0 0 24 24">
                                 <path
                                     d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                                </path>
                             </svg>
                         </a>
 
@@ -1079,6 +1505,43 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
+        // Mobile Navigation Functions
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+
+        function toggleMobileMenu() {
+            mobileMenuToggle.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            mobileNavOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeMobileMenu() {
+            mobileMenuToggle.classList.remove('active');
+            mobileNav.classList.remove('active');
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        mobileNavOverlay.addEventListener('click', closeMobileMenu);
+
+        function toggleMobileSubmenu(header) {
+            const submenu = header.nextElementSibling;
+            const arrow = header.querySelector('.mobile-nav-arrow');
+
+            submenu.classList.toggle('active');
+            arrow.classList.toggle('rotated');
+        }
+
+        // Close mobile menu on window resize if screen becomes larger
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 900) {
+                closeMobileMenu();
+            }
+        });
+
         function handleDownload() {
             showToast('OPEN BETA RELEASE!', 'Redstone Launcher is releasing for everyone on NOVEMBER 2! ');
             console.log('Download initiated');
@@ -1115,7 +1578,7 @@
         const translations = {
             en: {
                 title: "Redstone Launcher",
-                badge_beta: "1.12.0 Version Open Beta AVAILABLE! Yayy!",
+                badge_beta: "Version 1.13.4",
                 hero_desc: "The modern, powerful launcher for Minecraft. Experience seamless gameplay with advanced features and stunning performance.",
                 download: "Download for your OS",
                 free: "Free & Open Source",
@@ -1158,7 +1621,7 @@
 
             hu: {
                 title: "Redstone Launcher",
-                badge_beta: "1.12.0 verzió – Nyílt béta ELÉRHETŐ!",
+                badge_beta: "1.13.4-es Verzió",
                 hero_desc: "Modern és erőteljes Minecraft launcher fejlett funkciókkal és kiváló teljesítménnyel.",
                 download: "Letöltés az operációs rendszeredhez",
                 free: "Ingyenes és nyílt forráskódú",
@@ -1201,7 +1664,7 @@
 
             it: {
                 title: "Redstone Launcher",
-                badge_beta: "Versione 1.12.0 Open Beta disponibile!",
+                badge_beta: "Versione 1.13.4",
                 hero_desc: "Launcher moderno e potente per Minecraft con funzionalità avanzate.",
                 download: "Scarica per il tuo sistema operativo",
                 free: "Gratuito e Open Source",
@@ -1244,7 +1707,7 @@
 
             de: {
                 title: "Redstone Launcher",
-                badge_beta: "Version 1.12.0 Open Beta verfügbar!",
+                badge_beta: "Version 1.13.4",
                 hero_desc: "Der moderne und leistungsstarke Minecraft Launcher.",
                 download: "Für dein Betriebssystem herunterladen",
                 free: "Kostenlos & Open Source",
@@ -1301,11 +1764,7 @@
             });
         }
 
-        if (switcher) {
-            switcher.value = saved;
-            applyLang(saved);
-            switcher.addEventListener("change", e => applyLang(e.target.value));
-        }
+ 
     </script>
 
 </body>
