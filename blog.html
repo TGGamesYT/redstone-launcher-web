@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redstone Launcher - Blog</title>
+    <link rel="icon" type="image/png"href="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/new-logo.png?raw=true">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+       
+
+        .blog-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 16px 24px;
+        }
+
+        .blog-card {
+            background: #f5f5f5;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .blog-card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0a0a0a;
+            margin-bottom: 8px;
+        }
+
+        .blog-card-version {
+            display: inline-block;
+            background: #6366f1;
+            color: #fff;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .blog-card-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .blog-card-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .blog-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+            background: #6366f1;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .blog-btn:hover {
+            background: #4f46e5;
+        }
+
+        .expand-btn {
+            margin-top: 12px;
+            background: none;
+            border: none;
+            color: #0a0a0a;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .expand-btn .arrow {
+            display: inline-block;
+            transition: transform 0.25s ease;
+        }
+
+        .blog-card.expanded .arrow {
+            transform: rotate(180deg);
+        }
+
+        .blog-card-more {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            margin-top: 12px;
+        }
+
+        .blog-card.expanded .blog-card-more {
+            max-height: 1000px; 
+        }
+
+        .blog-card-more p {
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .more-img {
+            width: 100%;
+            max-width: 600px;
+            display: block;
+            margin: 8px 0;
+            border-radius: 8px;
+        }
+
+       
+    </style>
+</head>
+
+<body>
+    <p><a href="index.html" style="color: white; margin-top: 100px; margin-left: 20px;">HOME</a></p>
+    <h1 style="text-align: center; margin-top: 10px;">Redstone Launcher Blog page</h1>
+ 
+        <div class="blog-container" style="margin-top: 50px;">
+                <div class="blog-card" id="post-1">
+                    <div class="blog-card-title">Launch Notes</div>
+                    <div class="blog-card-version">Version 1.13.5</div>
+                    <div class="blog-card-desc">Added "enable auto launcher updates", "enable discord rich presence" and "enable grid view"</div>
+
+                    <button class="expand-btn" aria-expanded="false" aria-controls="more-1" data-target="more-1">
+                        <span>Show more</span>
+                        <span class="arrow" aria-hidden="true">▼</span>
+                    </button>
+
+                    <div class="blog-card-more" id="more-1" role="region" aria-hidden="true">
+                        <p>idk waht to put here. redstone launcher is fire</p>
+                        <img class="more-img" src="https://media.discordapp.net/attachments/1409923743714639873/1457086710855762061/image.png?ex=695e04ff&is=695cb37f&hm=d0a5f90fc2d2b07730c2b971761f400bfb507202095a38f2e3cd74dcd2571a8c&=&format=webp&quality=lossless" alt="If it doesn't works its discords fault cuz the image is from discord img url">
+                        <img class="more-img" src="https://media.discordapp.net/attachments/1409923743714639873/1457086711267069972/image.png?ex=695e04ff&is=695cb37f&hm=312b256effd43571ec985b065f673a75f7616bdcd4424768c9ebd2b2fd8370cb&=&format=webp&quality=lossless" alt="If the img doesn't works its discords fault cuz the image is from discord img url">
+                    </div>
+
+                    <div class="blog-card-buttons" style="margin-top:12px;">
+                        <a href="https://redstone-launcher.com" class="blog-btn">Website</a>
+                        <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" class="blog-btn">Discord</a>
+                    </div>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('click', function (e) {
+                var btn = e.target.closest('.expand-btn');
+                if (!btn) return;
+                var targetId = btn.getAttribute('data-target');
+                var more = document.getElementById(targetId);
+                var card = btn.closest('.blog-card');
+                var expanded = btn.getAttribute('aria-expanded') === 'true';
+                btn.setAttribute('aria-expanded', String(!expanded));
+                if (more) {
+                    more.setAttribute('aria-hidden', String(expanded));
+                }
+                if (card) {
+                    card.classList.toggle('expanded', !expanded);
+                }
+                var label = btn.querySelector('span');
+                if (label) {
+                    label.textContent = expanded ? 'Show more' : 'Show less';
+                }
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    var active = document.activeElement;
+                    if (active && active.classList.contains('expand-btn')) {
+                        active.click();
+                        e.preventDefault();
+                    }
+                }
+            });
+        </script>
+    </body>
+
+</html>
