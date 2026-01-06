@@ -1505,7 +1505,6 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Mobile Navigation Functions
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const mobileNav = document.getElementById('mobileNav');
         const mobileNavOverlay = document.getElementById('mobileNavOverlay');
@@ -1535,7 +1534,6 @@
             arrow.classList.toggle('rotated');
         }
 
-        // Close mobile menu on window resize if screen becomes larger
         window.addEventListener('resize', function () {
             if (window.innerWidth > 900) {
                 closeMobileMenu();
