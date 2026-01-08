@@ -1091,72 +1091,9 @@
                 </select>
             </div>
 
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
+           
         </nav>
-        <!-- INNENTOL VAN 900PX-TOL LEFELE -->
-        <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
-
-        <nav class="mobile-nav" id="mobileNav">
-            <ul class="mobile-nav-list">
-                <li class="mobile-nav-item">
-                    <div class="mobile-nav-header" onclick="toggleMobileSubmenu(this)">
-                        <a href="#" class="mobile-nav-link" onclick="event.preventDefault()">Socials</a>
-                        <svg class="mobile-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </div>
-                    <ul class="mobile-submenu">
-                        <li class="mobile-submenu-item"><a href="https://youtube.com/@tgdoescode"
-                                target="_blank">Youtube</a></li>
-                        <li class="mobile-submenu-item"><a href="https://github.com/TGGamesYT/redstone-launcher"
-                                target="_blank">Github</a></li>
-                        <li class="mobile-submenu-item"><a href="https://discord.gg/S9H2Z6SuEA"
-                                target="_blank">Discord</a></li>
-                    </ul>
-                </li>
-                <li class="mobile-nav-item">
-                    <div class="mobile-nav-header" onclick="toggleMobileSubmenu(this)">
-                        <a href="#" class="mobile-nav-link" style="cursor: not-allowed;"
-                            onclick="event.preventDefault()">Indicators</a>
-                        <svg class="mobile-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </div>
-                    <ul class="mobile-submenu">
-                        <li class="mobile-submenu-item"><a href="#"
-                                style="cursor: not-allowed; pointer-events: none; opacity: 0.6;">Blog</a></li>
-                        <li class="mobile-submenu-item"><a href="#"
-                                style="cursor: not-allowed; pointer-events: none; opacity: 0.6;">New features</a></li>
-                        <li class="mobile-submenu-item"><a href="#"
-                                style="cursor: not-allowed; pointer-events: none; opacity: 0.6;">Our Team</a></li>
-                    </ul>
-                </li>
-                <li class="mobile-nav-item">
-                    <div class="mobile-nav-header" onclick="toggleMobileSubmenu(this)">
-                        <a href="#" class="mobile-nav-link" onclick="event.preventDefault()">Support & bug report</a>
-                        <svg class="mobile-nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </div>
-                    <ul class="mobile-submenu">
-                        <li class="mobile-submenu-item"><a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord
-                                support</a></li>
-                        <li class="mobile-submenu-item"><a href="https://github.com/TGGamesYT/redstone-launcher/issues"
-                                target="_blank">Github bug report</a></li>
-                        <li class="mobile-submenu-item"><a href="mailto:contact@redstone-launcher.com">Email support</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <!-- IDÁIG VAN A MOBILE-->
+      
     </header>
 
 
@@ -1761,7 +1698,7 @@
             });
         }
 
-   if (switcher) {
+        if (switcher) {
             switcher.value = saved;
 
             applyLang(saved);
@@ -1770,6 +1707,7 @@
         } else {
             applyLang(saved);
         }
+
     </script>
 
 </body>
