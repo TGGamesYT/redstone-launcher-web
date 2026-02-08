@@ -1,48 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redstone Launcher</title>
+    <meta name="description" content="The best Minecraft Launcher with a crazy amount of features">
     <meta name="author" content="Redstone Launcher Team">
     <meta property="og:title" content="Redstone Launcher">
     <meta property="og:description" content="The best Minecraft Launcher with a crazy amount of features">
-    <meta property="og:image" content="https://redstone-launcher.com/img/redstonebanner.png" />
+    <meta property="og:image" content="https://redstone-launcher.com/img/redstonebanner.png">
     <meta name="theme-color" content="#d60505">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="shortcut icon" href="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/new-logo.png?raw=true" type="image/x-icon">
-    <script>
-        {
-            "@context": "https://schema.org",
-                "@type": "WebSite",
-                    "name": "Redstone Launcher",
-                        "url": "https://redstone-launcher.com"
-        }
-    </script>
+    <link rel="shortcut icon"
+        href="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/new-logo.png?raw=true"
+        type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
-        ::-webkit-scrollbar {
-            width: 10px;
+        :root {
+            --background: hsl(220, 30%, 6%);
+            --foreground: hsl(0, 0%, 98%);
+            --card: hsl(220, 25%, 10%);
+            --card-foreground: hsl(0, 0%, 98%);
+            --primary: hsl(0, 72%, 51%);
+            --primary-hover: hsl(0, 72%, 46%);
+            --primary-glow: hsla(0, 72%, 51%, 0.4);
+            --muted: hsl(220, 10%, 65%);
+            --muted-foreground: hsl(220, 10%, 65%);
+            --accent: hsl(0, 72%, 15%);
+            --accent-foreground: hsl(0, 72%, 70%);
+            --border: hsl(220, 20%, 18%);
+            --glass-bg: hsla(220, 25%, 12%, 0.5);
+            --glass-border: hsla(0, 0%, 100%, 0.08);
+            --section-gradient: linear-gradient(180deg, transparent, hsla(0, 72%, 51%, 0.05), transparent);
         }
 
-        ::-webkit-scrollbar-track {
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
+        :root.light {
+            --background: hsla(0, 0%, 98%, 0.108);
+            --foreground: hsl(220, 30%, 10%);
+            --card: hsl(0, 0%, 100%);
+            --card-foreground: hsl(220, 30%, 10%);
+            --muted: hsl(220, 10%, 46%);
+            --muted-foreground: hsl(220, 10%, 46%);
+            --accent: hsl(0, 72%, 95%);
+            --accent-foreground: hsl(0, 72%, 40%);
+            --border: hsl(220, 13%, 88%);
+            --glass-bg: hsla(0, 0%, 100%, 0.6);
+            --glass-border: hsla(0, 0%, 100%, 0.3);
+            --section-gradient: linear-gradient(180deg, transparent, hsla(0, 72%, 51%, 0.03), transparent);
         }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg,
-                    rgba(255, 0, 0, 0.6),
-                    rgba(255, 0, 0, 0.3));
-            border-radius: 10px;
-            border: 2px solid rgba(0, 0, 0, 0.3);
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(236, 3, 3, 0.411);
-        }
-
 
         * {
             margin: 0;
@@ -50,57 +57,85 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --background: hsl(220, 30%, 6%);
-            --foreground: hsl(0, 0%, 98%);
-            --card: hsl(220, 25%, 10%);
-            --primary: hsl(0, 72%, 51%);
-            --primary-hover: hsl(0, 72%, 46%);
-            --muted: hsl(220, 10%, 65%);
-            --border: hsl(220, 20%, 18%);
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--background);
-
             color: var(--foreground);
             line-height: 1.6;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            transition: background 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        .hero-section {
-            position: relative;
-            background-image: url('https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/redstone_launcher_banner.png?raw=true');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            min-height: 100vh;
-            padding-bottom: 0rem;
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: hsla(0, 72%, 51%, 0.3);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: hsla(0, 72%, 51%, 0.5);
         }
 
         .glass {
-            background: rgba(31, 41, 55, 0.4);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(1.8);
+            -webkit-backdrop-filter: blur(20px) saturate(1.8);
+            border: 1px solid var(--glass-border);
         }
 
         .glow-text {
-            text-shadow: 0 0 20px hsla(0, 72%, 51%, 0.5);
+            text-shadow: 0 0 30px var(--primary-glow);
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
+        .glow-box {
+            box-shadow: 0 10px 40px -10px var(--primary-glow);
+        }
+
+        .glow-box:hover {
+            box-shadow: 0 20px 60px -15px hsla(0, 72%, 51%, 0.5);
+        }
+
+        .ios-spring {
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
             }
 
-            to {
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
                 opacity: 1;
             }
+
+            50% {
+                opacity: 0.4;
+            }
         }
 
-        @keyframes slideUp {
+        @keyframes fade-up {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -112,7 +147,7 @@
             }
         }
 
-        @keyframes scaleIn {
+        @keyframes scale-in {
             from {
                 opacity: 0;
                 transform: scale(0.95);
@@ -124,56 +159,273 @@
             }
         }
 
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
+        @keyframes slide-down {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
             }
 
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
+            to {
                 opacity: 1;
-            }
-
-            50% {
-                opacity: 0.5;
-            }
-        }
-
-        @keyframes bounce {
-
-            0%,
-            100% {
                 transform: translateY(0);
             }
-
-            50% {
-                transform: translateY(-5px);
-            }
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        .animate-slide-up {
-            animation: slideUp 0.6s ease-out;
-        }
-
-        .animate-scale-in {
-            animation: scaleIn 0.4s ease-out;
         }
 
         .animate-float {
-            animation: float 3s ease-in-out infinite;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .animate-pulse-dot {
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        .animate-fade-up {
+            animation: fade-up 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .animate-scale-in {
+            animation: scale-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .parallax-container {
+            perspective: 1px;
+            height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .parallax-layer {
+            will-change: transform;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--foreground);
+        }
+
+        .nav-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .nav-item {
+            position: relative;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted);
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .nav-item:hover {
+            color: var(--foreground);
+        }
+
+        .nav-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 180px;
+            padding: 0.5rem;
+            border-radius: 0.75rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px) scale(0.95);
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .nav-item:hover .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+            background: var(--glass-bg);
+        }
+
+        .nav-dropdown a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+            color: var(--muted);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+            backdrop-filter: blur(10px) saturate(1.5);
+        }
+
+        .nav-dropdown a:hover {
+            color: var(--foreground);
+            background: var(--accent);
+        }
+
+        .nav-dropdown a.disabled {
+            opacity: 0.4;
+            cursor: default;
+        }
+         .nav-dropdown a.disabled:hover {
+             background: transparent;
+             color: var(--muted);
+            opacity: 0.4;
+            cursor: default;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-select {
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--foreground);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .nav-select option {
+            background: var(--card);
+            color: var(--foreground);
+        }
+
+        .theme-toggle {
+            width: 36px;
+            height: 36px;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            color: var(--foreground);
+        }
+
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .theme-toggle:hover svg {
+            transform: rotate(20deg) scale(1.1);
+        }
+
+        .mobile-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 22px;
+            height: 2px;
+            background: var(--foreground);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            width: 100%;
+            max-height: calc(100vh - 64px);
+            overflow-y: auto;
+            padding: 1rem;
+            z-index: 99;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .mobile-nav.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .mobile-nav-section {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-nav-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            padding: 0 0.5rem;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 0.75rem;
+            color: var(--foreground);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .mobile-nav a:hover {
+            background: var(--accent);
+        }
+
+        @media (max-width: 900px) {
+            .nav-center {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
         }
 
         .hero {
@@ -182,45 +434,58 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 6rem 1rem 4rem;
             overflow: hidden;
-            padding: 1rem;
         }
 
         .hero-bg {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, hsla(0, 72%, 51%, 0.2), var(--background));
+            background-image: url('https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/redstone_launcher_banner.png?raw=true');
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.1s linear;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, var(--background) 0%, transparent 30%, transparent 50%, var(--background) 100%);
+        }
+
+        :root.light .hero-overlay {
+            color: white;
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
         }
 
         .hero-blob-1 {
-            position: absolute;
-            top: 5rem;
-            left: 2.5rem;
-            width: 18rem;
-            height: 18rem;
-            background: hsla(0, 72%, 51%, 0.2);
-            border-radius: 50%;
-            filter: blur(100px);
-            animation: float 3s ease-in-out infinite;
+            top: 10%;
+            left: 5%;
+            width: 300px;
+            height: 300px;
+            background: hsla(0, 72%, 51%, 0.15);
         }
 
         .hero-blob-2 {
-            position: absolute;
-            bottom: 5rem;
-            right: 2.5rem;
-            width: 24rem;
-            height: 24rem;
+            bottom: 10%;
+            right: 5%;
+            width: 400px;
+            height: 400px;
             background: hsla(0, 72%, 51%, 0.1);
-            border-radius: 50%;
-            filter: blur(120px);
-            animation: float 3s ease-in-out infinite 1s;
+            animation-delay: 1s;
         }
 
         .hero-content {
             position: relative;
             z-index: 10;
-            max-width: 80rem;
             text-align: center;
+            max-width: 900px;
         }
 
         .badge {
@@ -228,62 +493,30 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.5rem 1rem;
-            margin-bottom: 2rem;
             border-radius: 9999px;
             font-size: 0.875rem;
             color: var(--muted);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: scale-in 0.5s 0.1s forwards;
         }
 
         h1 {
-            font-size: clamp(3rem, 10vw, 6rem);
-            font-weight: 800;
+            font-size: clamp(3rem, 10vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fade-up 0.6s 0.2s forwards;
         }
 
-        .hero-description {
-            font-size: clamp(1.125rem, 3vw, 1.5rem);
+        .hero-desc {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
             color: var(--muted);
-            margin-bottom: 3rem;
-            max-width: 42rem;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 1rem 2.5rem;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 0.5rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-
-        }
-
-        .btn-hero {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 10px 25px -5px hsla(0, 72%, 51%, 0.5);
-        }
-
-        .btn-hero:hover {
-            background: var(--primary-hover);
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px -10px hsla(0, 72%, 51%, 0.6);
-        }
-
-        .btn-glass {
-            color: var(--foreground);
-        }
-
-        .btn-glass:hover {
-            background: rgba(31, 41, 55, 0.6);
-            transform: scale(1.05);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            opacity: 0;
+            animation: fade-up 0.6s 0.35s forwards;
         }
 
         .btn-group {
@@ -292,6 +525,40 @@
             gap: 1rem;
             justify-content: center;
             margin-bottom: 3rem;
+            opacity: 0;
+            animation: fade-up 0.6s 0.5s forwards;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: scale(1.05);
+        }
+
+        .btn-glass {
+            color: var(--foreground);
+        }
+
+        .btn-glass:hover {
+            transform: scale(1.05);
+            background: var(--accent);
         }
 
         .hero-features {
@@ -301,6 +568,8 @@
             gap: 2rem;
             font-size: 0.875rem;
             color: var(--muted);
+            opacity: 0;
+            animation: fade-up 0.6s 0.65s forwards;
         }
 
         .hero-feature {
@@ -310,23 +579,23 @@
         }
 
         .pulse-dot {
-            width: 0.5rem;
-            height: 0.5rem;
+            width: 8px;
+            height: 8px;
             background: var(--primary);
             border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
         }
 
-        .features {
-            padding: 6rem 1rem;
+        section {
             position: relative;
+            padding: 6rem 1rem;
             overflow: hidden;
         }
 
-        .features-bg {
+        .section-bg {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, var(--background), hsla(0, 72%, 51%, 0.05), var(--background));
+            background: var(--section-gradient);
+            pointer-events: none;
         }
 
         .section-header {
@@ -337,50 +606,48 @@
         }
 
         .section-title {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 800;
             margin-bottom: 1rem;
         }
 
-        .section-description {
-            font-size: 1.25rem;
+        .section-desc {
+            font-size: 1.1rem;
             color: var(--muted);
-            max-width: 42rem;
+            max-width: 600px;
             margin: 0 auto;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            max-width: 80rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            max-width: 1200px;
             margin: 0 auto;
             position: relative;
             z-index: 10;
         }
 
         .feature-card {
-            padding: 2rem;
-            border-radius: 0.75rem;
-            transition: all 0.3s ease;
+            padding: 1.75rem;
+            border-radius: 1rem;
+            cursor: default;
         }
 
         .feature-card:hover {
-            background: rgba(31, 41, 55, 0.6);
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px -10px hsla(0, 72%, 51%, 0.1);
+            transform: translateY(-6px) scale(1.02);
         }
 
         .feature-icon {
-            width: 3rem;
-            height: 3rem;
-            background: hsla(0, 72%, 51%, 0.1);
-            border-radius: 0.5rem;
+            width: 48px;
+            height: 48px;
+            background: var(--accent);
+            border-radius: 0.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 1rem;
-            transition: background 0.3s ease;
+            transition: background 0.3s;
         }
 
         .feature-card:hover .feature-icon {
@@ -388,96 +655,72 @@
         }
 
         .feature-icon svg {
-            width: 1.5rem;
-            height: 1.5rem;
-            color: var(--primary);
+            width: 24px;
+            height: 24px;
+            stroke: var(--primary);
+            stroke-width: 2;
+            fill: none;
         }
 
         .feature-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--foreground);
         }
 
-        .feature-description {
+        .feature-desc {
+            font-size: 0.9rem;
             color: var(--muted);
-            line-height: 1.75;
+            line-height: 1.7;
         }
 
-        .gallery {
-            padding: 6rem 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gallery-bg {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, var(--background), hsla(0, 72%, 51%, 0.05), var(--background));
-        }
-
-        .gallery-container {
-            max-width: 80rem;
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
             margin: 0 auto;
             position: relative;
             z-index: 10;
         }
 
         .gallery-item {
-            width: 100%;
-            margin-bottom: 2rem;
             border-radius: 1rem;
             overflow: hidden;
-            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
         }
 
         .gallery-item:hover {
-            transform: translateY(-20px) scale(1.02);
+            transform: translateY(-12px) scale(1.02);
         }
 
         .gallery-item img {
             width: 100%;
             height: auto;
             display: block;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: filter 0.5s;
         }
 
         .gallery-item:hover img {
             filter: brightness(1.1);
         }
 
-        .supporters {
-            padding: 6rem 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .supporters-bg {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, var(--background), hsla(0, 72%, 51%, 0.05), var(--background));
-        }
-
-        .supporters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-            max-width: 60rem;
-            margin: 0 auto 3rem;
+        .supporters-container {
+            max-width: 500px;
+            margin: 0 auto;
             position: relative;
             z-index: 10;
         }
 
         .supporter-card {
-            padding: 2rem;
-            border-radius: 0.75rem;
-            transition: all 0.3s ease;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
         }
 
         .supporter-card:hover {
-            background: rgba(31, 41, 55, 0.6);
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px -10px hsla(0, 72%, 51%, 0.1);
+            transform: scale(1.03) translateY(-4px);
         }
 
         .supporter-content {
@@ -486,56 +729,46 @@
         }
 
         .supporter-avatar {
-            width: 6rem;
-            height: 9rem;
-            border-radius: 50%;
+            width: 80px;
+            height: 112px;
+            border-radius: 0.5rem;
+            object-fit: cover;
         }
 
         .supporter-info {
             flex: 1;
         }
 
-        .supporter-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
         .supporter-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .supporter-amount {
-            color: var(--primary);
+            font-size: 1.1rem;
             font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--foreground);
         }
 
         .supporter-tier {
             display: inline-block;
             padding: 0.25rem 0.75rem;
-            background: hsla(0, 72%, 51%, 0.1);
-            color: var(--primary);
+            background: var(--accent);
+            color: var(--accent-foreground);
             border-radius: 9999px;
-            font-size: 0.875rem;
-            margin-bottom: 0.75rem;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
         }
 
-        .supporter-message {
+        .supporter-msg {
+            font-size: 0.9rem;
             color: var(--muted);
             font-style: italic;
         }
 
         .support-cta {
             text-align: center;
-            position: relative;
-            z-index: 10;
         }
 
         .support-cta p {
             color: var(--muted);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .support-link {
@@ -543,85 +776,82 @@
             align-items: center;
             gap: 0.5rem;
             color: var(--primary);
-            text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s ease;
+            text-decoration: none;
         }
 
         .support-link:hover {
             color: var(--primary-hover);
         }
 
-        footer {
-            position: relative;
-            border-top: 1px solid hsla(220, 20%, 18%, 0.5);
-            margin-top: 6rem;
+        .support-link svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
         }
 
-        .footer-bg {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, var(--background), rgba(31, 41, 55, 0.2));
+        footer {
+            position: relative;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
         }
 
         .footer-content {
-            position: relative;
-            z-index: 10;
-            max-width: 80rem;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 1rem;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
 
-        .footer-brand {
-            grid-column: span 1;
-        }
-
         .footer-brand h3 {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 800;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .footer-brand p {
-            color: var(--muted);
             font-size: 0.875rem;
-            line-height: 1.75;
-            margin-bottom: 1.5rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 1rem;
         }
 
         .social-links {
             display: flex;
-            gap: 0.75rem;
+            gap: 0.5rem;
         }
 
         .social-link {
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 0.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
             color: var(--muted);
+            text-decoration: none;
         }
 
         .social-link:hover {
-            background: rgba(31, 41, 55, 0.6);
-            transform: scale(1.1);
             color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .social-link svg {
+            width: 18px;
+            height: 18px;
         }
 
         .footer-section h4 {
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
+            color: var(--foreground);
         }
 
         .footer-links {
@@ -633,13 +863,10 @@
         }
 
         .footer-links a {
+            font-size: 0.875rem;
             color: var(--muted);
             text-decoration: none;
-            font-size: 0.875rem;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            transition: color 0.2s;
         }
 
         .footer-links a:hover {
@@ -648,7 +875,7 @@
 
         .footer-bottom {
             padding-top: 2rem;
-            border-top: 1px solid hsla(220, 20%, 18%, 0.5);
+            border-top: 1px solid var(--border);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -665,1053 +892,537 @@
         }
 
         .status-dot {
-            width: 0.5rem;
-            height: 0.5rem;
-            background: #10b981;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
             border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .icon {
-            width: 1.25rem;
-            height: 1.25rem;
+            width: 20px;
+            height: 20px;
             stroke: currentColor;
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
             fill: none;
         }
-
-        .icon-sm {
-            width: 1rem;
-            height: 1rem;
-        }
-
-        .icon-filled {
-            fill: currentColor;
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            padding: 1rem 1.5rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            opacity: 0;
-            transform: translateY(100px);
-            transition: all 0.3s ease;
-        }
-
-        .toast.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .toast-title {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .toast-description {
-            font-size: 0.875rem;
-            color: var(--muted);
-        }
-
-        @media (max-width: 768px) {
-            .footer-brand {
-                grid-column: span 2;
-            }
-        }
-
-
-
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 20;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 1rem;
-            font-size: 1.125rem;
-        }
-
-        .nav-brand {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 700;
-            color: var(--foreground);
-        }
-
-        .nav-logo {
-            height: 32px;
-            width: auto;
-            display: block;
-        }
-
-        .nav-title {
-            font-size: 1rem;
-            letter-spacing: 0.2px;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-lang {
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        body {
-            padding-top: 64px;
-        }
-
-        .dropdownmenu ul,
-        .dropdownmenu li {
-            margin: 0;
-            padding: 0;
-            justify-content: center;
-            text-align: center;
-            align-items: center;
-        }
-
-        .dropdownmenu ul {
-            backdrop-filter: blur(10px);
-            list-style: none;
-            width: 100%;
-            justify-content: center;
-            text-align: center;
-            align-items: center;
-        }
-
-        .dropdownmenu li {
-            float: left;
-            position: relative;
-            width: auto;
-            justify-content: center;
-            text-align: center;
-            align-items: center;
-        }
-
-        .dropdownmenu a {
-            text-align: center;
-            backdrop-filter: blur(20px);
-            color: #FFFFFF;
-            display: block;
-            font: bold 12px/20px sans-serif;
-            padding: 10px 25px;
-            text-decoration: none;
-            -webkit-transition: all .25s ease;
-            -moz-transition: all .25s ease;
-            -ms-transition: all .25s ease;
-            -o-transition: all .25s ease;
-            transition: all .25s ease;
-        }
-
-        .dropdownmenu li:hover a {
-            background: #000000;
-        }
-
-        #submenu {
-            left: 0;
-            opacity: 0;
-            position: absolute;
-            top: 35px;
-            visibility: hidden;
-            z-index: 1;
-            justify-content: center;
-            text-align: center;
-            align-items: center;
-        }
-
-        li:hover ul#submenu {
-            opacity: 1;
-            top: 40px;
-            visibility: visible;
-        }
-
-        #submenu li {
-            float: none;
-            width: 100%;
-        }
-
-        #submenu a:hover {
-            background: #DF4B05;
-        }
-
-        #submenu a {
-            background-color: #000000;
-        }
-
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            z-index: 100;
-            background: transparent;
-            border: none;
-            padding: 8px;
-        }
-
-        .hamburger-line {
-            width: 24px;
-            height: 2px;
-            background: var(--foreground);
-            margin: 3px 0;
-            transition: all 0.3s ease;
-            border-radius: 2px;
-        }
-
-        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
-        }
-
-        .mobile-nav-overlay {
-            display: none;
-            position: fixed;
-            top: 64px;
-            left: 0;
-            width: 100%;
-            height: calc(100vh - 64px);
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-            z-index: 15;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .mobile-nav-overlay.active {
-            opacity: 1;
-        }
-
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 64px;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(135deg, hsla(0, 86%, 46%, 0.15), var(--background));
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 19;
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
-            max-height: calc(100vh - 64px);
-            overflow-y: auto;
-        }
-
-        .mobile-nav.active {
-            transform: translateY(0);
-        }
-
-        .mobile-nav-list {
-            list-style: none;
-            padding: 1rem;
-            margin: 0;
-            height: 60px;
-        }
-
-        .mobile-nav-item {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .mobile-nav-item:last-child {
-            border-bottom: none;
-        }
-
-        .mobile-nav-link {
-            display: block;
-            padding: 1rem;
-            color: var(--foreground);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-nav-link:hover {
-            color: var(--primary);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .mobile-submenu {
-            list-style: none;
-            padding: 0 0 0 1rem;
-            margin: 0;
-            display: none;
-        }
-
-        .mobile-submenu.active {
-            display: block;
-        }
-
-        .mobile-submenu-item a {
-            display: block;
-            padding: 0.75rem 1rem;
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 0.875rem;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-submenu-item a:hover {
-            color: var(--primary);
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .mobile-nav-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .mobile-nav-arrow {
-            width: 20px;
-            height: 60px;
-            transition: transform 0.3s ease;
-        }
-
-        .mobile-nav-arrow.rotated {
-            transform: rotate(180deg);
-        }
-
-        @media (max-width: 900px) {
-            .mobile-menu-toggle {
-                display: flex;
-                position: absolute;
-                right: 1rem;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-
-            .mobile-nav {
-                display: block;
-            }
-
-            .mobile-nav-overlay {
-                display: block;
-            }
-
-            .dropdownmenu>ul {
-                display: none !important;
-            }
-
-            .nav-actions {
-                position: absolute;
-                right: 60px;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-
-            .nav-brand:last-of-type {
-                display: none;
-            }
-        }
     </style>
 </head>
 
 <body>
+    <nav class="glass">
+        <div class="nav-brand">Redstone Launcher</div>
 
-    <header>
-        <nav class="dropdownmenu"
-            style="backdrop-filter: blur(7px); background: linear-gradient(135deg, hsla(0, 86%, 46%, 0.2), var(--background));">
-            <div class="nav-brand" style="margin-right: 100px;">
-
-
-            </div>
-
-            <ul style="margin-left: 750px;">
-
-                <li><a href="https://redstone-launcher.com">Socials</a>
-                    <ul id="submenu">
-                        <li><a href="https://youtube.com/@tgdoescode" target="_blank">Youtube</a></li>
-                        <li><a href="https://github.com/TGGamesYT/redstone-launcher">Github</a></li>
-                        <li><a href="https://discord.gg/S9H2Z6SuEA">Discord</a></li>
-                    </ul>
-                </li>
-                <li><a href="https://redstone-launcher.com">Indicators</a>
-                    <ul id="submenu">
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="" style="cursor: not-allowed;pointer-events: none; opacity: 0.6;">New features</a>
-                        </li>
-                        <li><a href="" style="cursor: not-allowed;pointer-events: none; opacity: 0.6;">Our Team</a></li>
-                    </ul>
-                </li>
-                <li><a href="https://redstone-launcher.com">Support & bug report</a>
-                    <ul id="submenu">
-                        <li><a href="https://discord.gg/S9H2Z6SuEA" title="You can report a bug too.">Discord
-                                support</a></li>
-                        <li><a href="https://github.com/TGGamesYT/redstone-launcher/issues">Github bug report</a></li>
-                        <li><a href="mailto:contact@redstone-launcher.com" title="You can report a bug too.">Email
-                                support</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <div class="nav-brand">
-                <img src="../img/new-logo.png" alt="Redstone Launcher" class="nav-logo">
-                <span class="nav-title">Redstone Launcher</span>
-            </div>
-            <div class="nav-actions">
-                <select id="languageSwitcher" class="glass nav-lang">
-                    <option value="en">🇬🇧 English</option>
-                    <option value="hu">🇭🇺 Magyar</option>
-                    <option value="it">🇮🇹 Italiano</option>
-                    <option value="de">🇩🇪 Deutsch</option>
-                </select>
-            </div>
-
-           
-        </nav>
-      
-    </header>
-
-
-
-    <div class="hero-section">
-        <section class="hero">
-            <div class="hero-bg"></div>
-            <div class="hero-blob-1"></div>
-            <div class="hero-blob-2"></div>
-
-            <div class="hero-content animate-slide-up">
-                <div class="badge glass animate-scale-in">
-                    <svg class="icon icon-sm" viewBox="0 0 24 24">
-                        <path
-                            d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
-                        </path>
-                    </svg>
-                    <span data-i18n="badge_beta">Version 1.13.5</span>
-
-                </div>
-
-                <h1 class="glow-text" data-i18n="title">Redstone Launcher</h1>
-
-                <p class="hero-description" data-i18n="hero_desc">
-
-                    The modern, powerful launcher for Minecraft. Experience seamless gameplay with advanced features and
-                    stunning performance.
-                </p>
-
-
-                <div class="btn-group">
-                    <button id="downloadBtn" class="btn btn-hero" data-i18n="download">
-                        Download for your OS
-                    </button>
-
-
-                    <script>
-                        function detectOS() {
-                            const ua = navigator.userAgent.toLowerCase();
-                            if (/iphone|ipad|ipod/.test(ua)) return "iOS";
-                            if (ua.includes("android")) return "Android";
-                            if (ua.includes("cros")) return "ChromeOS";
-                            if (ua.includes("win")) return "Windows";
-                            if (ua.includes("mac")) return "macOS";
-                            if (ua.includes("linux")) return "Linux";
-                            return "Your OS";
-                        }
-
-                        window.addEventListener("DOMContentLoaded", () => {
-                            const btn = document.getElementById("downloadBtn");
-                            const os = detectOS();
-
-                            const downloads = {
-                                Windows: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.exe",
-                                macOS: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.dmg",
-                                Linux: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.AppImage"
-                            };
-
-                            if (downloads[os]) {
-                                btn.textContent = `Download for ${os}`;
-                                btn.disabled = false;
-                                btn.addEventListener("click", () => {
-                                    const link = document.createElement("a");
-                                    link.href = downloads[os];
-                                    link.target = "_blank";
-                                    document.body.appendChild(link);
-                                    link.click();
-                                    document.body.removeChild(link);
-                                });
-                            } else {
-                                btn.textContent = `Download isn't available for ${os}`;
-                                btn.disabled = true;
-                            }
-                        });
-                    </script>
-                    <a href="https://github.com/TGGamesYT/redstone-launcher/releases" class="btn btn-glass glass">Other
-                        Downloads</a>
-                    <a href="https://discord.gg/S9H2Z6SuEA" class="btn btn-glass glass">Discord</a>
-                </div>
-
-                <div class="hero-features">
-                    <div class="hero-feature">
-                        <div class="pulse-dot"></div>
-                        <span data-i18n="free">Free & Open Source</span>
-                    </div>
-                    <div class="hero-feature">
-                        <div class="pulse-dot"></div>
-                        <span data-i18n="cross">Cross-Platform</span>
-                    </div>
-                    <div class="hero-feature">
-                        <div class="pulse-dot"></div>
-                        <span data-i18n="updates">Regular Updates</span>
-
-                    </div>
+        <div class="nav-center">
+            <div class="nav-item">
+                <span data-i18n="socials">Socials</span>
+                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+                <div class="nav-dropdown glass">
+                    <a href="https://youtube.com/@tgdoescode" target="_blank" data-i18n="youtube">YouTube</a>
+                    <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank"
+                        data-i18n="github">GitHub</a>
+                    <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" data-i18n="discord">Discord</a>
                 </div>
             </div>
-        </section>
+            <div class="nav-item">
+                <span data-i18n="indicators">Indicators</span>
+                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+                <div class="nav-dropdown glass">
+                    <a href="blog.html" data-i18n="blog">Blog</a>
+                    <a href="tree/main/old/void()" class="disabled" data-i18n="new_features">New Features</a>
+                    <a href="tree/main/old/void()" class="disabled" data-i18n="our_team">Our Team</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <span data-i18n="support_bug">Support & Bug Report</span>
+                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+                <div class="nav-dropdown glass">
+                    <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" data-i18n="discord_support">Discord
+                        Support</a>
+                    <a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank"
+                        data-i18n="github_bug">GitHub Bug Report</a>
+                    <a href="mailto:contact@redstone-launcher.com" data-i18n="email_support">Email Support</a>
+                </div>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <select id="langSwitcher" class="glass nav-select">
+                <option value="en">🇬🇧 English</option>
+                <option value="hu">🇭🇺 Magyar</option>
+                <option value="it">🇮🇹 Italiano</option>
+                <option value="de">🇩🇪 Deutsch</option>
+            </select>
+            <button id="themeToggle" class="theme-toggle glass" aria-label="Toggle theme">
+                <svg class="sun-icon" viewBox="0 0 24 24" style="display:none">
+                    <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2" />
+                    <path stroke="currentColor" stroke-width="2"
+                        d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                </svg>
+                <svg class="moon-icon" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-width="2" fill="none"
+                        d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+            </button>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+    <div class="mobile-nav glass" id="mobileNav">
+        <div class="mobile-nav-section">
+            <div class="mobile-nav-title" data-i18n="socials">Socials</div>
+            <a href="https://youtube.com/@tgdoescode" target="_blank" data-i18n="youtube">YouTube</a>
+            <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank" data-i18n="github">GitHub</a>
+            <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" data-i18n="discord">Discord</a>
+        </div>
+        <div class="mobile-nav-section">
+            <div class="mobile-nav-title" data-i18n="indicators">Indicators</div>
+            <a href="#" data-i18n="blog">Blog</a>
+        </div>
+        <div class="mobile-nav-section">
+            <div class="mobile-nav-title" data-i18n="support_bug">Support</div>
+            <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" data-i18n="discord_support">Discord Support</a>
+            <a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank"
+                data-i18n="github_bug">GitHub Bug Report</a>
+        </div>
     </div>
-
-    <section class="features">
-        <div class="features-bg"></div>
-
-        <div class="section-header animate-slide-up">
+    <section class="hero">
+        <div class="hero-bg parallax-layer" id="heroBg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-blob hero-blob-1 animate-float"></div>
+        <div class="hero-blob hero-blob-2 animate-float"></div>
+        <div class="hero-content">
+            <div class="badge glass">
+                <svg class="icon" viewBox="0 0 24 24" style="stroke:var(--primary)">
+                    <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+                <span data-i18n="badge_beta">Version 1.13.5</span>
+            </div>
+            <h1 class="glow-text" data-i18n="title" style="color: white;">Redstone Launcher</h1>
+            <p class="hero-desc" data-i18n="hero_desc">The modern, powerful launcher for Minecraft. Experience seamless
+                gameplay with advanced features and stunning performance.</p>
+            <div class="btn-group">
+                <a id="downloadBtn" href="https://github.com/TGGamesYT/redstone-launcher/releases/latest"
+                    target="_blank" class="btn btn-primary glow-box ios-spring">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                    </svg>
+                    <span data-i18n="download">Download for your OS</span>
+                </a>
+                <a href="https://github.com/TGGamesYT/redstone-launcher/releases" target="_blank"
+                    class="btn btn-glass glass ios-spring">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
+                    </svg>
+                    <span data-i18n="other_downloads">Other Downloads</span>
+                </a>
+                <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" class="btn btn-glass glass ios-spring"
+                    data-i18n="discord">Discord</a>
+            </div>
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <div class="pulse-dot animate-pulse-dot"></div><span data-i18n="free">Free & Open Source</span>
+                </div>
+                <div class="hero-feature">
+                    <div class="pulse-dot animate-pulse-dot"></div><span data-i18n="cross">Cross-Platform</span>
+                </div>
+                <div class="hero-feature">
+                    <div class="pulse-dot animate-pulse-dot"></div><span data-i18n="updates">Regular Updates</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="features">
+        <div class="section-bg parallax-layer"></div>
+        <div class="section-header reveal">
             <h2 class="section-title glow-text" data-i18n="features">Powerful Features</h2>
-            <p class="section-description" data-i18n="features_desc">
-                Everything you need for the ultimate Minecraft experience
+            <p class="section-desc" data-i18n="features_desc">Everything you need for the ultimate Minecraft experience
             </p>
         </div>
-
         <div class="features-grid">
-            <div class="feature-card glass animate-scale-in" style="animation-delay: 0s">
-                <div class="feature-icon">
-                    <svg class="icon" viewBox="0 0 24 24">
-                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                    </svg>
-                </div>
+            <div class="feature-card glass ios-spring reveal">
+                <div class="feature-icon"><svg viewBox="0 0 24 24">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                    </svg></div>
                 <h3 class="feature-title" data-i18n="f1_title">Dual Editions: Fancy & Fast</h3>
-                <p class="feature-description" data-i18n="f1_desc">
-                    Choose your vibe. <strong>Fancy Edition</strong> delivers a sleek, modern UI built with Electron —
-                    perfect for aesthetics and smooth visuals.
-                    <strong>Fast Edition</strong> uses NodeGui for raw performance and minimal resource use. Your
-                    launcher, your speed.
-                </p>
+                <p class="feature-desc" data-i18n="f1_desc">Choose your vibe. Fancy Edition offers a sleek UI built with
+                    Electron, while Fast Edition uses NodeGui for raw performance and minimal resource usage.</p>
             </div>
-
-            <div class="feature-card glass animate-scale-in" style="animation-delay: 0.1s">
-                <div class="feature-icon">
-                    <svg class="icon" viewBox="0 0 24 24">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                    </svg>
-                </div>
+            <div class="feature-card glass ios-spring reveal">
+                <div class="feature-icon"><svg viewBox="0 0 24 24">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg></div>
                 <h3 class="feature-title" data-i18n="f2_title">Total Instance Freedom</h3>
-                <p class="feature-description" data-i18n="f2_desc">
-                    Create, clone, and customize every Minecraft instance your way. Separate mods, profiles, versions,
-                    and settings — complete control with zero hassle.
-                </p>
+                <p class="feature-desc" data-i18n="f2_desc">Create, clone, and customize Minecraft instances with
+                    separate mods, profiles, versions and settings.</p>
             </div>
-
-            <div class="feature-card glass animate-scale-in" style="animation-delay: 0.2s">
-                <div class="feature-icon">
-                    <svg class="icon" viewBox="0 0 24 24">
-                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
-                    </svg>
-                </div>
+            <div class="feature-card glass ios-spring reveal">
+                <div class="feature-icon"><svg viewBox="0 0 24 24">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                    </svg></div>
                 <h3 class="feature-title" data-i18n="f3_title">Privacy First</h3>
-                <p class="feature-description" data-i18n="f3_desc">
-                    No tracking. No analytics. No hidden uploads. Everything — from your mods to your settings — stays
-                    <strong>100% local</strong> on your device. Your data belongs to you.
-                </p>
+                <p class="feature-desc" data-i18n="f3_desc">No tracking. No analytics. Everything stays 100% local on
+                    your device.</p>
             </div>
-
-            <div class="feature-card glass animate-scale-in" style="animation-delay: 0.3s">
-                <div class="feature-icon">
-                    <svg class="icon" viewBox="0 0 24 24">
-                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-                    </svg>
-                </div>
+            <div class="feature-card glass ios-spring reveal">
+                <div class="feature-icon"><svg viewBox="0 0 24 24">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                    </svg></div>
                 <h3 class="feature-title" data-i18n="f4_title">Modular Tools</h3>
-                <p class="feature-description" data-i18n="f4_desc">
-                    From world editors to resource pack optimizers, a growing suite of tools is built right in.
-                    Simplify every part of your Minecraft experience without leaving the launcher.
-                </p>
+                <p class="feature-desc" data-i18n="f4_desc">Built-in tools like world editors and resource pack
+                    optimizers simplify your Minecraft experience.</p>
             </div>
-
-            <div class="feature-card glass animate-scale-in" style="animation-delay: 0.4s">
-                <div class="feature-icon">
-                    <svg class="icon" viewBox="0 0 24 24">
-                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
-                        <rect x="9" y="9" width="6" height="6"></rect>
-                        <line x1="9" y1="1" x2="9" y2="4"></line>
-                        <line x1="15" y1="1" x2="15" y2="4"></line>
-                        <line x1="9" y1="20" x2="9" y2="23"></line>
-                        <line x1="15" y1="20" x2="15" y2="23"></line>
-                        <line x1="20" y1="9" x2="23" y2="9"></line>
-                        <line x1="20" y1="14" x2="23" y2="14"></line>
-                        <line x1="1" y1="9" x2="4" y2="9"></line>
-                        <line x1="1" y1="14" x2="4" y2="14"></line>
-                    </svg>
-                </div>
+            <div class="feature-card glass ios-spring reveal">
+                <div class="feature-icon"><svg viewBox="0 0 24 24">
+                        <rect x="4" y="4" width="16" height="16" rx="2" />
+                        <rect x="9" y="9" width="6" height="6" />
+                        <line x1="9" y1="1" x2="9" y2="4" />
+                        <line x1="15" y1="1" x2="15" y2="4" />
+                        <line x1="9" y1="20" x2="9" y2="23" />
+                        <line x1="15" y1="20" x2="15" y2="23" />
+                        <line x1="20" y1="9" x2="23" y2="9" />
+                        <line x1="20" y1="14" x2="23" y2="14" />
+                        <line x1="1" y1="9" x2="4" y2="9" />
+                        <line x1="1" y1="14" x2="4" y2="14" />
+                    </svg></div>
                 <h3 class="feature-title" data-i18n="f5_title">Seamless Mod & Profile Management</h3>
-                <p class="feature-description" data-i18n="f5_desc">
-                    Install, update, and organize mods or entire profiles with a single click. Spend less time setting
-                    up, more time playing.
-                </p>
+                <p class="feature-desc" data-i18n="f5_desc">Install, update, and organize mods or entire profiles with a
+                    single click.</p>
             </div>
         </div>
     </section>
-
-
-    <section class="gallery">
-        <div class="gallery-bg"></div>
-
-        <div class="section-header animate-slide-up">
-            <h2 class="section-title glow-text">Feature Gallery</h2>
-            <p class="section-description">See Redstone Launcher in action</p>
+    <section id="gallery">
+        <div class="section-bg parallax-layer"></div>
+        <div class="section-header reveal">
+            <h2 class="section-title glow-text" data-i18n="gallery">Feature Gallery</h2>
+            <p class="section-desc" data-i18n="gallery_desc">See Redstone Launcher in action</p>
         </div>
-
-        <div class="gallery-container">
-            <div class="gallery-item animate-scale-in">
-                <img src="https://redstone-launcher.com/img/rslc_main.png" alt="asd">
-            </div>
-            <div class="gallery-item animate-scale-in" style="animation-delay: 0.1s">
-                <img src="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/rslc_curseforge.png?raw=true"
-                    alt="asd">
-            </div>
-            <div class="gallery-item animate-scale-in" style="animation-delay: 0.2s">
-                <img src="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/rslc_instances.png?raw=true"
-                    alt="tg egy feet">
-            </div>
-            <div class="gallery-item animate-scale-in" style="animation-delay: 0.3s">
-                <img src="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/rslc_servers.png?raw=true"
-                    alt="asd">
-            </div>
+        <div class="gallery-grid">
+            <div class="gallery-item glass ios-spring reveal"><img src="https://redstone-launcher.com/img/rslc_main.png"
+                    alt="Main view" loading="lazy"></div>
+            <div class="gallery-item glass ios-spring reveal"><img
+                    src="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/rslc_curseforge.png?raw=true"
+                    alt="CurseForge" loading="lazy"></div>
+            <div class="gallery-item glass ios-spring reveal"><img
+                    src="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/rslc_instances.png?raw=true"
+                    alt="Instances" loading="lazy"></div>
+            <div class="gallery-item glass ios-spring reveal"><img
+                    src="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/rslc_servers.png?raw=true"
+                    alt="Servers" loading="lazy"></div>
         </div>
     </section>
-
-    <section class="supporters">
-        <div class="supporters-bg"></div>
-
-        <div class="section-header animate-slide-up">
-            <div class="badge glass" style="margin-bottom: 1rem;">
-                <svg class="icon icon-sm icon-filled" viewBox="0 0 24 24">
+    <section id="supporters">
+        <div class="section-bg parallax-layer"></div>
+        <div class="section-header reveal">
+            <div class="badge glass" style="margin-bottom:1rem">
+                <svg class="icon" viewBox="0 0 24 24" style="fill:var(--primary);stroke:var(--primary)">
                     <path
-                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
-                    </path>
+                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                 </svg>
-                <span>Supported by the Community</span>
+                <span data-i18n="supported">Supported by the Community</span>
             </div>
-            <h2 class="section-title glow-text">Our Supporters</h2>
-            <p class="section-description">Special thanks to these amazing people who help make Redstone Launcher
-                possible</p>
+            <h2 class="section-title glow-text" data-i18n="supporters">Our Supporters</h2>
+            <p class="section-desc" data-i18n="supporters_desc">Special thanks to everyone who helps make Redstone
+                Launcher possible.</p>
         </div>
-
-        <div class="supporters-grid">
-            <div class="supporter-card glass animate-scale-in" style="animation-delay: 0s">
+        <div class="supporters-container">
+            <div class="supporter-card glass ios-spring reveal">
                 <div class="supporter-content">
-                    <img src="https://nmsr.nickac.dev/fullbody/5232fd1496d543f4b72aa1ed7295c959" alt="Alex Thompson"
+                    <img src="https://nmsr.nickac.dev/fullbody/5232fd1496d543f4b72aa1ed7295c959" alt="The Green Penguin"
                         class="supporter-avatar">
                     <div class="supporter-info">
-                        <div class="supporter-header">
-                            <h3 class="supporter-name">The Green Penguin</h3>
-                        </div>
-                        <p class="supporter-message">"Our First Supporter"</p>
+                        <h3 class="supporter-name">The Green Penguin</h3>
+                        <span class="supporter-tier">First Supporter</span>
+                        <p class="supporter-msg">"Our First Supporter"</p>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="support-cta">
-            <p>Want to support Redstone Launcher?</p>
-            <a href="https://www.patreon.com/redstonelauncher/join" class="support-link">
-                <svg class="icon icon-sm" viewBox="0 0 24 24">
-                    <path
-                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
-                    </path>
-                </svg>
-                Become a Supporter
-            </a>
+            <div class="support-cta reveal">
+                <p data-i18n="support_cta">Want to support Redstone Launcher?</p>
+                <a href="https://www.patreon.com/redstonelauncher/join" target="_blank" class="support-link">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                    </svg>
+                    <span data-i18n="become">Become a Supporter</span>
+                </a>
+            </div>
         </div>
     </section>
-
     <footer>
-        <div class="footer-bg"></div>
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h3 class="glow-text">Redstone Launcher</h3>
-                    <p>The modern launcher for Minecraft. Built by the community, for the community.</p>
+                    <p data-i18n="footer_desc">The modern launcher for Minecraft. Built by the community, for the
+                        community.</p>
                     <div class="social-links">
-                        <a href="https://github.com/TGGamesYT/redstone-launcher" class="social-link glass"
-                            aria-label="GitHub">
-                            <svg class="icon icon-sm" viewBox="0 0 24 24">
+                        <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank"
+                            class="social-link glass ios-spring" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path
-                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                             </svg>
                         </a>
-
-                        <a href="https://youtu.be/6MxJARCG45Y?si=8de4fDnYNDfG2WQh" class="social-link glass"
+                        <a href="https://youtu.be/6MxJARCG45Y" target="_blank" class="social-link glass ios-spring"
                             aria-label="YouTube">
-                            <svg class="icon icon-sm" viewBox="0 0 24 24">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path
-                                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
-                                </path>
-                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
                             </svg>
                         </a>
-                        <a href="https://discord.gg/S9H2Z6SuEA" class="social-link glass" aria-label="Discord">
-                            <svg class="icon icon-sm" viewBox="0 0 24 24">
+                        <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" class="social-link glass ios-spring"
+                            aria-label="Discord">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path
-                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
-                                </path>
+                                    d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z" />
                             </svg>
                         </a>
-                        <a href="mailto:contact@redstone-launcher.com" class="social-link glass" aria-label="Email">
-                            <svg class="icon icon-sm" viewBox="0 0 24 24">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                                </path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
+                        <a href="mailto:contact@redstone-launcher.com" class="social-link glass ios-spring"
+                            aria-label="Email">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
                             </svg>
                         </a>
                     </div>
                 </div>
-
-               <div class="footer-section">
-                    <h4>Project</h4>
+                <div class="footer-section">
+                    <h4 data-i18n="project">Project</h4>
                     <ul class="footer-links">
-                        <li><a href="https://github.com/TGGamesYT/redstone-launcher/releases" target="_blank">Downloads</a>
-                        </li>
-                        <li><a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank">Source Code</a>
-                        </li>
-                        <li><a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank">Report a Bug</a>
-                        </li>
-                        <li><a href="blog.html">Blog</a>
-                        </li>
+                        <li><a href="https://github.com/TGGamesYT/redstone-launcher/releases" target="_blank"
+                                data-i18n="downloads">Downloads</a></li>
+                        <li><a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank"
+                                data-i18n="source_code">Source Code</a></li>
+                        <li><a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank"
+                                data-i18n="report_bug">Report a Bug</a></li>
+                        <li><a href="#" data-i18n="blog">Blog</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-section">
-                    <h4>Support</h4>
+                    <h4 data-i18n="support">Support</h4>
                     <ul class="footer-links">
-                        <li><a href="https://www.patreon.com/redstonelauncher/join" target="_blank">Patreon</a></li>
-                        <li><a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord Server</a></li>
+                        <li><a href="https://www.patreon.com/redstonelauncher/join" target="_blank"
+                                data-i18n="patreon">Patreon</a></li>
+                        <li><a href="https://discord.gg/S9H2Z6SuEA" target="_blank" data-i18n="discord_server">Discord
+                                Server</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-section">
-                    <h4>Contact</h4>
+                    <h4 data-i18n="contact">Contact</h4>
                     <ul class="footer-links">
-                        <li><a href="mailto:contact@redstone-launcher.com">Contact via email</a></li>
-                        <li><a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Chat on Discord</a></li>
+                        <li><a href="mailto:contact@redstone-launcher.com" data-i18n="contact_email">Contact via
+                                email</a></li>
+                        <li><a href="https://discord.gg/S9H2Z6SuEA" target="_blank" data-i18n="chat_discord">Chat on
+                                Discord</a></li>
                     </ul>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p>© <span id="year"></span> Redstone Launcher. All rights reserved - Created by Muavees and TGGamesYT
+                <p>© <span id="year"></span> Redstone Launcher. All rights reserved — Created by Muavees and TGGamesYT
                 </p>
+                <div class="status">
+                    <div class="status-dot animate-pulse-dot"></div>
+                    <span>All systems operational</span>
+                </div>
             </div>
         </div>
     </footer>
-
-    <div id="toast" class="toast glass">
-        <div class="toast-title" id="toast-title"></div>
-        <div class="toast-description" id="toast-description"></div>
-    </div>
-
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const mobileNav = document.getElementById('mobileNav');
-        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
-
-        function toggleMobileMenu() {
-            mobileMenuToggle.classList.toggle('active');
-            mobileNav.classList.toggle('active');
-            mobileNavOverlay.classList.toggle('active');
-            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
-        }
-
-        function closeMobileMenu() {
-            mobileMenuToggle.classList.remove('active');
-            mobileNav.classList.remove('active');
-            mobileNavOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-        mobileNavOverlay.addEventListener('click', closeMobileMenu);
-
-        function toggleMobileSubmenu(header) {
-            const submenu = header.nextElementSibling;
-            const arrow = header.querySelector('.mobile-nav-arrow');
-
-            submenu.classList.toggle('active');
-            arrow.classList.toggle('rotated');
-        }
-
-        window.addEventListener('resize', function () {
-            if (window.innerWidth > 900) {
-                closeMobileMenu();
-            }
-        });
-
-        function handleDownload() {
-            showToast('OPEN BETA RELEASE!', 'Redstone Launcher is releasing for everyone on NOVEMBER 2! ');
-            console.log('Download initiated');
-        }
-
-        function showToast(title, description) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toast-title').textContent = title;
-            document.getElementById('toast-description').textContent = description;
-
-            toast.classList.add('show');
-
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#' && href !== '#donate') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        });
-    </script>
     <script>
         const translations = {
             en: {
-                title: "Redstone Launcher",
-                badge_beta: "Version 1.13.5",
+                badge_beta: "Version 1.13.5", title: "Redstone Launcher",
                 hero_desc: "The modern, powerful launcher for Minecraft. Experience seamless gameplay with advanced features and stunning performance.",
-                download: "Download for your OS",
-                free: "Free & Open Source",
-                cross: "Cross-Platform",
-                updates: "Regular Updates",
-
-                features: "Powerful Features",
-                features_desc: "Everything you need for the ultimate Minecraft experience",
-
-                f1_title: "Dual Editions: Fancy & Fast",
-                f1_desc: "Choose your vibe. Fancy Edition offers a sleek UI built with Electron, while Fast Edition uses NodeGui for raw performance and minimal resource usage.",
-
-                f2_title: "Total Instance Freedom",
-                f2_desc: "Create, clone, and customize Minecraft instances with separate mods, profiles, versions and settings.",
-
-                f3_title: "Privacy First",
-                f3_desc: "No tracking. No analytics. Everything stays 100% local on your device.",
-
-                f4_title: "Modular Tools",
-                f4_desc: "Built-in tools like world editors and resource pack optimizers simplify your Minecraft experience.",
-
-                f5_title: "Seamless Mod & Profile Management",
-                f5_desc: "Install, update, and organize mods or entire profiles with a single click.",
-
-                gallery: "Feature Gallery",
-                gallery_desc: "See Redstone Launcher in action",
-
-                supported: "Supported by the Community",
-                supporters: "Our Supporters",
-                supporters_desc: "Special thanks to everyone who helps make Redstone Launcher possible.",
-
-                support_cta: "Want to support Redstone Launcher?",
-                become: "Become a Supporter",
-
+                download: "Download for your OS", other_downloads: "Other Downloads", discord: "Discord",
+                free: "Free & Open Source", cross: "Cross-Platform", updates: "Regular Updates",
+                features: "Powerful Features", features_desc: "Everything you need for the ultimate Minecraft experience",
+                f1_title: "Dual Editions: Fancy & Fast", f1_desc: "Choose your vibe. Fancy Edition offers a sleek UI built with Electron, while Fast Edition uses NodeGui for raw performance and minimal resource usage.",
+                f2_title: "Total Instance Freedom", f2_desc: "Create, clone, and customize Minecraft instances with separate mods, profiles, versions and settings.",
+                f3_title: "Privacy First", f3_desc: "No tracking. No analytics. Everything stays 100% local on your device.",
+                f4_title: "Modular Tools", f4_desc: "Built-in tools like world editors and resource pack optimizers simplify your Minecraft experience.",
+                f5_title: "Seamless Mod & Profile Management", f5_desc: "Install, update, and organize mods or entire profiles with a single click.",
+                gallery: "Feature Gallery", gallery_desc: "See Redstone Launcher in action",
+                supported: "Supported by the Community", supporters: "Our Supporters", supporters_desc: "Special thanks to everyone who helps make Redstone Launcher possible.",
+                support_cta: "Want to support Redstone Launcher?", become: "Become a Supporter",
                 footer_desc: "The modern launcher for Minecraft. Built by the community, for the community.",
-                project: "Project",
-                support: "Support",
-                contact: "Contact"
+                project: "Project", support: "Support", contact: "Contact", downloads: "Downloads", source_code: "Source Code",
+                report_bug: "Report a Bug", blog: "Blog", patreon: "Patreon", discord_server: "Discord Server",
+                contact_email: "Contact via email", chat_discord: "Chat on Discord",
+                socials: "Socials", indicators: "Indicators", support_bug: "Support & Bug Report",
+                youtube: "YouTube", github: "GitHub", new_features: "New Features", our_team: "Our Team",
+                discord_support: "Discord Support", github_bug: "GitHub Bug Report", email_support: "Email Support"
             },
-
             hu: {
-                title: "Redstone Launcher",
-                badge_beta: "1.13.5-ös Verzió",
+                badge_beta: "1.13.5-ös Verzió", title: "Redstone Launcher",
                 hero_desc: "Modern és erőteljes Minecraft launcher fejlett funkciókkal és kiváló teljesítménnyel.",
-                download: "Letöltés az operációs rendszeredhez",
-                free: "Ingyenes és nyílt forráskódú",
-                cross: "Platformfüggetlen",
-                updates: "Rendszeres frissítések",
-
-                features: "Erőteljes funkciók",
-                features_desc: "Minden, ami a tökéletes Minecraft élményhez kell",
-
-                f1_title: "Két kiadás: Fancy & Fast",
-                f1_desc: "Válaszd ki a stílusod. A Fancy Edition modern felületet kínál Electron alapon, míg a Fast Edition maximális teljesítményre van optimalizálva.",
-
-                f2_title: "Teljes szabadság az instance-ek felett",
-                f2_desc: "Minecraft instance-ek létrehozása, klónozása és testreszabása külön modokkal és profilokkal.",
-
-                f3_title: "Adatvédelem mindenekelőtt",
-                f3_desc: "Nincs követés, nincs analitika. Minden adat 100%-ban a te eszközödön marad.",
-
-                f4_title: "Moduláris eszközök",
-                f4_desc: "Beépített világ szerkesztők és resource pack optimalizálók teszik egyszerűbbé a játékot.",
-
-                f5_title: "Zökkenőmentes mod- és profilkezelés",
-                f5_desc: "Modok és teljes profilok kezelése, frissítése egyetlen kattintással.",
-
-                gallery: "Funkciógaléria",
-                gallery_desc: "Nézd meg a Redstone Launchert működés közben",
-
-                supported: "Közösség által támogatva",
-                supporters: "Támogatóink",
-                supporters_desc: "Külön köszönet minden támogatónknak.",
-
-                support_cta: "Szeretnéd támogatni a Redstone Launchert?",
-                become: "Válj támogatóvá",
-
+                download: "Letöltés az operációs rendszeredhez", other_downloads: "Egyéb letöltések", discord: "Discord",
+                free: "Ingyenes és nyílt forráskódú", cross: "Platformfüggetlen", updates: "Rendszeres frissítések",
+                features: "Erőteljes funkciók", features_desc: "Minden, ami a tökéletes Minecraft élményhez kell",
+                f1_title: "Két kiadás: Fancy & Fast", f1_desc: "A Fancy Edition modern felületet kínál Electron alapon, míg a Fast Edition maximális teljesítményre van optimalizálva.",
+                f2_title: "Teljes szabadság az instance-ek felett", f2_desc: "Minecraft instance-ek létrehozása, klónozása és testreszabása külön modokkal és profilokkal.",
+                f3_title: "Adatvédelem mindenekelőtt", f3_desc: "Nincs követés, nincs analitika. Minden adat 100%-ban a te eszközödön marad.",
+                f4_title: "Moduláris eszközök", f4_desc: "Beépített világ szerkesztők és resource pack optimalizálók teszik egyszerűbbé a játékot.",
+                f5_title: "Zökkenőmentes mod- és profilkezelés", f5_desc: "Modok és teljes profilok kezelése, frissítése egyetlen kattintással.",
+                gallery: "Funkciógaléria", gallery_desc: "Nézd meg a Redstone Launchert működés közben",
+                supported: "Közösség által támogatva", supporters: "Támogatóink", supporters_desc: "Külön köszönet minden támogatónknak.",
+                support_cta: "Szeretnéd támogatni a Redstone Launchert?", become: "Válj támogatóvá",
                 footer_desc: "Modern Minecraft launcher. A közösségtől, a közösségnek.",
-                project: "Projekt",
-                support: "Támogatás",
-                contact: "Kapcsolat"
+                project: "Projekt", support: "Támogatás", contact: "Kapcsolat", downloads: "Letöltések", source_code: "Forráskód",
+                report_bug: "Hiba jelentése", blog: "Blog", patreon: "Patreon", discord_server: "Discord szerver",
+                contact_email: "Kapcsolat emailben", chat_discord: "Csevegés a Discordon",
+                socials: "Közösségi média", indicators: "Indikátorok", support_bug: "Támogatás és hibajelentés",
+                youtube: "YouTube", github: "GitHub", new_features: "Új funkciók", our_team: "Csapatunk",
+                discord_support: "Discord támogatás", github_bug: "GitHub hibajelentés", email_support: "Email támogatás"
             },
-
             it: {
-                title: "Redstone Launcher",
-                badge_beta: "Versione 1.13.5",
+                badge_beta: "Versione 1.13.5", title: "Redstone Launcher",
                 hero_desc: "Launcher moderno e potente per Minecraft con funzionalità avanzate.",
-                download: "Scarica per il tuo sistema operativo",
-                free: "Gratuito e Open Source",
-                cross: "Multi-piattaforma",
-                updates: "Aggiornamenti regolari",
-
-                features: "Funzionalità avanzate",
-                features_desc: "Tutto ciò che serve per un’esperienza Minecraft perfetta",
-
-                f1_title: "Due Edizioni: Fancy & Fast",
-                f1_desc: "Fancy Edition offre un’interfaccia moderna, Fast Edition massima velocità e prestazioni.",
-
-                f2_title: "Libertà totale delle istanze",
-                f2_desc: "Crea e personalizza istanze Minecraft con mod e profili separati.",
-
-                f3_title: "Privacy prima di tutto",
-                f3_desc: "Nessun tracciamento. Tutto rimane locale sul tuo dispositivo.",
-
-                f4_title: "Strumenti modulari",
-                f4_desc: "Strumenti integrati per semplificare ogni aspetto del gioco.",
-
-                f5_title: "Gestione mod e profili fluida",
-                f5_desc: "Installa e organizza mod e profili con un solo clic.",
-
-                gallery: "Galleria",
-                gallery_desc: "Scopri Redstone Launcher in azione",
-
-                supported: "Supportato dalla community",
-                supporters: "I nostri sostenitori",
-                supporters_desc: "Grazie a tutti coloro che supportano il progetto.",
-
-                support_cta: "Vuoi supportare Redstone Launcher?",
-                become: "Diventa un sostenitore",
-
+                download: "Scarica per il tuo sistema operativo", other_downloads: "Altri download", discord: "Discord",
+                free: "Gratuito e Open Source", cross: "Multi-piattaforma", updates: "Aggiornamenti regolari",
+                features: "Funzionalità avanzate", features_desc: "Tutto ciò che serve per un'esperienza Minecraft perfetta",
+                f1_title: "Due Edizioni: Fancy & Fast", f1_desc: "Fancy Edition offre un'interfaccia moderna, Fast Edition massima velocità e prestazioni.",
+                f2_title: "Libertà totale delle istanze", f2_desc: "Crea e personalizza istanze Minecraft con mod e profili separati.",
+                f3_title: "Privacy prima di tutto", f3_desc: "Nessun tracciamento. Tutto rimane locale sul tuo dispositivo.",
+                f4_title: "Strumenti modulari", f4_desc: "Strumenti integrati per semplificare ogni aspetto del gioco.",
+                f5_title: "Gestione mod e profili fluida", f5_desc: "Installa e organizza mod e profili con un solo clic.",
+                gallery: "Galleria", gallery_desc: "Scopri Redstone Launcher in azione",
+                supported: "Supportato dalla community", supporters: "I nostri sostenitori", supporters_desc: "Grazie a tutti coloro che supportano il progetto.",
+                support_cta: "Vuoi supportare Redstone Launcher?", become: "Diventa un sostenitore",
                 footer_desc: "Launcher Minecraft moderno creato dalla community.",
-                project: "Progetto",
-                support: "Supporto",
-                contact: "Contatti"
+                project: "Progetto", support: "Supporto", contact: "Contatti", downloads: "Download", source_code: "Codice sorgente",
+                report_bug: "Segnala un bug", blog: "Blog", patreon: "Patreon", discord_server: "Server Discord",
+                contact_email: "Contatta via email", chat_discord: "Chatta su Discord",
+                socials: "Social", indicators: "Indicatori", support_bug: "Supporto e segnalazioni",
+                youtube: "YouTube", github: "GitHub", new_features: "Nuove funzionalità", our_team: "Il nostro team",
+                discord_support: "Supporto Discord", github_bug: "Segnalazione bug su GitHub", email_support: "Supporto email"
             },
-
             de: {
-                title: "Redstone Launcher",
-                badge_beta: "Version 1.13.5",
+                badge_beta: "Version 1.13.5", title: "Redstone Launcher",
                 hero_desc: "Der moderne und leistungsstarke Minecraft Launcher.",
-                download: "Für dein Betriebssystem herunterladen",
-                free: "Kostenlos & Open Source",
-                cross: "Plattformübergreifend",
-                updates: "Regelmäßige Updates",
-
-                features: "Leistungsstarke Funktionen",
-                features_desc: "Alles für das ultimative Minecraft-Erlebnis",
-
-                f1_title: "Zwei Editionen: Fancy & Fast",
-                f1_desc: "Fancy Edition mit modernem UI, Fast Edition für maximale Leistung.",
-
-                f2_title: "Volle Instanzfreiheit",
-                f2_desc: "Verwalte Minecraft-Instanzen komplett getrennt und flexibel.",
-
-                f3_title: "Datenschutz zuerst",
-                f3_desc: "Keine Datenverfolgung. Alles bleibt lokal.",
-
-                f4_title: "Modulare Werkzeuge",
-                f4_desc: "Integrierte Tools machen Minecraft einfacher.",
-
-                f5_title: "Nahtloses Mod- & Profilmanagement",
-                f5_desc: "Mods und Profile mit nur einem Klick verwalten.",
-
-                gallery: "Funktionsgalerie",
-                gallery_desc: "Sieh Redstone Launcher in Aktion",
-
-                supported: "Von der Community unterstützt",
-                supporters: "Unsere Unterstützer",
-                supporters_desc: "Danke an alle Unterstützer des Projekts.",
-
-                support_cta: "Möchtest du Redstone Launcher unterstützen?",
-                become: "Unterstützer werden",
-
+                download: "Für dein Betriebssystem herunterladen", other_downloads: "Weitere Downloads", discord: "Discord",
+                free: "Kostenlos & Open Source", cross: "Plattformübergreifend", updates: "Regelmäßige Updates",
+                features: "Leistungsstarke Funktionen", features_desc: "Alles für das ultimative Minecraft-Erlebnis",
+                f1_title: "Zwei Editionen: Fancy & Fast", f1_desc: "Fancy Edition mit modernem UI, Fast Edition für maximale Leistung.",
+                f2_title: "Volle Instanzfreiheit", f2_desc: "Verwalte Minecraft-Instanzen komplett getrennt und flexibel.",
+                f3_title: "Datenschutz zuerst", f3_desc: "Keine Datenverfolgung. Alles bleibt lokal.",
+                f4_title: "Modulare Werkzeuge", f4_desc: "Integrierte Tools machen Minecraft einfacher.",
+                f5_title: "Nahtloses Mod- & Profilmanagement", f5_desc: "Mods und Profile mit nur einem Klick verwalten.",
+                gallery: "Funktionsgalerie", gallery_desc: "Sieh Redstone Launcher in Aktion",
+                supported: "Von der Community unterstützt", supporters: "Unsere Unterstützer", supporters_desc: "Danke an alle Unterstützer des Projekts.",
+                support_cta: "Möchtest du Redstone Launcher unterstützen?", become: "Unterstützer werden",
                 footer_desc: "Moderner Minecraft Launcher aus der Community.",
-                project: "Projekt",
-                support: "Support",
-                contact: "Kontakt"
+                project: "Projekt", support: "Support", contact: "Kontakt", downloads: "Downloads", source_code: "Quellcode",
+                report_bug: "Fehler melden", blog: "Blog", patreon: "Patreon", discord_server: "Discord Server",
+                contact_email: "Kontakt per E-Mail", chat_discord: "Chat auf Discord",
+                socials: "Soziale Medien", indicators: "Indikatoren", support_bug: "Support & Fehlerbericht",
+                youtube: "YouTube", github: "GitHub", new_features: "Neue Funktionen", our_team: "Unser Team",
+                discord_support: "Discord Support", github_bug: "GitHub Fehlerbericht", email_support: "E-Mail Support"
             }
         };
-
-        const switcher = document.getElementById("languageSwitcher");
-        const saved = localStorage.getItem("lang") || "en";
-
+        document.getElementById('year').textContent = new Date().getFullYear();
+        const langSwitcher = document.getElementById('langSwitcher');
+        const savedLang = localStorage.getItem('lang') || 'en';
+        langSwitcher.value = savedLang;
+        applyLang(savedLang);
+        langSwitcher.addEventListener('change', e => {
+            applyLang(e.target.value);
+            localStorage.setItem('lang', e.target.value);
+        });
         function applyLang(lang) {
             document.documentElement.lang = lang;
-            localStorage.setItem("lang", lang);
-
-            document.querySelectorAll("[data-i18n]").forEach(el => {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.dataset.i18n;
                 if (translations[lang]?.[key]) {
                     el.textContent = translations[lang][key];
                 }
             });
         }
-
-        if (switcher) {
-            switcher.value = saved;
-
-            applyLang(saved);
-
-            switcher.addEventListener("change", e => applyLang(e.target.value));
-        } else {
-            applyLang(saved);
+        const themeToggle = document.getElementById('themeToggle');
+        const sunIcon = themeToggle.querySelector('.sun-icon');
+        const moonIcon = themeToggle.querySelector('.moon-icon');
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
+        themeToggle.addEventListener('click', () => {
+            const current = document.documentElement.classList.contains('light') ? 'light' : 'dark';
+            const next = current === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
+            localStorage.setItem('theme', next);
+        });
+        function applyTheme(theme) {
+            if (theme === 'light') {
+                document.documentElement.classList.add('light');
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            } else {
+                document.documentElement.classList.remove('light');
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            }
         }
-
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        });
+        const heroBg = document.getElementById('heroBg');
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            heroBg.style.transform = `translateY(${scrollY * 0.4}px)`;
+        });
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            reveals.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (top < windowHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+        function detectOS() {
+            const ua = navigator.userAgent.toLowerCase();
+            if (/iphone|ipad|ipod/.test(ua)) return "iOS";
+            if (ua.includes("android")) return "Android";
+            if (ua.includes("win")) return "Windows";
+            if (ua.includes("mac")) return "macOS";
+            if (ua.includes("linux")) return "Linux";
+            return null;
+        }
+        const os = detectOS();
+        const downloadBtn = document.getElementById('downloadBtn');
+        const downloads = {
+            Windows: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.exe",
+            macOS: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.dmg",
+            Linux: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.AppImage"
+        };
+        if (os && downloads[os]) {
+            downloadBtn.href = downloads[os];
+            const span = downloadBtn.querySelector('span');
+            if (span) span.textContent = `Download for ${os}`;
+        }
     </script>
-
 </body>
 
 </html>
