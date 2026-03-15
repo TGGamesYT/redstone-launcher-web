@@ -19,9 +19,9 @@
         rel="stylesheet">
     <style>
         :root {
-            --background: hsl(220, 30%, 6%);
+            --background: hsl(210, 33%, 1%);
             --foreground: hsl(0, 0%, 98%);
-            --card: hsl(220, 25%, 10%);
+            --card: hsl(225, 11%, 7%);
             --card-foreground: hsl(0, 0%, 98%);
             --primary: hsl(0, 72%, 51%);
             --primary-hover: hsl(0, 72%, 46%);
@@ -31,7 +31,7 @@
             --accent: hsl(0, 72%, 15%);
             --accent-foreground: hsl(0, 72%, 70%);
             --border: hsl(220, 20%, 18%);
-            --glass-bg: hsla(220, 25%, 12%, 0.5);
+            --glass-bg: #5f000024;
             --glass-border: hsla(0, 0%, 100%, 0.08);
             --section-gradient: linear-gradient(180deg, transparent, hsla(0, 72%, 51%, 0.05), transparent);
         }
@@ -283,9 +283,10 @@
             opacity: 0.4;
             cursor: default;
         }
-         .nav-dropdown a.disabled:hover {
-             background: transparent;
-             color: var(--muted);
+
+        .nav-dropdown a.disabled:hover {
+            background: transparent;
+            color: var(--muted);
             opacity: 0.4;
             cursor: default;
         }
@@ -918,6 +919,96 @@
             stroke-linejoin: round;
             fill: none;
         }
+
+        .card {
+            padding: 1rem 2rem;
+            border-radius: 1.25rem;
+            text-align: center;
+            cursor: default;
+            text-align: center;
+            align-items: center;
+        }
+
+        .loader {
+            color: rgb(124, 124, 124);
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+            font-size: 25px;
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+            height: 40px;
+            padding: 10px 10px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            border-radius: 8px;
+        }
+
+        .words {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .words::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(var(--bg-color) 10%,
+                    transparent 30%,
+                    transparent 70%,
+                    var(--bg-color) 90%);
+            z-index: 20;
+        }
+
+        .word {
+            display: block;
+            height: 100%;
+            padding-left: 6px;
+            color: var(--muted);
+            animation: spin_4991 6s infinite;
+        }
+
+        @keyframes spin_4991 {
+            10% {
+                -webkit-transform: translateY(-102%);
+                transform: translateY(-102%);
+            }
+
+            25% {
+                -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
+            }
+
+            35% {
+                -webkit-transform: translateY(-202%);
+                transform: translateY(-202%);
+            }
+
+            50% {
+                -webkit-transform: translateY(-200%);
+                transform: translateY(-200%);
+            }
+
+            60% {
+                -webkit-transform: translateY(-302%);
+                transform: translateY(-302%);
+            }
+
+            75% {
+                -webkit-transform: translateY(-300%);
+                transform: translateY(-300%);
+            }
+
+            85% {
+                -webkit-transform: translateY(-402%);
+                transform: translateY(-402%);
+            }
+
+            100% {
+                -webkit-transform: translateY(-400%);
+                transform: translateY(-400%);
+            }
+        }
     </style>
 </head>
 
@@ -1039,14 +1130,17 @@
                     data-i18n="discord">Discord</a>
             </div>
             <div class="hero-features">
-                <div class="hero-feature">
-                    <div class="pulse-dot animate-pulse-dot"></div><span data-i18n="free">Free & Open Source</span>
-                </div>
-                <div class="hero-feature">
-                    <div class="pulse-dot animate-pulse-dot"></div><span data-i18n="cross">Cross-Platform</span>
-                </div>
-                <div class="hero-feature">
-                    <div class="pulse-dot animate-pulse-dot"></div><span data-i18n="updates">Regular Updates</span>
+                <div class="card">
+                    <div class="loader">
+                        <p class="pulse-dot animate-pulse-dot" style="margin-top: 16px;"></p>
+                        <div class="words">
+                            <span class="word">100% Free</span>
+                            <span class="word">100% Open Source</span>
+                            <span class="word">Cross platform</span>
+                            <span class="word">Regular Updates</span>
+                            <span class="word">100% Customizable</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1249,30 +1343,9 @@
     </footer>
     <script>
         const translations = {
-            en: {
-                badge_beta: "Version 1.13.5", title: "Redstone Launcher",
-                hero_desc: "The modern, powerful launcher for Minecraft. Experience seamless gameplay with advanced features and stunning performance.",
-                download: "Download for your OS", other_downloads: "Other Downloads", discord: "Discord",
-                free: "Free & Open Source", cross: "Cross-Platform", updates: "Regular Updates",
-                features: "Powerful Features", features_desc: "Everything you need for the ultimate Minecraft experience",
-                f1_title: "Dual Editions: Fancy & Fast", f1_desc: "Choose your vibe. Fancy Edition offers a sleek UI built with Electron, while Fast Edition uses NodeGui for raw performance and minimal resource usage.",
-                f2_title: "Total Instance Freedom", f2_desc: "Create, clone, and customize Minecraft instances with separate mods, profiles, versions and settings.",
-                f3_title: "Privacy First", f3_desc: "No tracking. No analytics. Everything stays 100% local on your device.",
-                f4_title: "Modular Tools", f4_desc: "Built-in tools like world editors and resource pack optimizers simplify your Minecraft experience.",
-                f5_title: "Seamless Mod & Profile Management", f5_desc: "Install, update, and organize mods or entire profiles with a single click.",
-                gallery: "Feature Gallery", gallery_desc: "See Redstone Launcher in action",
-                supported: "Supported by the Community", supporters: "Our Supporters", supporters_desc: "Special thanks to everyone who helps make Redstone Launcher possible.",
-                support_cta: "Want to support Redstone Launcher?", become: "Become a Supporter",
-                footer_desc: "The modern launcher for Minecraft. Built by the community, for the community.",
-                project: "Project", support: "Support", contact: "Contact", downloads: "Downloads", source_code: "Source Code",
-                report_bug: "Report a Bug", blog: "Blog", patreon: "Patreon", discord_server: "Discord Server",
-                contact_email: "Contact via email", chat_discord: "Chat on Discord",
-                socials: "Socials", indicators: "Indicators", support_bug: "Support & Bug Report",
-                youtube: "YouTube", github: "GitHub", new_features: "New Features", our_team: "Our Team",
-                discord_support: "Discord Support", github_bug: "GitHub Bug Report", email_support: "Email Support"
-            },
+            
             hu: {
-                badge_beta: "1.13.5-ös Verzió", title: "Redstone Launcher",
+                badge_beta: "1.13.7-es Verzió", title: "Redstone Launcher",
                 hero_desc: "Modern és erőteljes Minecraft launcher fejlett funkciókkal és kiváló teljesítménnyel.",
                 download: "Letöltés az operációs rendszeredhez", other_downloads: "Egyéb letöltések", discord: "Discord",
                 free: "Ingyenes és nyílt forráskódú", cross: "Platformfüggetlen", updates: "Rendszeres frissítések",
@@ -1294,7 +1367,7 @@
                 discord_support: "Discord támogatás", github_bug: "GitHub hibajelentés", email_support: "Email támogatás"
             },
             it: {
-                badge_beta: "Versione 1.13.5", title: "Redstone Launcher",
+                badge_beta: "Versione 1.13.7", title: "Redstone Launcher",
                 hero_desc: "Launcher moderno e potente per Minecraft con funzionalità avanzate.",
                 download: "Scarica per il tuo sistema operativo", other_downloads: "Altri download", discord: "Discord",
                 free: "Gratuito e Open Source", cross: "Multi-piattaforma", updates: "Aggiornamenti regolari",
@@ -1316,7 +1389,7 @@
                 discord_support: "Supporto Discord", github_bug: "Segnalazione bug su GitHub", email_support: "Supporto email"
             },
             de: {
-                badge_beta: "Version 1.13.5", title: "Redstone Launcher",
+                badge_beta: "Version 1.13.7", title: "Redstone Launcher",
                 hero_desc: "Der moderne und leistungsstarke Minecraft Launcher.",
                 download: "Für dein Betriebssystem herunterladen", other_downloads: "Weitere Downloads", discord: "Discord",
                 free: "Kostenlos & Open Source", cross: "Plattformübergreifend", updates: "Regelmäßige Updates",
