@@ -5,22 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redstone Launcher - Blog</title>
-    <link rel="icon" type="image/png"href="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/new-logo.png?raw=true">
+    <link rel="icon" type="image/png"
+        href="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/new-logo.png?raw=true">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary: hsl(0, 72%, 51%);
+            --primary-hover: hsl(0, 72%, 46%);
+            --primary-glow: hsla(0, 72%, 51%, 0.4);
+            --accent: hsl(0, 0%, 33%);
+            --accent-foreground: hsl(0, 72%, 70%);
+            --border: hsl(220, 20%, 18%);
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0a0a;
-            color: #fff;
-            min-height: 100vh;
+        :root.light {
+            --background: hsla(0, 0%, 98%, 0.108);
+            --foreground: hsl(220, 30%, 10%);
+            --card: hsl(0, 0%, 100%);
+            --card-foreground: hsl(220, 30%, 10%);
+            --muted: hsl(220, 10%, 46%);
+            --muted-foreground: hsl(220, 10%, 46%);
+            --accent: hsl(0, 72%, 95%);
+            --accent-foreground: hsl(0, 72%, 40%);
+            --border: hsl(220, 13%, 88%);
+            --glass-bg: hsla(0, 0%, 100%, 0.6);
+            --glass-border: hsla(0, 0%, 100%, 0.3);
+            --section-gradient: linear-gradient(180deg, transparent, hsla(0, 72%, 51%, 0.03), transparent);
         }
 
-       
+        
+
+
 
         .blog-container {
             max-width: 1280px;
@@ -113,7 +127,7 @@
         }
 
         .blog-card.expanded .blog-card-more {
-            max-height: 1000px; 
+            max-height: 1000px;
         }
 
         .blog-card-more p {
@@ -129,38 +143,250 @@
             border-radius: 8px;
         }
 
-       
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--foreground);
+        }
+
+        .nav-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .nav-item {
+            position: relative;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted);
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .nav-item:hover {
+            color: var(--foreground);
+        }
+
+        .nav-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 180px;
+            padding: 0.5rem;
+            border-radius: 0.75rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px) scale(0.95);
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .nav-item:hover .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+            background: var(--glass-bg);
+        }
+
+        .nav-dropdown a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+            color: var(--muted);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+            backdrop-filter: blur(10px) saturate(1.5);
+        }
+
+        .nav-dropdown a:hover {
+            color: var(--foreground);
+            background: var(--accent);
+        }
+
+        .nav-dropdown a.disabled {
+            opacity: 0.4;
+            cursor: default;
+        }
+
+        .nav-dropdown a.disabled:hover {
+            background: transparent;
+            color: var(--muted);
+            opacity: 0.4;
+            cursor: default;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-select {
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--foreground);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .nav-select option {
+            background: var(--card);
+            color: var(--foreground);
+        }
     </style>
 </head>
 
 <body>
-    <p><a href="index.html" style="color: white; margin-top: 100px; margin-left: 20px;">HOME</a></p>
-    <h1 style="text-align: center; margin-top: 10px;">Redstone Launcher Blog page</h1>
- 
-        <div class="blog-container" style="margin-top: 50px;">
-                <div class="blog-card" id="post-1">
-                    <div class="blog-card-title">Launch Notes</div>
-                    <div class="blog-card-version">Version 1.13.5</div>
-                    <div class="blog-card-desc">Added "enable auto launcher updates", "enable discord rich presence" and "enable grid view"</div>
+    <nav class="glass">
+        <div class="nav-brand"> <a href="https://redstone-launcher.com">Redstone Launcher</a></div>
 
-                    <button class="expand-btn" aria-expanded="false" aria-controls="more-1" data-target="more-1">
-                        <span>Show more</span>
-                        <span class="arrow" aria-hidden="true">▼</span>
-                    </button>
-
-                    <div class="blog-card-more" id="more-1" role="region" aria-hidden="true">
-                        <p>idk waht to put here. redstone launcher is fire</p>
-                        <img class="more-img" src="https://media.discordapp.net/attachments/1409923743714639873/1457086710855762061/image.png?ex=695e04ff&is=695cb37f&hm=d0a5f90fc2d2b07730c2b971761f400bfb507202095a38f2e3cd74dcd2571a8c&=&format=webp&quality=lossless" alt="If it doesn't works its discords fault cuz the image is from discord img url">
-                        <img class="more-img" src="https://media.discordapp.net/attachments/1409923743714639873/1457086711267069972/image.png?ex=695e04ff&is=695cb37f&hm=312b256effd43571ec985b065f673a75f7616bdcd4424768c9ebd2b2fd8370cb&=&format=webp&quality=lossless" alt="If the img doesn't works its discords fault cuz the image is from discord img url">
-                    </div>
-
-                    <div class="blog-card-buttons" style="margin-top:12px;">
-                        <a href="https://redstone-launcher.com" class="blog-btn">Website</a>
-                        <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" class="blog-btn">Discord</a>
-                    </div>
+        <div class="nav-center">
+            <div class="nav-item">
+                <span data-i18n="socials">Socials</span>
+                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+                <div class="nav-dropdown glass">
+                    <a href="https://youtube.com/@tgdoescode" target="_blank" data-i18n="youtube">YouTube</a>
+                    <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank"
+                        data-i18n="github">GitHub</a>
+                    <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" data-i18n="discord">Discord</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <span data-i18n="indicators">Indicators</span>
+                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+                <div class="nav-dropdown glass">
+                    <a href="blog.html" data-i18n="blog">Blog</a>
+                    <a href="tree/main/old/void()" class="disabled" data-i18n="new_features">New Features</a>
+                    <a href="tree/main/old/void()" class="disabled" data-i18n="our_team">Our Team</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <span data-i18n="support_bug">Support & Bug Report</span>
+                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+                <div class="nav-dropdown glass">
+                    <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" data-i18n="discord_support">Discord
+                        Support</a>
+                    <a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank"
+                        data-i18n="github_bug">GitHub Bug Report</a>
+                    <a href="mailto:contact@redstone-launcher.com" data-i18n="email_support">Email Support</a>
+                </div>
             </div>
         </div>
-     <p style="text-align: center;">Blogs are made from the version "1.13.5" cuz im too lazy to research the last versions<p>
+        
+    
+    </nav>
+    <p><a href="index.html" style="color: white; margin-top: 100px; margin-left: 20px;">HOME</a></p>
+
+
+    <h1 style="text-align: center; margin-top: 10px;">Redstone Launcher Blog page</h1>
+
+
+
+    <div class="blog-container" style="margin-top: 50px;">
+        <div class="blog-card" id="post-1">
+            <div class="blog-card-title">Launch Notes</div>
+            <div class="blog-card-version">Version 1.13.7</div>
+            <div class="blog-card-desc">Fixes of some major issues</div>
+
+            <button class="expand-btn" aria-expanded="false" aria-controls="more-1" data-target="more-1">
+                <span>Show more</span>
+                <span class="arrow" aria-hidden="true">▼</span>
+            </button>
+
+            <div class="blog-card-more" id="more-1" role="region" aria-hidden="true">
+                <a href="https://github.com/TGGamesYT/redstone-launcher/compare/1.13.5...1.13.7">Compare the version
+                    1.13.5 to 1.13.7</a>
+            </div>
+
+            <div class="blog-card-buttons" style="margin-top:12px;">
+                <a href="https://redstone-launcher.com" class="blog-btn">Website</a>
+                <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" class="blog-btn">Discord</a>
+            </div>
+        </div>
+    </div>
+    <div class="blog-container" style="margin-top: 50px;">
+        <div class="blog-card" id="post-1">
+            <div class="blog-card-title">Launch Notes</div>
+            <div class="blog-card-version">Version 1.13.6</div>
+            <div class="blog-card-desc">Bump version from 1.13.5 to 1.13.6</div>
+
+            <button class="expand-btn" aria-expanded="false" aria-controls="more-1" data-target="more-1">
+                <span style="text-decoration: line-through; pointer-events: none;">Show more</span>
+                <span class="arrow" aria-hidden="true">▼</span>
+            </button>
+
+            <div class="blog-card-more" id="more-1" role="region" aria-hidden="true">
+                <p>Nothin special here, i told you.</p>
+            </div>
+
+            <div class="blog-card-buttons" style="margin-top:12px;">
+                <a href="https://redstone-launcher.com" class="blog-btn">Website</a>
+                <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" class="blog-btn">Discord</a>
+            </div>
+        </div>
+    </div>
+    <div class="blog-container" style="margin-top: 50px;">
+        <div class="blog-card" id="post-1">
+            <div class="blog-card-title">Launch Notes</div>
+            <div class="blog-card-version">Version 1.13.5</div>
+            <div class="blog-card-desc">Added "enable auto launcher updates", "enable discord rich presence" and "enable
+                grid view"</div>
+
+            <button class="expand-btn" aria-expanded="false" aria-controls="more-1" data-target="more-1">
+                <span>Show more</span>
+                <span class="arrow" aria-hidden="true">▼</span>
+            </button>
+
+            <div class="blog-card-more" id="more-1" role="region" aria-hidden="true">
+                <p>idk waht to put here. redstone launcher is fire</p>
+                <img class="more-img"
+                    src="https://media.discordapp.net/attachments/1409923743714639873/1457086710855762061/image.png?ex=695e04ff&is=695cb37f&hm=d0a5f90fc2d2b07730c2b971761f400bfb507202095a38f2e3cd74dcd2571a8c&=&format=webp&quality=lossless"
+                    alt="If it doesn't works its discords fault cuz the image is from discord img url">
+                <img class="more-img"
+                    src="https://media.discordapp.net/attachments/1409923743714639873/1457086711267069972/image.png?ex=695e04ff&is=695cb37f&hm=312b256effd43571ec985b065f673a75f7616bdcd4424768c9ebd2b2fd8370cb&=&format=webp&quality=lossless"
+                    alt="If the img doesn't works its discords fault cuz the image is from discord img url">
+            </div>
+
+            <div class="blog-card-buttons" style="margin-top:12px;">
+                <a href="https://redstone-launcher.com" class="blog-btn">Website</a>
+                <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" class="blog-btn">Discord</a>
+            </div>
+        </div>
+    </div>
+
+    <p style="text-align: center;">Blogs are made from the version "1.13.5" cuz im too lazy to research the last
+        versions
+    <p>
         <script>
             document.addEventListener('click', function (e) {
                 var btn = e.target.closest('.expand-btn');
@@ -192,6 +418,6 @@
                 }
             });
         </script>
-    </body>
+</body>
 
 </html>
