@@ -886,6 +886,10 @@
             color: var(--muted);
         }
 
+        .footer-bottom a {
+            color: aliceblue;
+        }
+
         .status {
             display: flex;
             align-items: center;
@@ -1009,10 +1013,60 @@
                 transform: translateY(-400%);
             }
         }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            animation: scale-in 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .modal-content {
+            background: var(--card);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .modal-content h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            color: var(--foreground);
+        }
     </style>
 </head>
 
 <body>
+    <div id="linuxModal" class="modal-overlay" style="display:none;">
+        <div class="modal-content glass glow-box">
+            <h3 data-i18n="linux_select">Select Linux Package</h3>
+            <p class="section-desc" style="font-size: 0.9rem; margin-bottom: 1.5rem;">Choose the format that works best
+                for your distribution.</p>
+            <div class="btn-group">
+                <a href="https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.AppImage"
+                    class="btn btn-primary ios-spring">
+                    <span>Download .AppImage</span>
+                </a>
+                <a href="https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.deb"
+                    class="btn btn-primary glass ios-spring">
+                    <span>Download .deb</span>
+                </a>
+            </div>
+            <button onclick="closeLinuxModal()" class="support-link"
+                style="background:none; border:none; cursor:pointer; margin-top:1rem; font-size: 0.8rem; opacity: 0.6;">
+                Close
+            </button>
+        </div>
+    </div>
     <nav class="glass">
         <div class="nav-brand">Redstone Launcher</div>
 
@@ -1134,6 +1188,7 @@
                     <div class="loader">
                         <p class="pulse-dot animate-pulse-dot" style="margin-top: 16px;"></p>
                         <div class="words">
+                            <span class="word"></span>
                             <span class="word">100% Free</span>
                             <span class="word">100% Open Source</span>
                             <span class="word">Cross platform</span>
@@ -1332,7 +1387,8 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© <span id="year"></span> Redstone Launcher. All rights reserved — Created by Muavees and TGGamesYT
+                <p>© <span id="year"></span> Redstone Launcher. All rights reserved — Created by <a
+                        href="https://muaves.com">Muavees</a> and <a href="https://tggamesyt.dev">TGGamesYT</a>
                 </p>
                 <div class="status">
                     <div class="status-dot animate-pulse-dot"></div>
@@ -1343,7 +1399,7 @@
     </footer>
     <script>
         const translations = {
-            
+
             hu: {
                 badge_beta: "1.13.7-es Verzió", title: "Redstone Launcher",
                 hero_desc: "Modern és erőteljes Minecraft launcher fejlett funkciókkal és kiváló teljesítménnyel.",
@@ -1472,8 +1528,6 @@
                 }
             });
         };
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll();
         function detectOS() {
             const ua = navigator.userAgent.toLowerCase();
             if (/iphone|ipad|ipod/.test(ua)) return "iOS";
@@ -1483,18 +1537,34 @@
             if (ua.includes("linux")) return "Linux";
             return null;
         }
-        const os = detectOS();
-        const downloadBtn = document.getElementById('downloadBtn');
-        const downloads = {
-            Windows: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.exe",
-            macOS: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.dmg",
-            Linux: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.AppImage"
-        };
-        if (os && downloads[os]) {
-            downloadBtn.href = downloads[os];
-            const span = downloadBtn.querySelector('span');
-            if (span) span.textContent = `Download for ${os}`;
+
+        function closeLinuxModal() {
+            document.getElementById('linuxModal').style.display = 'none';
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const os = detectOS();
+            const downloadBtn = document.getElementById('downloadBtn');
+
+            const downloads = {
+                Windows: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.exe",
+                macOS: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.dmg"
+            };
+
+            if (os === "Linux") {
+                const span = downloadBtn.querySelector('span') || downloadBtn;
+                span.textContent = "Download for Linux";
+
+                downloadBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById('linuxModal').style.display = 'flex';
+                });
+            } else if (os && downloads[os]) {
+                downloadBtn.href = downloads[os];
+                const span = downloadBtn.querySelector('span') || downloadBtn;
+                span.textContent = `Download for ${os}`;
+            }
+        });
     </script>
 </body>
 
