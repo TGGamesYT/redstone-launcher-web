@@ -1565,6 +1565,9 @@
                 span.textContent = `Download for ${os}`;
             }
         });
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('DOMContentLoaded', revealOnScroll);
     </script>
 </body>
 
