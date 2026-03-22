@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team — Redstone Launcher</title>
+    <meta name="description" content="Meet the team behind Redstone Launcher">
+    <meta name="theme-color" content="#d60505">
+    <link rel="shortcut icon"
+        href="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/new-logo.png?raw=true"
+        type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --background: hsl(210, 33%, 1%);
+            --foreground: hsl(0, 0%, 98%);
+            --card-bg: hsl(225, 11%, 7%);
+            --primary: hsl(0, 72%, 51%);
+            --primary-hover: hsl(0, 72%, 46%);
+            --primary-glow: hsla(0, 72%, 51%, 0.4);
+            --muted: hsl(220, 10%, 65%);
+            --accent: hsl(0, 72%, 15%);
+            --accent-foreground: hsl(0, 72%, 70%);
+            --border: hsl(220, 20%, 18%);
+            --glass-bg: rgba(95, 0, 0, 0.14);
+            --glass-border: hsla(0, 0%, 100%, 0.08);
+            --section-gradient: linear-gradient(180deg, transparent, hsla(0, 72%, 51%, 0.05), transparent);
+        }
+
+        :root.light {
+            --background: hsl(0, 0%, 97%);
+            --foreground: hsl(220, 30%, 10%);
+            --card-bg: hsl(0, 0%, 100%);
+            --muted: hsl(220, 10%, 46%);
+            --accent: hsl(0, 72%, 95%);
+            --accent-foreground: hsl(0, 72%, 40%);
+            --border: hsl(220, 13%, 88%);
+            --glass-bg: hsla(0, 0%, 100%, 0.6);
+            --glass-border: hsla(0, 0%, 100%, 0.3);
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.4s, color 0.4s;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: hsla(0, 72%, 51%, 0.3);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: hsla(0, 72%, 51%, 0.5);
+        }
+
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(1.8);
+            -webkit-backdrop-filter: blur(20px) saturate(1.8);
+            border: 1px solid var(--glass-border);
+        }
+
+        .glow-text {
+            text-shadow: 0 0 30px var(--primary-glow);
+        }
+
+        .ios-spring {
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @keyframes scale-in {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .animate-pulse-dot {
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--foreground);
+            text-decoration: none;
+        }
+
+        .nav-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: .25rem;
+        }
+
+        .nav-item {
+            position: relative;
+            padding: .5rem 1rem;
+            font-size: .875rem;
+            font-weight: 500;
+            color: var(--muted);
+            cursor: pointer;
+            border-radius: .5rem;
+            transition: color .3s;
+            text-decoration: none;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: var(--foreground);
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 18px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 1px;
+        }
+
+        .nav-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 180px;
+            padding: .5rem;
+            border-radius: .75rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px) scale(0.95);
+            transition: all .3s cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .nav-item:hover .nav-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+            background: var(--glass-bg);
+        }
+
+        .nav-dropdown a {
+            display: block;
+            padding: .5rem .75rem;
+            font-size: .875rem;
+            color: var(--muted);
+            text-decoration: none;
+            border-radius: .5rem;
+            transition: all .2s;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-dropdown a:hover {
+            color: var(--foreground);
+            background: var(--accent);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .theme-toggle {
+            width: 36px;
+            height: 36px;
+            border-radius: .5rem;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            color: var(--foreground);
+        }
+
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+            transition: transform .3s;
+        }
+
+        .theme-toggle:hover svg {
+            transform: rotate(20deg) scale(1.1);
+        }
+
+        .mobile-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 22px;
+            height: 2px;
+            background: var(--foreground);
+            border-radius: 2px;
+            transition: all .3s;
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            z-index: 99;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: all .4s cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .mobile-nav.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .mobile-nav-section {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-nav-title {
+            font-size: .75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: .5rem;
+            padding: 0 .5rem;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: .75rem;
+            color: var(--foreground);
+            text-decoration: none;
+            border-radius: .5rem;
+            transition: background .2s;
+        }
+
+        .mobile-nav a:hover {
+            background: var(--accent);
+        }
+
+        @media(max-width:900px) {
+            .nav-center {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+        }
+
+        /* ── HERO ── */
+        .page-hero {
+            position: relative;
+            min-height: 44vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 7rem 1rem 4rem;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/redstone_launcher_banner.png?raw=true');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, var(--background) 0%, transparent 30%, var(--background) 100%);
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+        }
+
+        .hero-blob-1 {
+            top: 10%;
+            left: 5%;
+            width: 300px;
+            height: 300px;
+            background: hsla(0, 72%, 51%, .15);
+        }
+
+        .hero-blob-2 {
+            bottom: 10%;
+            right: 5%;
+            width: 400px;
+            height: 400px;
+            background: hsla(0, 72%, 51%, .1);
+            animation-delay: 1s;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            width: 100%;
+            animation: fade-up .6s .2s forwards;
+            opacity: 0;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .5rem 1rem;
+            border-radius: 9999px;
+            font-size: .875rem;
+            color: var(--muted);
+            margin-bottom: 1.25rem;
+            animation: scale-in .5s .1s forwards;
+            opacity: 0;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -.03em;
+            color: var(--foreground);
+            margin-bottom: .75rem;
+        }
+
+        .page-hero p.sub {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* ── SECTION WRAPPER ── */
+        .section {
+            position: relative;
+            padding: 5rem 1rem;
+            overflow: hidden;
+        }
+
+        .section-bg {
+            position: absolute;
+            inset: 0;
+            background: var(--section-gradient);
+            pointer-events: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: .72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .15em;
+            color: var(--primary);
+            margin-bottom: .75rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -.03em;
+            margin-bottom: .5rem;
+        }
+
+        .section-desc {
+            font-size: .95rem;
+            color: var(--muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* ════════════════════════════════════════
+           CARD GRID — Archive.zip hover effect
+           The trick:
+           - #cards is the mouse-tracking wrapper
+           - .card is the BORDER layer (background paints the glow border)
+           - .card::before is the card-specific spotlight (z-index above content)
+           - .card-inner is the actual dark fill (NOT position:absolute so
+             the card can be sized by its content, and mouse events pass through)
+        ════════════════════════════════════════ */
+        .cards-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* The .card IS the animated border shell */
+        .card {
+            flex: 1 1 240px;
+            max-width: 320px;
+            min-width: 220px;
+            border-radius: 14px;
+            position: relative;
+            /* resting state: subtle translucent white border */
+            background: rgba(255, 255, 255, 0.08);
+            cursor: default;
+            transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        /* When ANY card in the group is hovered, paint all borders with the radial gradient */
+        .cards-group:hover>.card {
+            background: radial-gradient(400px circle at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
+                    hsl(var(--color) / 0.9),
+                    rgba(255, 255, 255, 0.08) 50%);
+        }
+
+        /* Per-card spotlight overlay — sits ABOVE .card-inner */
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(500px circle at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
+                    hsl(var(--color) / 0.22),
+                    transparent 45%);
+            opacity: 0;
+            z-index: 3;
+            /* above .card-inner (z-index:1) but below links (z-index:10) */
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .cards-group:hover>.card::before {
+            opacity: 1;
+        }
+
+        /* .card-inner fills 1 px inset = the border gap, dark background */
+        .card-inner {
+            position: relative;
+            z-index: 1;
+            margin: 1px;
+            /* creates the 1px border gap */
+            border-radius: 13px;
+            background: var(--card-bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.5rem 1.5rem;
+            gap: 0;
+            min-height: 340px;
+            transition: background 0.3s;
+        }
+
+        /* ── CARD INTERNALS ── */
+        .card-avatar-wrap {
+            position: relative;
+            margin-bottom: 1.2rem;
+        }
+
+        .card-avatar {
+            width: 88px;
+            height: 120px;
+            border-radius: 10px;
+            display: block;
+            object-fit: cover;
+            border: 2px solid var(--border);
+            transition: border-color .3s, box-shadow .3s;
+        }
+
+        .card:hover .card-avatar {
+            border-color: hsl(var(--color));
+            box-shadow: 0 0 20px hsl(var(--color) / 0.4);
+        }
+
+        .card-num {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 22px;
+            height: 22px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 2px solid var(--card-bg);
+            font-size: .58rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 4;
+        }
+
+        .card-name {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -.02em;
+            color: var(--foreground);
+            margin-bottom: .3rem;
+            text-align: center;
+        }
+
+        .card-role {
+            display: inline-block;
+            padding: .22rem .75rem;
+            background: var(--accent);
+            color: var(--accent-foreground);
+            border-radius: 9999px;
+            font-size: .7rem;
+            font-weight: 600;
+            margin-bottom: .75rem;
+            letter-spacing: .03em;
+        }
+
+        .card-bio {
+            font-size: .8rem;
+            color: var(--muted);
+            text-align: center;
+            line-height: 1.65;
+            margin-bottom: 1.25rem;
+            flex: 1;
+        }
+
+        .card-links {
+            display: flex;
+            flex-direction: column;
+            gap: .45rem;
+            width: 100%;
+            margin-top: auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card-link {
+            width: 100%;
+            padding: .6rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            font-size: .78rem;
+            font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            transition: background .2s, border-color .2s, color .2s, transform .15s;
+            cursor: pointer;
+        }
+
+        .card-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: var(--foreground);
+            transform: scale(1.02);
+        }
+
+        .card-link i {
+            font-size: .85rem;
+        }
+
+        /* ── COLOR TOKENS per card ── */
+        /* Owners: red */
+        #cards-owners .card:nth-child(1) {
+            --color: 0 72% 51%;
+        }
+
+        #cards-owners .card:nth-child(2) {
+            --color: 0 72% 51%;
+        }
+
+        /* Mods: discord blue */
+        #cards-mods .card:nth-child(1) {
+            --color: 214 89% 62%;
+        }
+
+        #cards-mods .card:nth-child(2) {
+            --color: 214 89% 62%;
+        }
+
+        /* Devs */
+        #cards-devs .card:nth-child(1) {
+            --color: 0 72% 51%;
+        }
+
+        #cards-devs .card:nth-child(2) {
+            --color: 0 72% 51%;
+        }
+
+        #cards-devs .card:nth-child(3) {
+            --color: 265 60% 65%;
+        }
+
+        #cards-devs .card:nth-child(4) {
+            --color: 158 55% 48%;
+        }
+
+        /* ── REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: all .8s cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── CTA ── */
+        .cta-section {
+            padding: 2rem 1rem 6rem;
+        }
+
+        .cta-block {
+            max-width: 680px;
+            margin: 0 auto;
+            border-radius: 1.5rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-block::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, hsla(0, 72%, 51%, 0.07), transparent 60%);
+        }
+
+        .cta-block h3 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -.03em;
+            margin-bottom: .75rem;
+        }
+
+        .cta-block p {
+            color: var(--muted);
+            margin-bottom: 1.75rem;
+            font-size: .9rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .8rem 1.6rem;
+            font-size: .9rem;
+            font-weight: 600;
+            border-radius: .75rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all .35s cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: scale(1.05);
+        }
+
+        .btn-glass {
+            color: var(--foreground);
+        }
+
+        .btn-glass:hover {
+            transform: scale(1.05);
+            background: var(--accent);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: .75rem;
+        }
+
+        .footer-brand p {
+            font-size: .875rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: .5rem;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            text-decoration: none;
+            transition: all .3s;
+        }
+
+        .social-link:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .social-link svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .footer-section h4 {
+            font-weight: 600;
+            margin-bottom: .75rem;
+            color: var(--foreground);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: .5rem;
+        }
+
+        .footer-links a {
+            font-size: .875rem;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            font-size: .875rem;
+            color: var(--muted);
+        }
+
+        .footer-bottom a {
+            color: aliceblue;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="glass">
+        <a href="index.html" class="nav-brand">Redstone Launcher</a>
+        <div class="nav-center">
+            <div class="nav-item">
+                <span>Socials</span>
+                <svg style="width:12px;height:12px;margin-left:4px;display:inline;stroke:currentColor;stroke-width:2;fill:none"
+                    viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+                <div class="nav-dropdown glass">
+                    <a href="https://youtube.com/@tgdoescode" target="_blank">YouTube</a>
+                    <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank">GitHub</a>
+                    <a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord</a>
+                </div>
+            </div>
+            <a href="team.html" class="nav-item active">Our Team</a>
+            <div class="nav-item">
+                <span>Support &amp; Bug Report</span>
+                <svg style="width:12px;height:12px;margin-left:4px;display:inline;stroke:currentColor;stroke-width:2;fill:none"
+                    viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+                <div class="nav-dropdown glass">
+                    <a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord Support</a>
+                    <a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank">GitHub Bug
+                        Report</a>
+                    <a href="mailto:contact@redstone-launcher.com">Email Support</a>
+                </div>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <button id="themeToggle" class="theme-toggle glass" aria-label="Toggle theme">
+                <svg class="sun-icon" viewBox="0 0 24 24"
+                    style="display:none;stroke:currentColor;stroke-width:2;fill:none">
+                    <circle cx="12" cy="12" r="5" />
+                    <path
+                        d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                </svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" style="stroke:currentColor;stroke-width:2;fill:none">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+            </button>
+            <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="mobile-nav glass" id="mobileNav">
+        <div class="mobile-nav-section">
+            <div class="mobile-nav-title">Socials</div>
+            <a href="https://youtube.com/@tgdoescode" target="_blank">YouTube</a>
+            <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank">GitHub</a>
+            <a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord</a>
+        </div>
+        <div class="mobile-nav-section">
+            <div class="mobile-nav-title">Pages</div>
+            <a href="team.html">Our Team</a>
+            <a href="blog.html">Blog</a>
+        </div>
+        <div class="mobile-nav-section">
+            <div class="mobile-nav-title">Support</div>
+            <a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord Support</a>
+            <a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank">GitHub Bug Report</a>
+        </div>
+    </div>
+
+    <section class="page-hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-blob hero-blob-1 animate-float"></div>
+        <div class="hero-blob hero-blob-2 animate-float"></div>
+        <div class="hero-content">
+            <div class="badge glass">
+                <svg style="width:16px;height:16px;stroke:var(--primary);stroke-width:2;fill:none" viewBox="0 0 24 24">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+                <span>The people behind the launcher</span>
+            </div>
+            <h1 class="glow-text">Our Team</h1>
+            <p class="sub">Meet the developers, moderators, and owners who make Redstone Launcher possible.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-bg"></div>
+        <div class="section-header reveal">
+            <div class="section-eyebrow">
+                <svg style="width:14px;height:14px;stroke:var(--primary);stroke-width:2.5;fill:none"
+                    viewBox="0 0 24 24">
+                    <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+                Owners
+            </div>
+            <h2 class="section-title glow-text">Project Founders</h2>
+            <p class="section-desc">The two people who started it all and keep the project moving forward.</p>
+        </div>
+        <div class="cards-group" id="cards-owners">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-avatar-wrap">
+                        <img src="https://nmsr.nickac.dev/fullbody/f06d927ed6cf48b8ba61588866b610c0" alt="TGGamesYT"
+                            class="card-avatar">
+                    </div>
+                    <div class="card-name">TGGamesYT</div>
+                    <div class="card-role">Owner &amp; UI Dev</div>
+                    <p class="card-bio">One of the original creators. Focuses on architecture, backend systems and
+                        keeping the launcher running smooth across all platforms.</p>
+                    <div class="card-links">
+                        <a href="https://tggamesyt.dev" target="_blank" class="card-link"><i
+                                class="fa-solid fa-globe"></i> tggamesyt.dev</a>
+                        <a href="https://github.com/TGGamesYT" target="_blank" class="card-link"><i
+                                class="fa-brands fa-github"></i> GitHub</a>
+                        <a href="https://youtube.com/@tgdoescode" target="_blank" class="card-link"><i
+                                class="fa-brands fa-youtube"></i> YouTube</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-avatar-wrap">
+                        <img src="https://nmsr.nickac.dev/fullbody/52af5540dd184ad99acb50eb11531180" alt="Muavees"
+                            class="card-avatar">
+                    </div>
+                    <div class="card-name">Muavees</div>
+                    <div class="card-role">Owner &amp; Frontend Dev</div>
+                    <p class="card-bio">One of the original creators. Frontend and community presence. Developed the
+                        website the and drives the visual direction of the project. Also fixed many known bugs for Linux.</p>
+                    <div class="card-links">
+                        <a href="https://muaves.com" target="_blank" class="card-link"><i class="fa-solid fa-globe"></i>
+                            muaves.com</a>
+                        <a href="https://github.com/Muaves" target="_blank" class="card-link"><i
+                                class="fa-brands fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+    <section class="section">
+        <div class="section-bg"></div>
+        <div class="section-header reveal">
+            <div class="section-eyebrow">
+                <svg style="width:14px;height:14px;stroke:var(--primary);stroke-width:2;fill:none" viewBox="0 0 24 24">
+                    <polyline points="16 18 22 12 16 6" />
+                    <polyline points="8 6 2 12 8 18" />
+                </svg>
+                Development
+            </div>
+            <h2 class="section-title glow-text">Developers</h2>
+            <p class="section-desc">The engineers building features, squashing bugs and shipping updates.</p>
+        </div>
+        <div class="cards-group" id="cards-devs">
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-avatar-wrap">
+                        <img src="https://nmsr.nickac.dev/fullbody/52af5540dd184ad99acb50eb11531180" alt="Muavees"
+                            class="card-avatar">
+                        <div class="card-num">01</div>
+                    </div>
+                    <div class="card-name">Muavees</div>
+                    <div class="card-role">Frontend Developer</div>
+                    <p class="card-bio">UI components, animations and the overall visual experience. Makes the launcher
+                        look and feel right.</p>
+                    <div class="card-links">
+                        <a href="https://github.com/TGGamesYT" target="_blank" class="card-link"><i
+                                class="fa-brands fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-avatar-wrap">
+                        <img src="https://nmsr.nickac.dev/fullbody/f06d927ed6cf48b8ba61588866b610c0" alt="TGGamesYT"
+                            class="card-avatar">
+                        <div class="card-num">02</div>
+                    </div>
+                    <div class="card-name">TGGamesYT</div>
+                    <div class="card-role">Frontend Developer</div>
+                    <p class="card-bio">Backend systems, launcher core logic and cross-platform support. The engine room
+                        of Redstone Launcher.</p>
+                    <div class="card-links">
+                        <a href="https://github.com/TGGamesYT" target="_blank" class="card-link"><i
+                                class="fa-brands fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-avatar-wrap">
+                        <img src="https://nmsr.nickac.dev/fullbody/904b5a6638de4765883ec3a592b6533e" alt="Developer 3"
+                            class="card-avatar">
+                        <div class="card-num">03</div>
+                    </div>
+                    <div class="card-name">thebestharrison</div>
+                    <div class="card-role">Developer</div>
+                    <p class="card-bio">Implemented the core frontend UI including global styling, toolbar, sidebar, and
+                        new pages for instances and settings — laying the visual foundation of the launcher.</p>
+                    <div class="card-links">
+                        <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank" class="card-link"><i
+                                class="fa-brands fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-avatar-wrap">
+                        <img src="https://nmsr.nickac.dev/fullbody/cdb1389aaa8a44c097ca1e181220e2b7" alt="Developer 4"
+                            class="card-avatar">
+                        <div class="card-num">04</div>
+                    </div>
+                    <div class="card-name">Bengt</div>
+                    <div class="card-role">Developer</div>
+                    <p class="card-bio">Tackled Linux-specific bugs and improved cross-platform stability, making sure
+                        Redstone Launcher runs reliably for the whole Linux community.</p>
+                    <div class="card-links">
+                        <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank" class="card-link"><i
+                                class="fa-brands fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="section">
+        <div class="section-bg"></div>
+        <div class="section-header reveal">
+            <div class="section-eyebrow">
+                <svg style="width:14px;height:14px;fill:var(--primary)" viewBox="0 0 24 24">
+                    <path
+                        d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z" />
+                </svg>
+                Discord
+            </div>
+            <h2 class="section-title glow-text">Moderators</h2>
+            <p class="section-desc">Keeping the community safe, friendly and organised.</p>
+        </div>
+        <div class="cards-group" id="cards-mods">
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-avatar-wrap">
+                        <img src="https://nmsr.nickac.dev/fullbody/548ec4ff218f4d94af98479a91e8a723" alt="Moderator 1"
+                            class="card-avatar">
+                        <div class="card-num">01</div>
+                    </div>
+                    <div class="card-name">LilSef Gaming</div>
+                    <div class="card-role" style="background:hsla(214,89%,62%,0.15);color:hsl(214,89%,72%)">Discord Mod
+                    </div>
+                    <p class="card-bio">Keeping the community a welcoming place. Handles reports, questions and keeps
+                        conversations on track.</p>
+                    <div class="card-links">
+                        <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" class="card-link"><i
+                                class="fa-brands fa-discord"></i> Discord</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-avatar-wrap">
+                        <img src="https://nmsr.nickac.dev/fullbody/727e30cb9d864f9192908f147f5a41d3" alt="Moderator 2"
+                            class="card-avatar">
+                        <div class="card-num">02</div>
+                    </div>
+                    <div class="card-name">SaulitoManulito</div>
+                    <div class="card-role" style="background:hsla(214,89%,62%,0.15);color:hsl(214,89%,72%)">Discord Mod
+                    </div>
+                    <p class="card-bio">Enforcing the rules and helping users navigate support channels. Always around
+                        to lend a hand.</p>
+                    <div class="card-links">
+                        <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" class="card-link"><i
+                                class="fa-brands fa-discord"></i> Discord</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section class="cta-section">
+        <div class="cta-block glass reveal">
+            <h3 class="glow-text">Want to join the team?</h3>
+            <p>We're currently in need of a frontend designer for the Redstone Launcher. Contribute on GitHub or reach
+                out on Discord.</p>
+            <div class="cta-buttons">
+                <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" class="btn btn-primary glass ios-spring">
+                    <svg style="width:18px;height:18px;fill:white;stroke:none;flex-shrink:0" viewBox="0 0 24 24">
+                        <path
+                            d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z" />
+                    </svg>
+                    Join Discord
+                </a>
+                <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank"
+                    class="btn btn-glass glass ios-spring">
+                    <svg style="width:18px;height:18px;fill:currentColor;stroke:none;flex-shrink:0" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                    Contribute on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3 class="glow-text">Redstone Launcher</h3>
+                    <p>The modern launcher for Minecraft. Built by the community, for the community.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank"
+                            class="social-link glass ios-spring"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg></a>
+                        <a href="https://youtu.be/6MxJARCG45Y" target="_blank" class="social-link glass ios-spring"><svg
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                            </svg></a>
+                        <a href="https://discord.gg/S9H2Z6SuEA" target="_blank"
+                            class="social-link glass ios-spring"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z" />
+                            </svg></a>
+                        <a href="mailto:contact@redstone-launcher.com" class="social-link glass ios-spring"><svg
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Project</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/TGGamesYT/redstone-launcher/releases"
+                                target="_blank">Downloads</a></li>
+                        <li><a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank">Source Code</a>
+                        </li>
+                        <li><a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank">Report a
+                                Bug</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://www.patreon.com/redstonelauncher/join" target="_blank">Patreon</a></li>
+                        <li><a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord Server</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:contact@redstone-launcher.com">Email</a></li>
+                        <li><a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Chat on Discord</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="year"></span> Redstone Launcher. All rights reserved — Created by <a
+                        href="https://muaves.com">Muavees</a> and <a href="https://tggamesyt.dev">TGGamesYT</a></p>
+                <div class="status">
+                    <div class="status-dot animate-pulse-dot"></div>
+                    <span>All systems operational</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+       
+        document.querySelectorAll('.cards-group').forEach(group => {
+            const cards = group.querySelectorAll('.card');
+
+            group.addEventListener('mousemove', e => {
+                cards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    card.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
+                    card.style.setProperty('--mouse-y', (e.clientY - rect.top) + 'px');
+                });
+            });
+        });
+
+
+        const themeToggle = document.getElementById('themeToggle');
+        const sunIcon = themeToggle.querySelector('.sun-icon');
+        const moonIcon = themeToggle.querySelector('.moon-icon');
+        applyTheme(localStorage.getItem('theme') || 'dark');
+        themeToggle.addEventListener('click', () => {
+            const next = document.documentElement.classList.contains('light') ? 'dark' : 'light';
+            applyTheme(next); localStorage.setItem('theme', next);
+        });
+        function applyTheme(t) {
+            if (t === 'light') {
+                document.documentElement.classList.add('light');
+                sunIcon.style.display = 'none'; moonIcon.style.display = 'block';
+            } else {
+                document.documentElement.classList.remove('light');
+                sunIcon.style.display = 'block'; moonIcon.style.display = 'none';
+            }
+        }
+
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        });
+
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+        }, { threshold: 0.07 });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    </script>
+</body>
+
+</html>
