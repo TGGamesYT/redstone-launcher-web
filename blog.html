@@ -32,10 +32,6 @@
             --section-gradient: linear-gradient(180deg, transparent, hsla(0, 72%, 51%, 0.03), transparent);
         }
 
-
-
-
-
         .blog-container {
             max-width: 1280px;
             margin: 0 auto;
@@ -257,6 +253,45 @@
             background: var(--card);
             color: var(--foreground);
         }
+
+        .search-wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #version-search {
+            width: 100%;
+            padding: 10px 16px;
+            font-size: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            outline: none;
+            background: #f5f5f5;
+            color: #0a0a0a;
+            transition: border-color 0.2s;
+        }
+
+        #version-search:focus {
+            border-color: #6366f1;
+        }
+
+        #search-count {
+            font-size: 13px;
+            color: #888;
+            white-space: nowrap;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            padding: 40px 0;
+            display: none;
+        }
     </style>
 </head>
 
@@ -302,26 +337,30 @@
                 </div>
             </div>
         </div>
-
-
     </nav>
-    <p><a href="index.html" style="color: white; margin-top: 100px; margin-left: 20px;">HOME</a></p>
 
+    <p><a href="index.html" style="color: white; margin-top: 100px; margin-left: 20px;">HOME</a></p>
 
     <h1 style="text-align: center; margin-top: 10px;">Redstone Launcher Blog page</h1>
 
-    <div class="blog-container" style="margin-top: 50px;">
-        <div class="blog-card" id="post-1">
+    <div class="search-wrapper" style="margin-top: 30px;">
+        <input type="text" id="version-search" placeholder="Search versions… e.g. 1.13.8" autocomplete="off" />
+        <span id="search-count"></span>
+    </div>
+    <div class="no-results" id="no-results">No versions found for that search.</div>
+
+    <div class="blog-container" style="margin-top: 50px;" data-version="1.13.9">
+        <div class="blog-card" id="post-1-13-9">
             <div class="blog-card-title">Launch Notes</div>
             <div class="blog-card-version">Version 1.13.9</div>
             <div class="blog-card-desc">Bug fixes with sidebar</div>
 
-            <button class="expand-btn" aria-expanded="false" aria-controls="more-1" data-target="more-1">
+            <button class="expand-btn" aria-expanded="false" aria-controls="more-1-13-9" data-target="more-1-13-9">
                 <span>Show more</span>
                 <span class="arrow" aria-hidden="true">▼</span>
             </button>
 
-            <div class="blog-card-more" id="more-1" role="region" aria-hidden="true">
+            <div class="blog-card-more" id="more-1-13-9" role="region" aria-hidden="true">
                 <p>Fixed bugs, the sidebar is now smoother, added the Version number on the end of settings.html</p>
             </div>
 
@@ -331,20 +370,21 @@
             </div>
         </div>
     </div>
-    <div class="blog-container" style="margin-top: 50px;">
-        <div class="blog-card" id="post-1">
+
+    <div class="blog-container" style="margin-top: 50px;" data-version="1.13.8">
+        <div class="blog-card" id="post-1-13-8">
             <div class="blog-card-title">Launch Notes</div>
             <div class="blog-card-version">Version 1.13.8</div>
             <div class="blog-card-desc">Bug fixes: When you apply a custom look and switch between pages the default red
                 look appears for very short amount of time, now its fixed, Same with the download new update button when
                 theres no update.</div>
 
-            <button class="expand-btn" aria-expanded="false" aria-controls="more-1" data-target="more-1">
+            <button class="expand-btn" aria-expanded="false" aria-controls="more-1-13-8" data-target="more-1-13-8">
                 <span>Show more</span>
                 <span class="arrow" aria-hidden="true">▼</span>
             </button>
 
-            <div class="blog-card-more" id="more-1" role="region" aria-hidden="true">
+            <div class="blog-card-more" id="more-1-13-8" role="region" aria-hidden="true">
                 <li>- Added new gradient (Its now in beta expect bugs)</li>
                 <li>- Added notifications (I still had to test it tho)</li>
                 <li>- When you have not logged in, created an instance, or a server then appears a text with an icon
@@ -363,18 +403,19 @@
             </div>
         </div>
     </div>
-    <div class="blog-container" style="margin-top: 50px;">
-        <div class="blog-card" id="post-1">
+
+    <div class="blog-container" style="margin-top: 50px;" data-version="1.13.7">
+        <div class="blog-card" id="post-1-13-7">
             <div class="blog-card-title">Launch Notes</div>
             <div class="blog-card-version">Version 1.13.7</div>
             <div class="blog-card-desc">Fixes of some major issues</div>
 
-            <button class="expand-btn" aria-expanded="false" aria-controls="more-1" data-target="more-1">
+            <button class="expand-btn" aria-expanded="false" aria-controls="more-1-13-7" data-target="more-1-13-7">
                 <span>Show more</span>
                 <span class="arrow" aria-hidden="true">▼</span>
             </button>
 
-            <div class="blog-card-more" id="more-1" role="region" aria-hidden="true">
+            <div class="blog-card-more" id="more-1-13-7" role="region" aria-hidden="true">
                 <a href="https://github.com/TGGamesYT/redstone-launcher/compare/1.13.5...1.13.7">Compare the version
                     1.13.5 to 1.13.7</a>
             </div>
@@ -385,18 +426,19 @@
             </div>
         </div>
     </div>
-    <div class="blog-container" style="margin-top: 50px;">
-        <div class="blog-card" id="post-1">
+
+    <div class="blog-container" style="margin-top: 50px;" data-version="1.13.6">
+        <div class="blog-card" id="post-1-13-6">
             <div class="blog-card-title">Launch Notes</div>
             <div class="blog-card-version">Version 1.13.6</div>
             <div class="blog-card-desc">Bump version from 1.13.5 to 1.13.6</div>
 
-            <button class="expand-btn" aria-expanded="false" aria-controls="more-1" data-target="more-1">
+            <button class="expand-btn" aria-expanded="false" aria-controls="more-1-13-6" data-target="more-1-13-6">
                 <span style="text-decoration: line-through; pointer-events: none;">Show more</span>
                 <span class="arrow" aria-hidden="true">▼</span>
             </button>
 
-            <div class="blog-card-more" id="more-1" role="region" aria-hidden="true">
+            <div class="blog-card-more" id="more-1-13-6" role="region" aria-hidden="true">
                 <p>Nothin special here, i told you.</p>
             </div>
 
@@ -406,19 +448,20 @@
             </div>
         </div>
     </div>
-    <div class="blog-container" style="margin-top: 50px;">
-        <div class="blog-card" id="post-1">
+
+    <div class="blog-container" style="margin-top: 50px;" data-version="1.13.5">
+        <div class="blog-card" id="post-1-13-5">
             <div class="blog-card-title">Launch Notes</div>
             <div class="blog-card-version">Version 1.13.5</div>
             <div class="blog-card-desc">Added "enable auto launcher updates", "enable discord rich presence" and "enable
                 grid view"</div>
 
-            <button class="expand-btn" aria-expanded="false" aria-controls="more-1" data-target="more-1">
+            <button class="expand-btn" aria-expanded="false" aria-controls="more-1-13-5" data-target="more-1-13-5">
                 <span>Show more</span>
                 <span class="arrow" aria-hidden="true">▼</span>
             </button>
 
-            <div class="blog-card-more" id="more-1" role="region" aria-hidden="true">
+            <div class="blog-card-more" id="more-1-13-5" role="region" aria-hidden="true">
                 <p>idk waht to put here. redstone launcher is fire</p>
                 <img class="more-img"
                     src="https://media.discordapp.net/attachments/1409923743714639873/1457086710855762061/image.png?ex=695e04ff&is=695cb37f&hm=d0a5f90fc2d2b07730c2b971761f400bfb507202095a38f2e3cd74dcd2571a8c&=&format=webp&quality=lossless"
@@ -435,40 +478,56 @@
         </div>
     </div>
 
-    <p style="text-align: center;">Blogs are made from the version "1.13.5" cuz im too lazy to research the last
-        versions
-    <p>
-        <script>
-            document.addEventListener('click', function (e) {
-                var btn = e.target.closest('.expand-btn');
-                if (!btn) return;
-                var targetId = btn.getAttribute('data-target');
-                var more = document.getElementById(targetId);
-                var card = btn.closest('.blog-card');
-                var expanded = btn.getAttribute('aria-expanded') === 'true';
-                btn.setAttribute('aria-expanded', String(!expanded));
-                if (more) {
-                    more.setAttribute('aria-hidden', String(expanded));
+    <p style="text-align: center;">Blogs are made from the version "1.13.5" cuz im too lazy to research the last versions</p>
+
+    <script>
+        document.addEventListener('click', function (e) {
+            var btn = e.target.closest('.expand-btn');
+            if (!btn) return;
+            var targetId = btn.getAttribute('data-target');
+            var more = document.getElementById(targetId);
+            var card = btn.closest('.blog-card');
+            var expanded = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', String(!expanded));
+            if (more) more.setAttribute('aria-hidden', String(expanded));
+            if (card) card.classList.toggle('expanded', !expanded);
+            var label = btn.querySelector('span');
+            if (label) label.textContent = expanded ? 'Show more' : 'Show less';
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                var active = document.activeElement;
+                if (active && active.classList.contains('expand-btn')) {
+                    active.click();
+                    e.preventDefault();
                 }
-                if (card) {
-                    card.classList.toggle('expanded', !expanded);
-                }
-                var label = btn.querySelector('span');
-                if (label) {
-                    label.textContent = expanded ? 'Show more' : 'Show less';
-                }
+            }
+        });
+
+        var searchInput  = document.getElementById('version-search');
+        var searchCount  = document.getElementById('search-count');
+        var noResults    = document.getElementById('no-results');
+        var allCards     = document.querySelectorAll('.blog-container[data-version]');
+
+        function updateSearch() {
+            var q = searchInput.value.trim().toLowerCase();
+            var visible = 0;
+
+            allCards.forEach(function (container) {
+                var version = (container.getAttribute('data-version') || '').toLowerCase();
+                var cardText = container.innerText.toLowerCase();
+                var match = !q || version.includes(q) || cardText.includes(q);
+                container.style.display = match ? '' : 'none';
+                if (match) visible++;
             });
 
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    var active = document.activeElement;
-                    if (active && active.classList.contains('expand-btn')) {
-                        active.click();
-                        e.preventDefault();
-                    }
-                }
-            });
-        </script>
+            noResults.style.display = (q && visible === 0) ? 'block' : 'none';
+            searchCount.textContent = q ? visible + ' result' + (visible !== 1 ? 's' : '') : '';
+        }
+
+        searchInput.addEventListener('input', updateSearch);
+    </script>
 </body>
 
 </html>
