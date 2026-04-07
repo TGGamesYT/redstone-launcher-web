@@ -1,0 +1,125 @@
+name: Auto Blog Post on Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  generate-blog-post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          ref: main  # or whatever branch your blog.html lives on
+
+      - name: Generate blog post with Claude
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          RELEASE_NAME: ${{ github.event.release.name }}
+          RELEASE_BODY: ${{ github.event.release.body }}
+        run: |
+          python3 - <<'PYEOF'
+          import os, json, re, urllib.request, urllib.error, datetime
+
+          tag    = os.environ["RELEASE_TAG"]
+          name   = os.environ["RELEASE_NAME"]
+          body   = os.environ["RELEASE_BODY"]
+          api_key = os.environ["ANTHROPIC_API_KEY"]
+
+          prompt = f"""You are writing a short blog card for the Redstone Launcher changelog page.
+
+          Release tag: {tag}
+          Release title: {name}
+          Release notes:
+          {body}
+
+          Return ONLY a JSON object (no markdown fences) with these fields:
+          - "title": short card title, e.g. "Launch Notes"
+          - "desc": one-sentence teaser (max 120 chars)
+          - "more": 2-4 sentences of detail about what changed, plain text, no HTML
+
+          Example:
+          {{"title":"Launch Notes","desc":"Fixed crash on startup.","more":"Resolved a crash that happened when no profile existed. Also improved load time by 200ms."}}"""
+
+          payload = json.dumps({
+              "model": "claude-sonnet-4-20250514",
+              "max_tokens": 400,
+              "messages": [{"role": "user", "content": prompt}]
+          }).encode()
+
+          req = urllib.request.Request(
+              "https://api.anthropic.com/v1/messages",
+              data=payload,
+              headers={
+                  "Content-Type": "application/json",
+                  "x-api-key": api_key,
+                  "anthropic-version": "2023-06-01",
+              }
+          )
+          with urllib.request.urlopen(req) as r:
+              data = json.loads(r.read())
+
+          text = data["content"][0]["text"].strip()
+          # Strip accidental fences
+          text = re.sub(r"^```[a-z]*\n?|```$", "", text.strip(), flags=re.MULTILINE).strip()
+          info = json.loads(text)
+
+          card_title = info.get("title", "Launch Notes")
+          card_desc  = info.get("desc",  "")
+          card_more  = info.get("more",  "")
+
+          # Unique ID based on tag (strip dots and special chars)
+          safe_id = re.sub(r"[^a-z0-9]", "-", tag.lower())
+          post_date = datetime.date.today().isoformat()
+
+          new_card = f"""    <div class="blog-container" style="margin-top: 50px;" data-version="{tag}">
+              <div class="blog-card" id="post-{safe_id}">
+                  <div class="blog-card-title">{card_title}</div>
+                  <div class="blog-card-version">{tag}</div>
+                  <div class="blog-card-desc">{card_desc}</div>
+
+                  <button class="expand-btn" aria-expanded="false" aria-controls="more-{safe_id}" data-target="more-{safe_id}">
+                      <span>Show more</span>
+                      <span class="arrow" aria-hidden="true">▼</span>
+                  </button>
+
+                  <div class="blog-card-more" id="more-{safe_id}" role="region" aria-hidden="true">
+                      <p>{card_more}</p>
+                  </div>
+
+                  <div class="blog-card-buttons" style="margin-top:12px;">
+                      <a href="https://redstone-launcher.com" class="blog-btn">Website</a>
+                      <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" class="blog-btn">Discord</a>
+                  </div>
+              </div>
+          </div>"""
+
+          with open("blog.html", "r", encoding="utf-8") as f:
+              html = f.read()
+
+          # Insert right after the <h1> heading block (before the first blog-container)
+          insert_marker = '<div class="blog-container"'
+          idx = html.find(insert_marker)
+          if idx == -1:
+              raise RuntimeError("Could not find insertion point in blog.html")
+
+          html = html[:idx] + new_card + "\n" + html[idx:]
+
+          with open("blog.html", "w", encoding="utf-8") as f:
+              f.write(html)
+
+          print(f"✅ Blog card for {tag} injected into blog.html")
+          PYEOF
+
+      - name: Commit & push updated blog.html
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add blog.html
+          git commit -m "chore: auto blog post for release ${{ github.event.release.tag_name }}"
+          git push
