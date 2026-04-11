@@ -729,7 +729,7 @@
             display: inline-block;
         }
 
-        
+
 
         .commit-message {
             font-family: 'Courier New', monospace;
@@ -755,7 +755,7 @@
             transition: all 0.2s;
         }
 
-        
+
 
         .commit-date {
             font-size: 0.8rem;
@@ -1153,6 +1153,51 @@
 </head>
 
 <body>
+    <script>
+        function detectOS() {
+            const ua = navigator.userAgent.toLowerCase();
+            if (/iphone|ipad|ipod/.test(ua)) return "iOS";
+            if (ua.includes("android")) return "Android";
+            if (ua.includes("win")) return "Windows";
+            if (ua.includes("mac")) return "macOS";
+            if (ua.includes("linux")) return "Linux";
+            return null;
+        }
+    </script>
+    <script>
+
+        function closeLinuxModal() {
+            document.getElementById('linuxModal').style.display = 'none';
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const os = detectOS();
+            const downloadBtn = document.getElementById('downloadBtn');
+
+            const downloads = {
+                Windows: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.exe",
+                macOS: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.dmg"
+            };
+
+            if (os === "Linux") {
+                const span = downloadBtn.querySelector('span') || downloadBtn;
+                span.textContent = "Download for Linux";
+
+                downloadBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById('linuxModal').style.display = 'flex';
+                });
+            } else if (os && downloads[os]) {
+                downloadBtn.href = downloads[os];
+                const span = downloadBtn.querySelector('span') || downloadBtn;
+                span.textContent = `Download for ${os}`;
+            }
+        });
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('DOMContentLoaded', revealOnScroll);
+    </script>
     <div id="linuxModal" class="modal-overlay" style="display:none;">
         <div class="modal-content glass glow-box">
             <h3 data-i18n="linux_select">Select Linux Package</h3>
@@ -1247,7 +1292,7 @@
         </div>
         <div class="mobile-nav-section">
             <div class="mobile-nav-title" data-i18n="indicators">Indicators</div>
-            <a href="#" data-i18n="blog">Blog</a>
+            <a href="blog.html" data-i18n="blog">Blog</a>
         </div>
         <div class="mobile-nav-section">
             <div class="mobile-nav-title" data-i18n="support_bug">Support</div>
@@ -1652,47 +1697,8 @@
                 }
             });
         };
-        function detectOS() {
-            const ua = navigator.userAgent.toLowerCase();
-            if (/iphone|ipad|ipod/.test(ua)) return "iOS";
-            if (ua.includes("android")) return "Android";
-            if (ua.includes("win")) return "Windows";
-            if (ua.includes("mac")) return "macOS";
-            if (ua.includes("linux")) return "Linux";
-            return null;
-        }
-
-        function closeLinuxModal() {
-            document.getElementById('linuxModal').style.display = 'none';
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const os = detectOS();
-            const downloadBtn = document.getElementById('downloadBtn');
-
-            const downloads = {
-                Windows: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.exe",
-                macOS: "https://github.com/TGGamesYT/redstone-launcher/releases/latest/download/Redstone-Launcher.dmg"
-            };
-
-            if (os === "Linux") {
-                const span = downloadBtn.querySelector('span') || downloadBtn;
-                span.textContent = "Download for Linux";
-
-                downloadBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    document.getElementById('linuxModal').style.display = 'flex';
-                });
-            } else if (os && downloads[os]) {
-                downloadBtn.href = downloads[os];
-                const span = downloadBtn.querySelector('span') || downloadBtn;
-                span.textContent = `Download for ${os}`;
-            }
-        });
-
-        window.addEventListener('scroll', revealOnScroll);
-        window.addEventListener('DOMContentLoaded', revealOnScroll);
     </script>
+
     <script>
         let allCommits = [];
         let commitsShown = 6;
@@ -1707,7 +1713,8 @@
                 document.getElementById('commitsContainer').innerHTML = '<div style="grid-column: 1/-1; color: var(--text-dim);">Unable to load commits</div>';
             }
         }
-
+    </script>
+    <script>
         function displayCommits() {
             const container = document.getElementById('commitsContainer');
             container.innerHTML = '';
@@ -1745,7 +1752,9 @@
             displayCommits();
             document.querySelector('.commits-container').scrollIntoView({ behavior: 'smooth' });
         }
+    </script>
 
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             fetchGitHubCommits();
         });
