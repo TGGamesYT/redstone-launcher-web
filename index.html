@@ -729,7 +729,7 @@
             display: inline-block;
         }
 
-        
+
 
         .commit-message {
             font-family: 'Courier New', monospace;
@@ -755,7 +755,7 @@
             transition: all 0.2s;
         }
 
-        
+
 
         .commit-date {
             font-size: 0.8rem;
@@ -1710,6 +1710,7 @@
 
         function displayCommits() {
             const container = document.getElementById('commitsContainer');
+            if (!container) return;
             container.innerHTML = '';
 
             allCommits.slice(0, commitsShown).forEach(commit => {
@@ -1717,27 +1718,49 @@
                 const message = commit.commit.message.split('\n')[0];
                 const date = new Date(author.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
                 const hash = commit.sha.substring(0, 7);
-                const avatarUrl = commit.author?.avatar_url || 'https://api.github.com/users/anonymous/avatar';
                 const githubUsername = commit.author?.login || author.name;
+
+
+                let avatarUrl;
+                
+
+                if (author.name.toLowerCase().includes('muaves')) {
+                    avatarUrl = 'https://uploadzoo.muaves.com/umecat.gif';
+                } else {
+                    avatarUrl = commit.author?.avatar_url || 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png';
+                }
 
                 const card = document.createElement('div');
                 card.className = 'commit-item';
                 card.innerHTML = `
-                    <div class="commit-author">
-                        <img src="${avatarUrl}" alt="${author.name}" class="commit-avatar">
-                        <div class="commit-author-info">
-                            <a href="https://github.com/${githubUsername}" target="_blank" class="commit-author-name">${author.name}</a>
-                        </div>
-                    </div>
-                    <div class="commit-message">${message}</div>
-                    <a href="https://github.com/TGGamesYT/redstone-launcher/commit/${commit.sha}" target="_blank" class="commit-hash">${hash}</a>
-                    <div class="commit-date">${date}</div>
-                `;
+    <div class="commit-author">
+        <img src="${avatarUrl}" alt="${author.name}" class="commit-avatar">
+        <div class="commit-author-info">
+            <a href="https://github.com/${githubUsername}" target="_blank" class="commit-author-name">${author.name}</a>
+        </div>
+    </div>
+    <div class="commit-message">${message}</div>
+    <a href="https://github.com/TGGamesYT/redstone-launcher/commit/${commit.sha}" target="_blank" class="commit-hash">${hash}</a>
+    <div class="commit-date">${date}</div>
+`;
                 container.appendChild(card);
             });
 
-            document.getElementById('loadMoreDiv').style.display = commitsShown < allCommits.length ? 'block' : 'none';
+            const loadMoreDiv = document.getElementById('loadMoreDiv');
+            if (loadMoreDiv) {
+                loadMoreDiv.style.display = commitsShown < allCommits.length ? 'block' : 'none';
+            }
         }
+
+        function loadMoreCommits() {
+            commitsShown += 6;
+            displayCommits();
+            document.querySelector('.commits-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchGitHubCommits();
+        });
     </script>
     <script>
         function loadMoreCommits() {
