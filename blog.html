@@ -339,7 +339,6 @@
         </div>
     </nav>
 
-    <p><a href="index.html" style="color: white; margin-top: 100px; margin-left: 20px;">HOME</a></p>
 
     <h1 style="text-align: center; margin-top: 10px;">Redstone Launcher Blog page</h1>
 
@@ -349,19 +348,38 @@
     </div>
     <div class="no-results" id="no-results">No versions found for that search.</div>
 
-        <div class="blog-container" style="margin-top: 50px;" data-version="1.14.0">
-    <div class="blog-card" id="post-1-14-0">
-        <div class="blog-card-title">1.14.0</div>
-        <div class="blog-card-version">1.14.0</div>
-        <div class="blog-card-desc">1.14.0</div>
+   <div class="blog-container" style="margin-top: 50px;" data-version="1.14.0">
+        <div class="blog-card" id="post-1-14-0">
+            <div class="blog-card-title">Launch Notes</div>
+            <div class="blog-card-version">Version 1.14.0</div>
+            <div class="blog-card-desc">Added and debugged soo many features</div>
 
-        <div class="blog-card-buttons" style="margin-top:12px;">
-            <a href="https://redstone-launcher.com" class="blog-btn">Website</a>
-            <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" class="blog-btn">Discord</a>
+            <button class="expand-btn" aria-expanded="false" aria-controls="more-1-14-0" data-target="more-1-14-0">
+                <span>Show more</span>
+                <span class="arrow" aria-hidden="true">▼</span>
+            </button>
+
+            <div class="blog-card-more" id="more-1-14-0" role="region" aria-hidden="true">
+                <li>- Fixed bugs, the sidebar is now smoother and better</li>
+                <li>- Added gradient nearly everywhere (instances, settings, sidebar, taskbar etc.)</li>
+                <li>- Debugged various issues and improved overall performance</li>
+                <li>- The create instance button now works</li>
+                <li>- When you go to an instanceview, it doesn't appears the No instances message</li>
+                <li>- Gradient: Added Predefined theme sync thingy and when its on it adds gradient with the predefined themes (f.e: Copper theme)</li>
+                <li>- Added loading screen</li>
+                <p>Loading screen stuck: It stucks when: No internet connection, Java not installed, macOS "cries" or something new that we don't know about yet (Please report if you encounter this!)</p>
+                <li>- Added new animations</li>
+                <li>- Added new icons</li>
+                
+            </div>
+
+            <div class="blog-card-buttons" style="margin-top:12px;">
+                <a href="https://redstone-launcher.com" class="blog-btn">Website</a>
+                <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" class="blog-btn">Discord</a>
+            </div>
         </div>
     </div>
-</div>
-<div class="blog-container" style="margin-top: 50px;" data-version="1.13.9">
+    <div class="blog-container" style="margin-top: 50px;" data-version="1.13.9">
         <div class="blog-card" id="post-1-13-9">
             <div class="blog-card-title">Launch Notes</div>
             <div class="blog-card-version">Version 1.13.9</div>
@@ -490,7 +508,8 @@
         </div>
     </div>
 
-    <p style="text-align: center;">Blogs are made from the version "1.13.5" cuz im too lazy to research the last versions</p>
+    <p style="text-align: center;">Blogs are made from the version "1.13.5" cuz im too lazy to research the last
+        versions</p>
 
     <script>
         document.addEventListener('click', function (e) {
@@ -517,10 +536,10 @@
             }
         });
 
-        var searchInput  = document.getElementById('version-search');
-        var searchCount  = document.getElementById('search-count');
-        var noResults    = document.getElementById('no-results');
-        var allCards     = document.querySelectorAll('.blog-container[data-version]');
+        var searchInput = document.getElementById('version-search');
+        var searchCount = document.getElementById('search-count');
+        var noResults = document.getElementById('no-results');
+        var allCards = document.querySelectorAll('.blog-container[data-version]');
 
         function updateSearch() {
             var q = searchInput.value.trim().toLowerCase();
