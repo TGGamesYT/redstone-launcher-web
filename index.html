@@ -1149,6 +1149,33 @@
             margin-bottom: 0.5rem;
             color: var(--foreground);
         }
+
+        .cli {
+            background: hsla(0, 72%, 51%, 0.05);
+            border-left: 2px solid var(--primary);
+            padding: 10px;
+            margin: 12px 0;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: var(--foreground);
+        }
+
+        .cli btn {
+            background-color: #c01c28;
+            color: #ffffff;
+            padding: 6px 6px;
+            border-radius: 8px;
+            font-size: 13px;
+            border: none;
+            box-shadow: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .cli btn:hover {
+            background-color: #a31822;
+        }
     </style>
 </head>
 
@@ -1168,6 +1195,26 @@
                     <span>Download .deb</span>
                 </a>
             </div>
+            <h2>Or download from snap:</h2>
+            <a href="https://snapcraft.io/redstone-launcher">
+                <img alt="Get it from the Snap Store" src=https://snapcraft.io/en/dark/install.svg />
+            </a>
+            
+            <div class="cli">
+                <p>sudo snap install redstone-launcher</p>
+            </div>
+            <br />
+
+            <button onclick="copyText()" class="cli">Copy</button>
+            <br />
+            <script>
+                function copyText() {
+
+                    navigator.clipboard.writeText
+                        ("sudo snap install redstone-launcher");
+                }
+            </script>
+            <br>
             <button onclick="closeLinuxModal()" class="support-link"
                 style="background:none; border:none; cursor:pointer; margin-top:1rem; font-size: 0.8rem; opacity: 0.6;">
                 Close
@@ -1247,7 +1294,7 @@
         </div>
         <div class="mobile-nav-section">
             <div class="mobile-nav-title" data-i18n="indicators">Indicators</div>
-             <a href="./archive/" data-i18n="blog">Archive versions</a>
+            <a href="./archive/" data-i18n="blog">Archive versions</a>
             <a href="blog.html" data-i18n="blog">Blog</a>
         </div>
         <div class="mobile-nav-section">
@@ -1290,7 +1337,8 @@
                 </a>
                 <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" class="btn btn-glass glass ios-spring"
                     data-i18n="discord">Discord</a>
-               <a href="https://redstone-launcher.com/applications" class="btn btn-primary glow-box ios-spring">HIRING DEVELOPERS!!!</a>
+                <a href="https://redstone-launcher.com/applications" class="btn btn-primary glow-box ios-spring">HIRING
+                    DEVELOPERS!!!</a>
             </div>
             <div class="hero-features">
                 <div class="card">
@@ -1521,11 +1569,25 @@
             </div>
         </div>
     </footer>
+    <script>function myFunction() {
+            // Get the text field
+            var copyText = document.getElementById("myInput");
+
+            // Select the text field
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the text inside the text field
+            navigator.clipboard.writeText(copyText.value);
+
+            // Alert the copied text
+            alert("Copied the text: " + copyText.value);
+        } </script>
     <script>
         const translations = {
 
             hu: {
-                badge_beta: "1.14.0-ás Verzió", title: "Redstone Launcher",
+                badge_beta: "1.14.0-as Verzió", title: "Redstone Launcher",
                 hero_desc: "Modern és erőteljes Minecraft launcher fejlett funkciókkal és kiváló teljesítménnyel.",
                 download: "Letöltés az operációs rendszeredhez", other_downloads: "Egyéb letöltések", discord: "Discord",
                 free: "Ingyenes és nyílt forráskódú", cross: "Platformfüggetlen", updates: "Rendszeres frissítések",
