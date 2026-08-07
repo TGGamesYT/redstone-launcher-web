@@ -215,21 +215,21 @@ window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('DOMContentLoaded', revealOnScroll);
 
 (function () {
-    const HOLD_MS   = 1800;
-    const SLIDE_MS  = 420;
+    const HOLD_MS = 1800;
+    const SLIDE_MS = 420;
 
     const container = document.getElementById('wordScroller');
     if (!container) return;
 
     function getWords() {
         return Array.from(container.querySelectorAll('.word'))
-                    .map(s => s.textContent.trim())
-                    .filter(Boolean);
+            .map(s => s.textContent.trim())
+            .filter(Boolean);
     }
 
     let current = 0;
-    let words   = getWords();
-    let timer   = null;
+    let words = getWords();
+    let timer = null;
 
     const display = document.createElement('span');
     display.className = 'word';
@@ -243,24 +243,24 @@ window.addEventListener('DOMContentLoaded', revealOnScroll);
         const word = words[idx] || '';
         if (instant) {
             display.style.transition = 'none';
-            display.style.transform  = 'translateY(0)';
-            display.style.opacity    = '1';
-            display.textContent      = word;
+            display.style.transform = 'translateY(0)';
+            display.style.opacity = '1';
+            display.textContent = word;
             return;
         }
         display.style.transition = `transform ${SLIDE_MS}ms cubic-bezier(0.4,0,0.2,1), opacity ${SLIDE_MS}ms`;
-        display.style.transform  = 'translateY(-110%)';
-        display.style.opacity    = '0';
+        display.style.transform = 'translateY(-110%)';
+        display.style.opacity = '0';
 
         setTimeout(() => {
             display.style.transition = 'none';
-            display.style.transform  = 'translateY(110%)';
-            display.style.opacity    = '0';
-            display.textContent      = word;
+            display.style.transform = 'translateY(110%)';
+            display.style.opacity = '0';
+            display.textContent = word;
             void display.offsetHeight;
             display.style.transition = `transform ${SLIDE_MS}ms cubic-bezier(0.4,0,0.2,1), opacity ${SLIDE_MS}ms`;
-            display.style.transform  = 'translateY(0)';
-            display.style.opacity    = '1';
+            display.style.transform = 'translateY(0)';
+            display.style.opacity = '1';
         }, SLIDE_MS);
     }
 
@@ -275,7 +275,7 @@ window.addEventListener('DOMContentLoaded', revealOnScroll);
 
     window.refreshWordScroller = function () {
         const lang = document.documentElement.lang || 'en';
-        const keys = ['word_free','word_open','word_cross','word_updates','word_custom'];
+        const keys = ['word_free', 'word_open', 'word_cross', 'word_updates', 'word_custom'];
         words = keys.map(k =>
             translations[lang]?.[k] || _originals[k] || k
         ).filter(Boolean);
@@ -285,3 +285,74 @@ window.addEventListener('DOMContentLoaded', revealOnScroll);
         timer = setTimeout(tick, HOLD_MS);
     };
 })();
+const NEWS_API_BASE = "https://redstoneapi.vercel.app";
+let newsItemsCache = [];
+let newsSectionsCache = [];
+
+async function loadNewsSection() {
+    const grid = document.getElementById('newsGrid');
+    if (!grid) return;
+
+    try {
+        const [sectionsRes, itemsRes] = await Promise.all([
+            fetch(`${NEWS_API_BASE}/api/sections`).then(r => r.json()),
+            fetch(`${NEWS_API_BASE}/api/news`).then(r => r.json())
+        ]);
+        newsSectionsCache = sectionsRes.sections || [];
+        newsItemsCache = itemsRes.items || [];
+
+        if (newsItemsCache.length === 0) {
+            grid.innerHTML = '<p class="section-desc" style="grid-column:1/-1;text-align:center;">No news yet, check back soon.</p>';
+            return;
+        }
+
+        grid.innerHTML = newsItemsCache.map((item, i) => `
+            <div class="news-card glass ios-spring reveal visible" data-index="${i}">
+                <div class="news-card-meta">${newsSectionName(item.sectionId)} · ${new Date(item.createdAt).toLocaleDateString()}</div>
+                <h3 class="news-card-title">${escapeHtml(item.title)}</h3>
+                <p class="news-card-excerpt">${escapeHtml(item.content)}</p>
+            </div>
+        `).join('');
+
+        grid.querySelectorAll('.news-card').forEach(card => {
+            card.addEventListener('click', () => openNewsModal(Number(card.dataset.index)));
+        });
+    } catch (e) {
+        grid.innerHTML = '<p class="section-desc" style="grid-column:1/-1;text-align:center;">Failed to load news.</p>';
+    }
+}
+
+function newsSectionName(id) {
+    return newsSectionsCache.find(s => s.id === id)?.name || 'General';
+}
+
+function escapeHtml(text) {
+    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+    return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+function openNewsModal(index) {
+    const item = newsItemsCache[index];
+    if (!item) return;
+    document.getElementById('newsModalMeta').textContent = `${newsSectionName(item.sectionId)} · ${new Date(item.createdAt).toLocaleDateString()}`;
+    document.getElementById('newsModalTitle').textContent = item.title;
+    document.getElementById('newsModalContent').textContent = item.content;
+    const hintEl = document.getElementById('newsModalHint');
+    if (item.hint) {
+        hintEl.textContent = item.hint;
+        hintEl.style.display = 'block';
+    } else {
+        hintEl.style.display = 'none';
+    }
+    document.getElementById('newsModal').style.display = 'flex';
+}
+
+function closeNewsModal() {
+    document.getElementById('newsModal').style.display = 'none';
+}
+
+document.getElementById('newsModal').addEventListener('click', (e) => {
+    if (e.target.id === 'newsModal') closeNewsModal();
+});
+
+document.addEventListener('DOMContentLoaded', loadNewsSection);

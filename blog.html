@@ -383,7 +383,7 @@
 </div>
 <div class="blog-container" style="margin-top: 50px;" data-version="1.14.0">
         <div class="blog-card" id="post-1-14-0">
-            <div class="blog-card-title">Launch Notes <span class="latest">LATEST</span></div>
+            <div class="blog-card-title">Launch Notes</div>
             <div class="blog-card-version">Version 1.14.0</div>
             <div class="blog-card-desc">Added and debugged soo many features</div>
 
@@ -572,7 +572,41 @@
         var searchInput = document.getElementById('version-search');
         var searchCount = document.getElementById('search-count');
         var noResults = document.getElementById('no-results');
-        var allCards = document.querySelectorAll('.blog-container[data-version]');
+        var allCards = Array.prototype.slice.call(document.querySelectorAll('.blog-container[data-version]'));
+
+        function normalizeVersion(value) {
+            return String(value || '').trim().toLowerCase().replace(/^v/, '').replace(/^release[-_]/, '');
+        }
+
+        function updateLatestBadge(latestVersion) {
+            allCards.forEach(function (container) {
+                var title = container.querySelector('.blog-card-title');
+                if (!title) return;
+
+                var existingBadge = title.querySelector('.latest');
+                if (existingBadge) existingBadge.remove();
+
+                if (normalizeVersion(container.getAttribute('data-version')) === normalizeVersion(latestVersion)) {
+                    var badge = document.createElement('span');
+                    badge.className = 'latest';
+                    badge.textContent = 'LATEST';
+                    title.appendChild(badge);
+                }
+            });
+        }
+
+        async function loadLatestRelease() {
+            try {
+                var res = await fetch('https://api.github.com/repos/TGGamesYT/redstone-launcher/releases/latest');
+                if (!res.ok) throw new Error('GitHub API error');
+                var data = await res.json();
+                var latestVersion = data.tag_name || data.name || '';
+                if (!latestVersion) return;
+                updateLatestBadge(latestVersion);
+            } catch (e) {
+                console.warn('Could not fetch latest release version:', e);
+            }
+        }
 
         function updateSearch() {
             var q = searchInput.value.trim().toLowerCase();
@@ -591,6 +625,7 @@
         }
 
         searchInput.addEventListener('input', updateSearch);
+        loadLatestRelease();
     </script>
 </body>
 
