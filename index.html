@@ -60,6 +60,7 @@
     </div>
     <div id="newsModal" class="modal-overlay" style="display:none;">
         <div class="modal-content glass" style="max-width:600px;text-align:left;">
+            <div class="news-modal-image" id="newsModalImage" style="display:none;"></div>
             <span class="news-modal-meta" id="newsModalMeta"></span>
             <h3 id="newsModalTitle" style="margin-bottom:1rem;"></h3>
             <p class="section-desc" id="newsModalContent" style="text-align:left;margin:0 0 1rem;max-width:none;"></p>
@@ -351,6 +352,9 @@
         </div>
         <div class="news-grid" id="newsGrid">
             <p class="section-desc" style="grid-column:1/-1;text-align:center;">Loading news…</p>
+        </div>
+        <div class="news-actions" id="newsActions" style="display:none;">
+            <button id="newsLoadMoreBtn" class="btn btn-glass glass ios-spring">See more</button>
         </div>
     </section>
     <footer>

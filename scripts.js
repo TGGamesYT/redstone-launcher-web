@@ -286,8 +286,79 @@ window.addEventListener('DOMContentLoaded', revealOnScroll);
     };
 })();
 const NEWS_API_BASE = "https://redstoneapi.vercel.app";
+const NEWS_PREVIEW_COUNT = 3;
 let newsItemsCache = [];
 let newsSectionsCache = [];
+
+function extractMediaUrlFromText(text) {
+    if (!text || typeof text !== 'string') return '';
+    const match = text.match(/https?:\/\/(?:[\w\-%.~:/?#[\]@!$&'()*+,;=]+)\.(?:png|jpe?g|gif|webp|mp4|webm|ogg)(?:[\w\-%.~:/?#[\]@!$&'()*+,;=]*)?/i);
+    return match ? match[0].trim() : '';
+}
+
+function getNewsMediaUrl(item) {
+    if (item.hasMedia && item.mediaUrl) return item.mediaUrl;
+    return '';
+}
+
+function getNewsMediaMarkup(mediaUrl, mediaType, title) {
+    if (!mediaUrl) return '';
+    const safeUrl = escapeHtml(mediaUrl);
+    const safeTitle = escapeHtml(title || 'News image');
+
+    if (mediaType === 'video') {
+        return `
+                <div class="news-card-image">
+                    <video src="${safeUrl}" autoplay muted loop playsinline preload="metadata" onerror="this.closest('.news-card-image').remove()"></video>
+                </div>`;
+    }
+
+    return `
+                <div class="news-card-image">
+                    <img src="${safeUrl}" alt="${safeTitle}" onerror="this.closest('.news-card-image').remove()" />
+                </div>`;
+}
+
+function renderNewsCards(limit = NEWS_PREVIEW_COUNT) {
+    const grid = document.getElementById('newsGrid');
+    const actionWrap = document.getElementById('newsActions');
+    const loadMoreBtn = document.getElementById('newsLoadMoreBtn');
+    if (!grid) return;
+
+    const visibleItems = newsItemsCache.slice(0, Math.min(limit, newsItemsCache.length));
+    grid.innerHTML = visibleItems.map((item, i) => {
+        const mediaMarkup = getNewsMediaMarkup(getNewsMediaUrl(item), item.mediaType, item.title);
+        return `
+            <div class="news-card glass ios-spring reveal visible" data-index="${i}">
+                ${mediaMarkup}
+                <div class="news-card-body">
+                    <div class="news-card-meta">${newsSectionName(item.sectionId)} · ${new Date(item.createdAt).toLocaleDateString()}</div>
+                    <h3 class="news-card-title">${escapeHtml(item.title)}</h3>
+                    <p class="news-card-excerpt">${escapeHtml(item.content)}</p>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    grid.querySelectorAll('.news-card').forEach(card => {
+        card.addEventListener('click', () => openNewsModal(Number(card.dataset.index)));
+    });
+
+    if (actionWrap) {
+        if (newsItemsCache.length > NEWS_PREVIEW_COUNT) {
+            actionWrap.style.display = 'flex';
+            if (loadMoreBtn) {
+                loadMoreBtn.textContent = 'See more';
+                loadMoreBtn.onclick = () => {
+                    renderNewsCards(newsItemsCache.length);
+                    actionWrap.style.display = 'none';
+                };
+            }
+        } else {
+            actionWrap.style.display = 'none';
+        }
+    }
+}
 
 async function loadNewsSection() {
     const grid = document.getElementById('newsGrid');
@@ -303,22 +374,16 @@ async function loadNewsSection() {
 
         if (newsItemsCache.length === 0) {
             grid.innerHTML = '<p class="section-desc" style="grid-column:1/-1;text-align:center;">No news yet, check back soon.</p>';
+            const actionWrap = document.getElementById('newsActions');
+            if (actionWrap) actionWrap.style.display = 'none';
             return;
         }
 
-        grid.innerHTML = newsItemsCache.map((item, i) => `
-            <div class="news-card glass ios-spring reveal visible" data-index="${i}">
-                <div class="news-card-meta">${newsSectionName(item.sectionId)} · ${new Date(item.createdAt).toLocaleDateString()}</div>
-                <h3 class="news-card-title">${escapeHtml(item.title)}</h3>
-                <p class="news-card-excerpt">${escapeHtml(item.content)}</p>
-            </div>
-        `).join('');
-
-        grid.querySelectorAll('.news-card').forEach(card => {
-            card.addEventListener('click', () => openNewsModal(Number(card.dataset.index)));
-        });
+        renderNewsCards();
     } catch (e) {
         grid.innerHTML = '<p class="section-desc" style="grid-column:1/-1;text-align:center;">Failed to load news.</p>';
+        const actionWrap = document.getElementById('newsActions');
+        if (actionWrap) actionWrap.style.display = 'none';
     }
 }
 
@@ -335,6 +400,15 @@ function openNewsModal(index) {
     const item = newsItemsCache[index];
     if (!item) return;
     document.getElementById('newsModalMeta').textContent = `${newsSectionName(item.sectionId)} · ${new Date(item.createdAt).toLocaleDateString()}`;
+    const imageEl = document.getElementById('newsModalImage');
+    const mediaUrl = getNewsMediaUrl(item);
+    if (mediaUrl) {
+        imageEl.innerHTML = getNewsMediaMarkup(mediaUrl, item.mediaType, item.title).replace('news-card-image', 'news-modal-media');
+        imageEl.style.display = 'block';
+    } else {
+        imageEl.innerHTML = '';
+        imageEl.style.display = 'none';
+    }
     document.getElementById('newsModalTitle').textContent = item.title;
     document.getElementById('newsModalContent').textContent = item.content;
     const hintEl = document.getElementById('newsModalHint');
@@ -350,7 +424,22 @@ function openNewsModal(index) {
 function closeNewsModal() {
     document.getElementById('newsModal').style.display = 'none';
 }
+const newsModalImageEl = document.getElementById('newsModalImage');
+newsModalImageEl.addEventListener('mousemove', (e) => {
+    const media = e.currentTarget.querySelector('.news-modal-media');
+    if (!media) return;
+    const target = media.querySelector('img, video');
+    if (!target) return;
+    const rect = media.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    target.style.transformOrigin = `${x}% ${y}%`;
+});
 
+newsModalImageEl.addEventListener('mouseleave', () => {
+    const target = newsModalImageEl.querySelector('img, video');
+    if (target) target.style.transformOrigin = 'center';
+});
 document.getElementById('newsModal').addEventListener('click', (e) => {
     if (e.target.id === 'newsModal') closeNewsModal();
 });
