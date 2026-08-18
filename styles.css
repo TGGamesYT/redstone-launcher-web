@@ -183,13 +183,15 @@ nav {
     padding: 0 1.5rem;
 }
 
-.nav-brand {
+.nav-brand img {
     display: flex;
     align-items: center;
     gap: 0.75rem;
     font-weight: 700;
     font-size: 1.1rem;
     color: var(--foreground);
+    width: 40px;
+    height: 40px;
 }
 
 .nav-center {
