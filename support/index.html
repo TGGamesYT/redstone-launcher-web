@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support · Redstone Launcher</title>
+    <meta name="description" content="Help Center for Redstone Launcher - install guides, Microsoft login, instances, mods, servers, and troubleshooting.">
+    <meta name="author" content="Redstone Launcher Team">
+    <meta property="og:title" content="Support · Redstone Launcher">
+    <meta property="og:description" content="Install guides, login fixes, and answers for the modern Minecraft launcher.">
+    <meta property="og:image" content="https://redstone-launcher.com/img/redstonebanner.png">
+    <meta name="theme-color" content="#d60505">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://uploadzoo.muaves.com/redstone-launcher/redstone_logo_rounded_whitebg-removebg-preview.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="site-nav glass">
+        <a class="nav-brand" href="https://redstone-launcher.com/">
+            <img src="https://uploadzoo.muaves.com/redstone-launcher/redstone_logo_rounded_whitebg-removebg-preview.png" alt="Redstone Launcher Logo" class="nav-logo">
+            <span>Help Center</span>
+        </a>
+
+        <div class="nav-center">
+            <div class="nav-item">
+                <span data-i18n="nav.socials">Socials</span>
+                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                <div class="nav-dropdown glass">
+                    <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank" rel="noopener" data-i18n="nav.github">GitHub</a>
+                    <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" rel="noopener" data-i18n="nav.discord">Discord</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <span data-i18n="nav.indicators">Indicators</span>
+                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                <div class="nav-dropdown glass">
+                    <a href="https://redstone-launcher.com/#news" data-i18n="nav.blog">News</a>
+                    <a href="https://redstone-launcher.com/archive/" data-i18n="nav.archive">Archive versions</a>
+                    <a href="https://redstone-launcher.com/team.html" data-i18n="nav.team">Our Team</a>
+                </div>
+            </div>
+            <div class="nav-item active">
+                <span data-i18n="nav.supportBug">Support &amp; Bug Report</span>
+                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                <div class="nav-dropdown glass">
+                    <a href="#home" data-i18n="nav.helpCenter">Help Center</a>
+                    <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" rel="noopener" data-i18n="nav.discordSupport">Discord Support</a>
+                    <a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank" rel="noopener" data-i18n="nav.githubBug">GitHub Bug Report</a>
+                    <a href="mailto:contact@redstone-launcher.com" data-i18n="nav.emailSupport">Email Support</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-actions">
+            <button type="button" class="sidebar-toggle glass" id="sidebarToggle" aria-label="Browse topics">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+            </button>
+            <select id="langSwitcher" class="glass nav-select" aria-label="Language">
+                <option value="en">🇬🇧 English</option>
+                <option value="hu">🇭🇺 Magyar</option>
+                <option value="it">🇮🇹 Italiano</option>
+                <option value="de">🇩🇪 Deutsch</option>
+            </select>
+            <button id="themeToggle" class="theme-toggle glass" aria-label="Toggle theme">
+                <svg class="sun-icon" viewBox="0 0 24 24" style="display:none">
+                    <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <path stroke="currentColor" stroke-width="2" d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+                <svg class="moon-icon" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-width="2" fill="none" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-nav glass" id="mobileNav">
+        <div class="mobile-nav-section">
+            <div class="mobile-nav-title" data-i18n="nav.helpCenter">Help Center</div>
+            <a href="#home">Help Center</a>
+            <a href="#getting-started">Getting started</a>
+            <a href="#install-linux">Linux install</a>
+            <a href="#troubleshoot">Troubleshooting</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="mobile-nav-section">
+            <div class="mobile-nav-title" data-i18n="nav.socials">Socials</div>
+            <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank" rel="noopener" data-i18n="nav.github">GitHub</a>
+            <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" rel="noopener" data-i18n="nav.discord">Discord</a>
+        </div>
+        <div class="mobile-nav-section">
+            <div class="mobile-nav-title" data-i18n="nav.supportBug">Support</div>
+            <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" rel="noopener" data-i18n="nav.discordSupport">Discord Support</a>
+            <a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank" rel="noopener" data-i18n="nav.githubBug">GitHub Bug Report</a>
+            <a href="mailto:contact@redstone-launcher.com" data-i18n="nav.emailSupport">Email Support</a>
+        </div>
+    </div>
+
+    <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+    <div class="docs-shell">
+        <aside class="docs-sidebar" id="docsSidebar">
+            <button type="button" class="sidebar-search" id="openSearch">
+                <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <span data-i18n="search.placeholder">Search help…</span>
+                <kbd>/</kbd>
+            </button>
+            <nav id="sidebarNav" aria-label="Documentation"></nav>
+        </aside>
+
+        <div class="docs-main">
+            <div class="article-row">
+                <div class="article-wrap" id="article"></div>
+                <aside class="toc-sidebar empty" id="tocSidebar" aria-label="On this page">
+                    <div class="toc-label" data-i18n="common.onThisPage">On this page</div>
+                    <nav id="tocNav"></nav>
+                </aside>
+            </div>
+            <footer>
+                <span data-i18n="common.rights">© Redstone Launcher. All rights reserved - Created by Muavees and TGGamesYT</span>
+                <span class="status">
+                    <a href="https://redstone-launcher.com/">Last update: 2026-08-19</a>
+                </span>
+            </footer>
+        </div>
+    </div>
+
+    <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search">
+        <div class="search-panel">
+            <input id="searchInput" type="search" autocomplete="off" placeholder="Search install, login, mods, Linux…" />
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <script src="features.js"></script>
+    <script src="i18n/en.js"></script>
+    <script src="i18n/hu.js"></script>
+    <script src="i18n/it.js"></script>
+    <script src="i18n/de.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
