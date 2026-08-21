@@ -107,9 +107,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
         });
 
         applyLang(document.documentElement.lang || 'en');
-    } catch (e) {
-        console.warn('Could not fetch latest release version:', e);
-    }
+    } catch (e) { /* ignore */ }
 })();
 
 const langSwitcher = document.getElementById('langSwitcher');

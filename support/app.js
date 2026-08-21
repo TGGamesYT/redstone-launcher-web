@@ -250,10 +250,9 @@
 
   function bindFeedback(pageId) {
     document.querySelectorAll("[data-fb]").forEach((btn) => {
-      btn.addEventListener("click", async () => {
+      btn.addEventListener("click", () => {
         const yes = btn.getAttribute("data-fb") === "yes";
-        try { localStorage.setItem("rl-fb-" + pageId, yes ? "1" : "0"); } catch (e) { console.warn("rl-fb localStorage error", e); }
-        console.log("RL Feedback click:", pageId, yes);
+        try { localStorage.setItem("rl-fb-" + pageId, yes ? "1" : "0"); } catch { /* ignore */ }
         document.querySelectorAll("[data-fb]").forEach((b) => {
           const isYes = b.getAttribute("data-fb") === "yes";
           b.classList.toggle("active-yes", isYes && yes);
@@ -261,61 +260,6 @@
         });
         const thanks = document.getElementById("fbThanks");
         if (thanks) thanks.hidden = false;
-
-        // Build provider-aware feedback POST. Configuration options:
-        // - window.RL_FEEDBACK_API: explicit full endpoint or base URL
-        // - window.RL_FEEDBACK_PROVIDER: 'redstoneapi' to target redstoneapi defaults
-        // - window.RL_API_ENV or window.RL_ENV: environment tag (staging/prod)
-        // - window.RL_FEEDBACK_API_KEY: optional bearer token
-
-        const provider = (window.RL_FEEDBACK_PROVIDER || "").toLowerCase();
-        const customUrl = window.RL_FEEDBACK_API || null;
-        const env = window.RL_API_ENV || window.RL_ENV || null;
-        const apiKey = window.RL_FEEDBACK_API_KEY || null;
-
-        const baseCandidates = [];
-        if (customUrl) baseCandidates.push(customUrl.replace(/\/$/, ""));
-        if (provider === "redstoneapi") baseCandidates.push("https://redstoneapi.vercel.com");
-        baseCandidates.push("https://redstoneapi.vercel.com", "https://redstoneapi.vercel.app");
-
-        const payload = {
-          page: pageId,
-          helpful: yes,
-          lang: lang,
-          version: latestVersion || null,
-          source: "support"
-        };
-
-        const headers = { "Content-Type": "application/json" };
-        if (apiKey) headers["Authorization"] = "Bearer " + apiKey;
-        if (env) headers["X-RL-ENV"] = env;
-
-        async function tryPost(url) {
-          try {
-            console.log("RL Feedback POST ->", url, payload);
-            const resp = await fetch(url, { method: "POST", headers, body: JSON.stringify(payload), keepalive: true });
-            if (!resp.ok) throw new Error("HTTP " + resp.status);
-            return resp;
-          } catch (e) {
-            return null;
-          }
-        }
-
-        if (customUrl && /\/(feedback|api\/feedback|api\/v1\/feedback)$/i.test(customUrl)) {
-          tryPost(customUrl).catch(() => {});
-          return;
-        }
-
-        const paths = ["/api/feedback", "/feedback", "/api/v1/feedback"];
-        for (const base of [...new Set(baseCandidates)]) {
-          for (const p of paths) {
-            const url = base + p;
-            const r = await tryPost(url);
-            if (r) return;
-          }
-        }
-
-        if (customUrl) await tryPost(customUrl);
       });
     });
   }

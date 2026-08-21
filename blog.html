@@ -603,9 +603,7 @@
                 var latestVersion = data.tag_name || data.name || '';
                 if (!latestVersion) return;
                 updateLatestBadge(latestVersion);
-            } catch (e) {
-                console.warn('Could not fetch latest release version:', e);
-            }
+            } catch (e) { /* ignore */ }
         }
 
         function updateSearch() {
