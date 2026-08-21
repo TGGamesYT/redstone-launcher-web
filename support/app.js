@@ -252,7 +252,8 @@
     document.querySelectorAll("[data-fb]").forEach((btn) => {
       btn.addEventListener("click", async () => {
         const yes = btn.getAttribute("data-fb") === "yes";
-        try { localStorage.setItem("rl-fb-" + pageId, yes ? "1" : "0"); } catch { /* ignore */ }
+        try { localStorage.setItem("rl-fb-" + pageId, yes ? "1" : "0"); } catch (e) { console.warn("rl-fb localStorage error", e); }
+        console.log("RL Feedback click:", pageId, yes);
         document.querySelectorAll("[data-fb]").forEach((b) => {
           const isYes = b.getAttribute("data-fb") === "yes";
           b.classList.toggle("active-yes", isYes && yes);
@@ -291,6 +292,7 @@
 
         async function tryPost(url) {
           try {
+            console.log("RL Feedback POST ->", url, payload);
             const resp = await fetch(url, { method: "POST", headers, body: JSON.stringify(payload), keepalive: true });
             if (!resp.ok) throw new Error("HTTP " + resp.status);
             return resp;
