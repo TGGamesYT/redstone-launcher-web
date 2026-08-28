@@ -76,6 +76,7 @@ window.RL_I18N.en = {
       { id: "mods", title: "Add mods", body: "Pick a **loader** (Fabric / Forge / Quilt), then install from **Modrinth** or **CurseForge** in-app. Version must match. [Mods](#mods)." },
       { id: "servers", title: "Host a server", body: "Create a server in the launcher - **Purpur**, **Folia**, EULA prompt, resource packs. [Servers](#servers)." },
       { id: "skins", title: "Skins, capes, QR login", body: "**Skin changer**, **cape changer**, and **QR Microsoft auth** live in the launcher. [Skins & extras](#skins)." },
+      { id: "skin-creator", title: "Make a skin in-app", body: "The **simple creator** picks textures and colour buckets with a live 3D preview. Or paint on the 2D/3D editor. [Skin creator](#skin-creator)." },
       { id: "shortcuts", title: "One-click desktop play", body: "Pin an **instance**, **world**, or **server** to the desktop. [Desktop shortcuts](#shortcuts)." },
       { id: "settings-java", title: "Wrong Java?", body: "The launcher **downloads Java automatically**. You can still set a **custom path**. [Settings & Java](#settings-java)." },
       { id: "troubleshoot", title: "Still broken?", body: "Start with [Troubleshooting](#troubleshoot). Then [Discord](https://discord.gg/S9H2Z6SuEA) or a [GitHub issue](https://github.com/TGGamesYT/redstone-launcher/issues)." }
@@ -316,6 +317,35 @@ window.RL_I18N.en = {
         { type: "p", text: "There is also a **cape changer** for capes tied to that account." },
         { type: "p", text: "Microsoft sign-in can use a **QR code** as well as the usual browser flow. See [Sign in](#microsoft-login) if login fails." },
         { type: "p", text: "If a tool is missing on your OS, ask on Discord - not every panel ships on day one of a release." }
+      ]
+    },
+    "skin-creator": {
+      nav: "Skin creator",
+      category: "Play & manage",
+      title: "Skin creator",
+      lede: "Build a skin in the launcher: pick cosmetics and colours in the simple creator, or paint on the 2D texture and 3D model.",
+      keywords: "skin creator editor simple starlight paint 3d texture colour bucket",
+      blocks: [
+        { type: "p", text: "The newest skin work in Redstone is an in-app **simple creator** plus a stronger **skin editor**. You no longer need a separate website to assemble a look." },
+        { type: "h2", text: "Simple creator" },
+        { type: "p", text: "Open **Skins** and start the simple creator. Categories are grouped **Body** and **Style**. Texture options show as **thumbnail cards**. Colours are **bucket swatches** for the selected texture - a second colour only appears when that texture uses one." },
+        { type: "ul", items: [
+          "The **brush** bucket at the end of a colour row opens a colour picker.",
+          "**Reset to default** above a colour row restores that option's preview colour.",
+          "Hover a texture card for **credits** (created by / remixed by / from).",
+          "**Save**, **Randomize**, and **Reset** sit under the 3D preview. Save asks for a name.",
+          "Switching an existing skin into the simple creator uses an in-app modal, not a system popup."
+        ]},
+        { type: "h2", text: "Paint editor" },
+        { type: "ul", items: [
+          "Draw **anywhere on the 2D texture**. The 2D view always edits every layer.",
+          "On the **3D model**, clicks hit the right body part and layer (no painting through the back).",
+          "Edit-2nd-layer defaults **on**; the overlay toggle only shows/edits the 2nd layer in 3D.",
+          "**Clear 2nd layer** updates live.",
+          "The **image** modal has its own 3D preview and does not let you draw through it."
+        ]},
+        { type: "callout", kind: "tip", title: "Which mode?", text: "Use the simple creator to mix ready-made parts. Use the editor to paint. Switching modes does not wipe the skin unless you confirm a replace. A skin re-opens in the editor it was made in." },
+        { type: "p", text: "Cape changing and **QR Microsoft login** are still on [Skins & extras](#skins)." }
       ]
     },
     shortcuts: {

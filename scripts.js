@@ -32,7 +32,8 @@ const translations = {
         socials: "Közösségi média", indicators: "Indikátorok", support_bug: "Támogatás és hibajelentés",
         youtube: "YouTube", github: "GitHub", new_features: "Új funkciók", our_team: "Csapatunk",
         discord_support: "Discord támogatás", github_bug: "GitHub hibajelentés", email_support: "Email támogatás",
-        word_free: "100% Ingyenes", word_open: "100% Nyílt forráskódú", word_cross: "Platformfüggetlen", word_updates: "Rendszeres frissítések", word_custom: "100% Testreszabható"
+        word_free: "100% Ingyenes", word_open: "100% Nyílt forráskódú", word_cross: "Platformfüggetlen", word_updates: "Rendszeres frissítések", word_custom: "100% Testreszabható",
+        support: "Segitség"
     },
     it: {
         badge_beta: "Versione …", title: "Redstone Launcher",
@@ -55,7 +56,8 @@ const translations = {
         socials: "Social", indicators: "Indicatori", support_bug: "Supporto e segnalazioni",
         youtube: "YouTube", github: "GitHub", new_features: "Nuove funzionalità", our_team: "Il nostro team",
         discord_support: "Supporto Discord", github_bug: "Segnalazione bug su GitHub", email_support: "Supporto email",
-        word_free: "100% Gratuito", word_open: "100% Open Source", word_cross: "Multipiattaforma", word_updates: "Aggiornamenti regolari", word_custom: "100% Personalizzabile"
+        word_free: "100% Gratuito", word_open: "100% Open Source", word_cross: "Multipiattaforma", word_updates: "Aggiornamenti regolari", word_custom: "100% Personalizzabile",
+        support: "Supporto"
     },
     de: {
         badge_beta: "Version …", title: "Redstone Launcher",
@@ -78,7 +80,8 @@ const translations = {
         socials: "Soziale Medien", indicators: "Indikatoren", support_bug: "Support & Fehlerbericht",
         youtube: "YouTube", github: "GitHub", new_features: "Neue Funktionen", our_team: "Unser Team",
         discord_support: "Discord Support", github_bug: "GitHub Fehlerbericht", email_support: "E-Mail Support",
-        word_free: "100% Kostenlos", word_open: "100% Open Source", word_cross: "Plattformübergreifend", word_updates: "Regelmäßige Updates", word_custom: "100% Anpassbar"
+        word_free: "100% Kostenlos", word_open: "100% Open Source", word_cross: "Plattformübergreifend", word_updates: "Regelmäßige Updates", word_custom: "100% Anpassbar",
+        support: "Support"
     }
 };
 

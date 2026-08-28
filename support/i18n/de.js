@@ -75,6 +75,7 @@ window.RL_I18N.de = {
       { id: "mods", title: "Mods hinzufügen", body: "**Loader** wählen, dann aus **Modrinth** oder **CurseForge** in der App installieren. Version muss passen. [Mods](#mods)." },
       { id: "servers", title: "Server hosten", body: "Server im Launcher - **Purpur**, **Folia**, EULA, Resource Packs. [Server](#servers)." },
       { id: "skins", title: "Skins, Capes, QR", body: "**Skin-Wechsler**, **Cape-Wechsler** und **QR-Microsoft-Login**. [Skins & Extras](#skins)." },
+      { id: "skin-creator", title: "Skin in der App bauen", body: "Der **Simple Creator** wählt Texturen und Farb-Buckets mit 3D-Vorschau. Oder male im 2D/3D-Editor. [Skin-Creator](#skin-creator)." },
       { id: "shortcuts", title: "Ein Klick vom Desktop", body: "**Instanz**, **Welt** oder **Server** auf den Desktop heften. [Desktop-Verknüpfungen](#shortcuts)." },
       { id: "settings-java", title: "Falsches Java?", body: "Der Launcher **lädt Java automatisch**. Du kannst trotzdem einen **eigenen Pfad** setzen. [Einstellungen & Java](#settings-java)." },
       { id: "troubleshoot", title: "Immer noch kaputt?", body: "Zuerst [Fehlerbehebung](#troubleshoot). Dann [Discord](https://discord.gg/S9H2Z6SuEA) oder ein [GitHub-Issue](https://github.com/TGGamesYT/redstone-launcher/issues)." }
@@ -315,6 +316,35 @@ window.RL_I18N.de = {
         { type: "p", text: "Es gibt auch einen **Cape-Wechsler** für Capes dieses Kontos." },
         { type: "p", text: "Microsoft-Login kann einen **QR-Code** nutzen, nicht nur den Browser-Flow. Siehe [Anmelden](#microsoft-login), wenn der Login scheitert." },
         { type: "p", text: "Fehlt ein Tool auf deinem OS, frag auf Discord - nicht jedes Panel kommt am Release-Tag." }
+      ]
+    },
+    "skin-creator": {
+      nav: "Skin-Creator",
+      category: "Spielen & verwalten",
+      title: "Skin-Creator",
+      lede: "Skin im Launcher bauen: Teile und Farben im Simple Creator, oder auf 2D-Textur und 3D-Modell malen.",
+      keywords: "skin creator editor simple malen 3d textur farbe bucket",
+      blocks: [
+        { type: "p", text: "Das neueste Skin-Feature ist ein **Simple Creator** in der App plus ein stärkerer **Skin-Editor**. Du brauchst keine extra Website mehr, um einen Look zusammenzusetzen." },
+        { type: "h2", text: "Simple Creator" },
+        { type: "p", text: "Öffne **Skins** und starte den Simple Creator. Kategorien **Body** und **Style**. Texturen als **Karten**. Farben sind **Eimer-Swatches** der gewählten Textur - eine zweite Farbe nur, wenn die Textur eine nutzt." },
+        { type: "ul", items: [
+          "Der **Pinsel**-Eimer am Ende einer Farbzeile öffnet einen Color-Picker.",
+          "**Reset to default** über einer Zeile stellt die Vorschaufarbe der Option wieder her.",
+          "Hover auf einer Texturkarte zeigt **Credits** (created by / remixed by / from).",
+          "**Save**, **Randomize** und **Reset** unter der 3D-Vorschau. Save fragt nach einem Namen.",
+          "Eine vorhandene Skin in den Creator zu schieben nutzt ein In-App-Modal, kein System-Popup."
+        ]},
+        { type: "h2", text: "Mal-Editor" },
+        { type: "ul", items: [
+          "Male **überall auf der 2D-Textur**. 2D bearbeitet immer alle Layer.",
+          "Am **3D-Modell** treffen Klicks den richtigen Körperteil und Layer.",
+          "Edit-2nd-layer ist standardmäßig **an**; der Overlay-Toggle zeigt/editiert nur den 2. Layer in 3D.",
+          "**Clear 2nd layer** aktualisiert live.",
+          "Das **Bild**-Modal hat eine eigene 3D-Vorschau und lässt dich nicht dahinter malen."
+        ]},
+        { type: "callout", kind: "tip", title: "Welcher Modus?", text: "Simple Creator für fertige Teile. Editor zum Malen. Moduswechsel löscht die Skin nicht, außer du bestätigst ein Ersetzen. Eine Skin öffnet sich wieder in dem Editor, in dem sie gemacht wurde." },
+        { type: "p", text: "Cape-Wechsel und **QR-Microsoft-Login** stehen unter [Skins & Extras](#skins)." }
       ]
     },
     shortcuts: {

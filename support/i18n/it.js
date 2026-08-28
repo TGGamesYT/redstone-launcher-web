@@ -75,6 +75,7 @@ window.RL_I18N.it = {
       { id: "mods", title: "Aggiungere mod", body: "Scegli un **loader**, poi installa da **Modrinth** o **CurseForge** nell’app. La versione deve coincidere. [Mod](#mods)." },
       { id: "servers", title: "Hostare un server", body: "Crea un server nel launcher - **Purpur**, **Folia**, EULA, resource pack. [Server](#servers)." },
       { id: "skins", title: "Skin, cape, QR", body: "**Skin changer**, **cape changer** e **login Microsoft via QR**. [Skin ed extra](#skins)." },
+      { id: "skin-creator", title: "Crea una skin nell’app", body: "Il **simple creator** sceglie texture e colori con anteprima 3D. Oppure dipingi nell’editor 2D/3D. [Skin creator](#skin-creator)." },
       { id: "shortcuts", title: "Play dal desktop", body: "Fissa un’**istanza**, un **mondo** o un **server** sul desktop. [Scorciatoie desktop](#shortcuts)." },
       { id: "settings-java", title: "Java sbagliato?", body: "Il launcher **scarica Java in automatico**. Puoi comunque impostare un **percorso personalizzato**. [Impostazioni e Java](#settings-java)." },
       { id: "troubleshoot", title: "Ancora rotto?", body: "Parti da [Risoluzione problemi](#troubleshoot). Poi [Discord](https://discord.gg/S9H2Z6SuEA) o una [issue GitHub](https://github.com/TGGamesYT/redstone-launcher/issues)." }
@@ -311,10 +312,39 @@ window.RL_I18N.it = {
       lede: "Cambia skin e cape nel launcher. L’accesso Microsoft ha anche un’opzione QR.",
       keywords: "skin cappa giocatore editor mondo resource pack optimizer strumenti",
       blocks: [
-        { type: "p", text: "La schermata **Skin** permette di vedere e cambiare la skin dell’account connesso." },
+        { type: "p", text: "La schermata **Skin** permette di vedere e cambiare la skin dell’account connesso. Per **crearne** una: [skin creator](#skin-creator)." },
         { type: "p", text: "C’è anche un **cape changer** per i cape di quell’account." },
         { type: "p", text: "L’accesso Microsoft può usare un **codice QR** oltre al flusso nel browser. Vedi [Accedi](#microsoft-login) se il login fallisce." },
         { type: "p", text: "Se uno strumento manca sul tuo OS, chiedi su Discord - non tutti i pannelli arrivano il giorno della release." }
+      ]
+    },
+    "skin-creator": {
+      nav: "Skin creator",
+      category: "Gioca e gestisci",
+      title: "Skin creator",
+      lede: "Crea una skin nel launcher: pezzi e colori nel simple creator, oppure dipingi sulla texture 2D e sul modello 3D.",
+      keywords: "skin creator editor simple paint 3d texture colore",
+      blocks: [
+        { type: "p", text: "Il lavoro più nuovo sulle skin è un **simple creator** in-app e un **editor** più solido. Non serve un sito a parte per montare un look." },
+        { type: "h2", text: "Simple creator" },
+        { type: "p", text: "Apri **Skins** e avvia il simple creator. Categorie **Body** e **Style**. Le texture sono **card**. I colori sono **secchielli** della texture scelta - un secondo colore solo se quella texture lo usa." },
+        { type: "ul", items: [
+          "Il secchiello **pennello** in fondo alla riga apre un selettore colore.",
+          "**Reset to default** sopra una riga ripristina il colore di anteprima.",
+          "Hover su una card per i **credits** (created by / remixed by / from).",
+          "**Save**, **Randomize** e **Reset** sotto l’anteprima 3D. Save chiede un nome.",
+          "Passare una skin esistente al creator usa un modal in-app, non un popup di sistema."
+        ]},
+        { type: "h2", text: "Editor pittura" },
+        { type: "ul", items: [
+          "Disegna **ovunque sulla texture 2D**. Il 2D modifica sempre tutti i layer.",
+          "Sul **modello 3D** i clic colpiscono la parte e il layer giusti.",
+          "Edit-2nd-layer è **on** di default; l’overlay mostra/modifica solo il 2° layer in 3D.",
+          "**Clear 2nd layer** si aggiorna in diretta.",
+          "Il modal **immagine** ha la propria anteprima 3D e non lascia disegnare dietro."
+        ]},
+        { type: "callout", kind: "tip", title: "Quale modalità?", text: "Simple creator per pezzi pronti. Editor per dipingere. Cambiare modalità non cancella la skin se non confermi. Una skin si riapre nell’editor in cui è stata fatta." },
+        { type: "p", text: "Cape e **login Microsoft via QR**: [Skin ed extra](#skins)." }
       ]
     },
     shortcuts: {

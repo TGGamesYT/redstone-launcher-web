@@ -75,6 +75,7 @@ window.RL_I18N.hu = {
       { id: "mods", title: "Modok", body: "Válassz **loadert**, majd telepíts **Modrinthről** vagy **CurseForge-ról** az appban. A verzió egyezzen. [Modok](#mods)." },
       { id: "servers", title: "Szerver indítása", body: "Szerver a launcherben - **Purpur**, **Folia**, EULA, resource packek. [Szerverek](#servers)." },
       { id: "skins", title: "Skin, köpeny, QR", body: "**Skinváltó**, **köpenyváltó** és **QR-es Microsoft-belépés**. [Skinek és extra](#skins)." },
+      { id: "skin-creator", title: "Skin készítése az appban", body: "Az **egyszerű creator** textúrákat és színvödröket ad, élő 3D előnézettel. Vagy fess a 2D/3D editorban. [Skin készítő](#skin-creator)." },
       { id: "shortcuts", title: "Egykattintásos játék", body: "Tűzz ki **instance**-t, **világot** vagy **szervert** az asztalra. [Asztali parancsikonok](#shortcuts)." },
       { id: "settings-java", title: "Rossz Java?", body: "A launcher **automatikusan letölti a Javát**. Egyedi útvonalat is beállíthatsz. [Beállítások és Java](#settings-java)." },
       { id: "troubleshoot", title: "Még mindig rossz?", body: "Kezdd a [hibaelhárítással](#troubleshoot). Aztán [Discord](https://discord.gg/S9H2Z6SuEA) vagy [GitHub issue](https://github.com/TGGamesYT/redstone-launcher/issues)." }
@@ -311,10 +312,39 @@ window.RL_I18N.hu = {
       lede: "Skint és köpenyt a launcherben váltasz. A Microsoft-belépéshez QR-kódos mód is van.",
       keywords: "skin kopeny jatekos vilagszerkeszto resource pack optimizer eszkozok",
       blocks: [
-        { type: "p", text: "A **Skin** képernyőn meg tudod nézni és cserélni a bejelentkezett fiók skinjét." },
+        { type: "p", text: "A **Skin** képernyőn meg tudod nézni és cserélni a bejelentkezett fiók skinjét. Skin **készítéséhez** lásd: [skin készítő](#skin-creator)." },
         { type: "p", text: "Van **köpenyváltó** is az ahhoz a fiókhoz tartozó köpenyekhez." },
         { type: "p", text: "A Microsoft-belépéshez **QR-kód** is használható a szokásos böngészős folyamat mellett. Ha a belépés elhasal, lásd: [Belépés](#microsoft-login)." },
         { type: "p", text: "Ha egy eszköz hiányzik a rendszereden, kérdezz Discordon - nem minden panel jön ki a kiadás első napján." }
+      ]
+    },
+    "skin-creator": {
+      nav: "Skin készítő",
+      category: "Játék és kezelés",
+      title: "Skin készítő",
+      lede: "Skin a launcherben: egyszerű creator textúrákkal és színekkel, vagy festés a 2D textúrán és a 3D modellen.",
+      keywords: "skin keszito editor simple festes 3d textura szin",
+      blocks: [
+        { type: "p", text: "A Redstone legújabb skin-munkája egy beépített **egyszerű creator** és egy erősebb **skin editor**. Nem kell külön weblap a kinézet összerakásához." },
+        { type: "h2", text: "Egyszerű creator" },
+        { type: "p", text: "Nyisd meg a **Skins** nézetet, és indítsd az egyszerű creatort. A kategóriák **Body** és **Style**. A textúrák **kártyák**. A színek **vödrök** a kiválasztott textúrához - második szín csak akkor, ha a textúra használja." },
+        { type: "ul", items: [
+          "A sor végi **ecset** vödör színválasztót nyit.",
+          "A **Reset to default** visszaállítja az opció előnézeti színét.",
+          "Textúrakártyára húzva **kreditek** (created by / remixed by / from).",
+          "**Save**, **Randomize** és **Reset** a 3D előnézet alatt. A mentés nevet kér.",
+          "Meglévő skin creatorba váltása in-app modallal megy, nem rendszer-popuppal."
+        ]},
+        { type: "h2", text: "Festő editor" },
+        { type: "ul", items: [
+          "Fess **bárhova a 2D textúrán**. A 2D mindig minden réteget szerkeszt.",
+          "A **3D modellen** a kattintás a jó testrészre és rétegre esik.",
+          "A 2. réteg szerkesztése alapból **be** van; az overlay csak a 2. réteget mutatja 3D-n.",
+          "A **2. réteg törlése** azonnal frissül.",
+          "A **kép** modalnak saját 3D előnézete van, és nem lehet rajta keresztül festeni."
+        ]},
+        { type: "callout", kind: "tip", title: "Melyik mód?", text: "Egyszerű creator: kész darabok. Editor: festés. Módváltás nem törli a skint, hacsak nem erősíted meg. A skin abban az editorban nyílik újra, amiben készült." },
+        { type: "p", text: "Köpenyváltás és **QR-es Microsoft-belépés**: [Skinek és extra](#skins)." }
       ]
     },
     shortcuts: {
