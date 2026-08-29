@@ -524,7 +524,6 @@ h1 {
 
 .btn-primary:hover {
     background: var(--primary-hover);
-    transform: scale(1.05);
 }
 
 .btn-glass {
@@ -532,7 +531,6 @@ h1 {
 }
 
 .btn-glass:hover {
-    transform: scale(1.05);
     background: var(--accent);
 }
 
