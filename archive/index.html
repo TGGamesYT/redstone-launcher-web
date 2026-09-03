@@ -1,759 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive – Redstone Launcher</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <meta name="description"
-        content="Redstone Launcher archive page. Download legacy versions of Redstone Launcher for Windows, from 1.1.0 to 1.10.5.">
+    <title>Archive · Redstone Launcher</title>
+    <meta name="description" content="Redstone Launcher archive. Download legacy Windows builds from 1.1.0 to 1.10.5, originally hosted on Google Drive.">
     <meta name="author" content="Redstone Launcher Team">
-    <meta property="og:title" content="Redstone Launcher - Archive" />
-    <meta property="og:description" content="The best Minecraft Launcher with a crazy amount of features">
+    <meta property="og:title" content="Archive · Redstone Launcher">
+    <meta property="og:description" content="Legacy Windows builds of Redstone Launcher from 1.1.0 through 1.10.5.">
     <meta property="og:image" content="https://redstone-launcher.com/img/redstonebanner.png">
     <meta name="theme-color" content="#d60505">
     <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="shortcut icon"
-        href="https://github.com/TGGamesYT/redstone-launcher-web/blob/main/img/new-logo.png?raw=true"
-        type="image/x-icon">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Linux+Libertine+O:wght@400;600&family=DejaVu+Sans:wght@400;500&display=swap"
-        rel="stylesheet">
-    <style>
-        :root {
-            --bg: #020303;
-            --bg2: #222222;
-            --bg3: #2a2a2a;
-            --border: #3a3a3a;
-            --text: #ffffff;
-            --text-dim: #888;
-            --red: #cc3333;
-            --red-light: #fbfbfb;
-            --red-dim: #8a2020;
-            --link: #f1acac;
-            --link-h: #ff8888;
-            --mono: 'DejaVu Sans Mono', 'Courier New', monospace;
-            --serif: 'Linux Libertine O', 'Georgia', serif;
-            --sans: 'DejaVu Sans', 'Verdana', sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: var(--sans);
-            font-size: 14px;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        #topbar {
-            background: var(--bg2);
-            border-bottom: 1px solid var(--red-dim);
-            padding: 0 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            height: 48px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        #topbar .site-name {
-            font-family: var(--serif);
-            font-size: 1.15rem;
-            color: var(--red-light);
-            letter-spacing: 0.02em;
-            white-space: nowrap;
-            text-decoration: none;
-        }
-
-        #topbar .site-name span {
-            color: var(--text-dim);
-            font-size: 0.85em;
-        }
-
-        #topbar nav {
-            display: flex;
-            gap: 1rem;
-            margin-left: auto;
-            font-size: 0.85rem;
-        }
-
-        #topbar nav a {
-            color: var(--text-dim);
-            text-decoration: none;
-        }
-
-        #topbar nav a:hover {
-            color: var(--link-h);
-        }
-
-        #layout {
-            display: flex;
-            max-width: 1100px;
-            margin: 0 auto;
-            min-height: calc(100vh - 48px);
-        }
-
-        #sidebar {
-            width: 220px;
-            flex-shrink: 0;
-            border-right: 1px solid var(--border);
-            padding: 1.5rem 1rem;
-            font-size: 0.82rem;
-        }
-
-        .sidebar-section {
-            margin-bottom: 1.5rem;
-        }
-
-        .sidebar-section h4 {
-            font-family: var(--sans);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-dim);
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.3rem;
-            margin-bottom: 0.6rem;
-        }
-
-        .sidebar-section ul {
-            list-style: none;
-        }
-
-        .sidebar-section ul li {
-            padding: 0.15rem 0;
-        }
-
-        .sidebar-section ul li a {
-            color: var(--link);
-            text-decoration: none;
-        }
-
-        .sidebar-section ul li a:hover {
-            color: var(--link-h);
-            text-decoration: underline;
-        }
-
-        .sidebar-section ul li a.active {
-            color: var(--red-light);
-            font-weight: 600;
-        }
-
-        #main {
-            flex: 1;
-            padding: 2rem 2.5rem;
-            max-width: 800px;
-        }
-
-        .page-header {
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.6rem;
-            margin-bottom: 1.6rem;
-        }
-
-        .page-header h1 {
-            font-family: var(--serif);
-            font-size: 1.9rem;
-            font-weight: 600;
-            color: #e8e8e8;
-            line-height: 1.2;
-        }
-
-        .page-header .breadcrumb {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            margin-bottom: 0.3rem;
-        }
-
-        .page-header .breadcrumb a {
-            color: var(--link);
-            text-decoration: none;
-        }
-
-        .page-header .breadcrumb a:hover {
-            text-decoration: underline;
-        }
-
-        .toc {
-            background: var(--bg2);
-            border: 1px solid var(--border);
-            display: inline-block;
-            padding: 0.8rem 1.2rem;
-            margin-bottom: 1.8rem;
-            min-width: 220px;
-        }
-
-        .toc-title {
-            font-weight: 600;
-            font-size: 0.85rem;
-            margin-bottom: 0.4rem;
-            color: #ddd;
-        }
-
-        .toc ol {
-            padding-left: 1.2rem;
-            font-size: 0.82rem;
-        }
-
-        .toc ol li {
-            padding: 0.1rem 0;
-        }
-
-        .toc a {
-            color: var(--link);
-            text-decoration: none;
-        }
-
-        .toc a:hover {
-            text-decoration: underline;
-            color: var(--link-h);
-        }
-
-        .content-section {
-            margin-bottom: 2rem;
-        }
-
-        .content-section h2 {
-            font-family: var(--serif);
-            font-size: 1.35rem;
-            color: #e0e0e0;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.3rem;
-            margin-bottom: 0.9rem;
-        }
-
-        .content-section h3 {
-            font-family: var(--serif);
-            font-size: 1.1rem;
-            color: #d0d0d0;
-            margin: 1.2rem 0 0.5rem 0;
-        }
-
-        p {
-            margin-bottom: 0.8rem;
-            color: var(--text);
-        }
-
-        .note {
-            background: var(--bg3);
-            border-left: 3px solid var(--red-dim);
-            padding: 0.7rem 1rem;
-            margin: 1rem 0;
-            font-size: 0.87rem;
-        }
-
-        .note strong {
-            color: var(--red-light);
-        }
-
-        .search-wrap {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.2rem;
-            align-items: center;
-        }
-
-        .search-wrap input {
-            background: var(--bg3);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 0.45rem 0.7rem;
-            font-family: var(--mono);
-            font-size: 0.88rem;
-            width: 220px;
-            outline: none;
-            transition: border-color 0.15s;
-        }
-
-        .search-wrap input:focus {
-            border-color: var(--red-dim);
-        }
-
-        .search-wrap input::placeholder {
-            color: var(--text-dim);
-        }
-
-        .search-status {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            margin-left: 0.2rem;
-        }
-
-        .version-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.88rem;
-        }
-
-        .version-table thead th {
-            background: var(--bg3);
-            border: 1px solid var(--border);
-            padding: 0.45rem 0.8rem;
-            text-align: left;
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--text-dim);
-            font-weight: 600;
-        }
-
-        .version-table tbody tr {
-            border-bottom: 1px solid var(--border);
-            transition: background 0.1s;
-        }
-
-        .version-table tbody tr:hover {
-            background: var(--bg2);
-        }
-
-        .version-table tbody tr.hidden {
-            display: none;
-        }
-
-        .version-table td {
-            padding: 0.5rem 0.8rem;
-            border-left: 1px solid var(--border);
-            border-right: 1px solid var(--border);
-        }
-
-        .version-table td:first-child {
-            font-family: var(--mono);
-            font-size: 0.9rem;
-            color: #e0e0e0;
-            white-space: nowrap;
-            width: 90px;
-        }
-
-        .version-table td.tag-cell {
-            width: 100px;
-        }
-
-        .tag {
-            display: inline-block;
-            font-size: 0.7rem;
-            padding: 0.1rem 0.45rem;
-            border-radius: 2px;
-            font-family: var(--mono);
-            letter-spacing: 0.03em;
-        }
-
-        .tag-latest {
-            background: #2a1010;
-            color: var(--red-light);
-            border: 1px solid var(--red-dim);
-        }
-
-        .tag-legacy {
-            background: #1e1e1e;
-            color: #777;
-            border: 1px solid #444;
-        }
-
-        .tag-stable {
-            background: #0f1e0f;
-            color: #6a9;
-            border: 1px solid #2a4a2a;
-        }
-
-        .version-table td a {
-            color: var(--link);
-            text-decoration: none;
-            font-family: var(--mono);
-            font-size: 0.82rem;
-            word-break: break-all;
-        }
-
-        .version-table td a:hover {
-            color: var(--link-h);
-            text-decoration: underline;
-        }
-
-        .dl-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            background: var(--bg3);
-            border: 1px solid var(--border);
-            color: var(--link);
-            padding: 0.25rem 0.6rem;
-            font-size: 0.8rem;
-            font-family: var(--sans);
-            text-decoration: none;
-            cursor: pointer;
-            transition: border-color 0.15s, color 0.15s;
-        }
-
-        .dl-btn:hover {
-            border-color: var(--red-dim);
-            color: var(--link-h);
-            background: var(--bg2);
-        }
-
-        .dl-btn svg {
-            width: 12px;
-            height: 12px;
-            flex-shrink: 0;
-        }
-
-        #no-results {
-            display: none;
-            color: var(--text-dim);
-            font-style: italic;
-            padding: 0.8rem 0;
-            font-size: 0.88rem;
-        }
-
-        #footer {
-            border-top: 1px solid var(--border);
-            padding: 1rem 2.5rem;
-            font-size: 0.78rem;
-            color: var(--text-dim);
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        #footer a {
-            color: var(--link);
-            text-decoration: none;
-        }
-
-        #footer a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 700px) {
-            #sidebar {
-                display: none;
-            }
-
-            #main {
-                padding: 1.2rem 1rem;
-            }
-
-            .search-wrap input {
-                width: 100%;
-            }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://uploadzoo.muaves.com/redstone-launcher/redstone_logo_rounded_whitebg-removebg-preview.png" type="image/x-icon">
+    <link rel="stylesheet" href="../support/styles.css">
+    <link rel="stylesheet" href="archive.css">
 </head>
+<body class="archive-page">
+    <nav class="site-nav glass">
+        <a class="nav-brand" href="https://redstone-launcher.com/">
+            <img src="https://uploadzoo.muaves.com/redstone-launcher/redstone_logo_rounded_whitebg-removebg-preview.png" alt="Redstone Launcher Logo" class="nav-logo">
+            <span>Archive</span>
+        </a>
 
-<body>
+        <div class="nav-center">
+            <div class="nav-item">
+                <span data-i18n="nav.socials">Socials</span>
+                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                <div class="nav-dropdown glass">
+                    <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank" rel="noopener" data-i18n="nav.github">GitHub</a>
+                    <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" rel="noopener" data-i18n="nav.discord">Discord</a>
+                </div>
+            </div>
+            <div class="nav-item current">
+                <span data-i18n="nav.indicators">Indicators</span>
+                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                <div class="nav-dropdown glass">
+                    <a href="https://redstone-launcher.com/#news" data-i18n="nav.blog">News</a>
+                    <a href="./" aria-current="page" data-i18n="nav.archive">Archive versions</a>
+                    <a href="https://redstone-launcher.com/team.html" data-i18n="nav.team">Our Team</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <span data-i18n="nav.supportBug">Support &amp; Bug Report</span>
+                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                <div class="nav-dropdown glass">
+                    <a href="../support/" data-i18n="nav.helpCenter">Help Center</a>
+                    <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" rel="noopener" data-i18n="nav.discordSupport">Discord Support</a>
+                    <a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank" rel="noopener" data-i18n="nav.githubBug">GitHub Bug Report</a>
+                    <a href="/cdn-cgi/l/email-protection#bad9d5d4cedbd9cefac8dfdec9ced5d4df97d6dbcfd4d9d2dfc894d9d5d7" data-i18n="nav.emailSupport">Email Support</a>
+                </div>
+            </div>
+        </div>
 
-    <div id="topbar">
-        <a class="site-name" href="https://redstone-launcher.com">Redstone Launcher <span>Wiki</span></a>
-        <nav>
-            <a href="https://redstone-launcher.com">Home</a>
-            <a href="https://github.com/TGGamesYT/redstone-launcher/blob/main/README.md">Installation</a>
-            <a href="https://redstone-launcher.com/blog">Changelog</a>
-            <a href="" style="color:var(--red-light)">Archive</a>
-            <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank">GitHub</a>
-        </nav>
+        <div class="nav-actions">
+            <button type="button" class="sidebar-toggle glass" id="sidebarToggle" aria-label="Browse topics">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+            </button>
+            <select id="langSwitcher" class="glass nav-select" aria-label="Language">
+                <option value="en">🇬🇧 English</option>
+                <option value="hu">🇭🇺 Magyar</option>
+                <option value="it">🇮🇹 Italiano</option>
+                <option value="de">🇩🇪 Deutsch</option>
+            </select>
+            <button id="themeToggle" class="theme-toggle glass" aria-label="Toggle theme">
+                <svg class="sun-icon" viewBox="0 0 24 24" style="display:none">
+                    <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <path stroke="currentColor" stroke-width="2" d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+                <svg class="moon-icon" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-width="2" fill="none" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-nav glass" id="mobileNav">
+        <div class="mobile-nav-section">
+            <div class="mobile-nav-title" data-i18n="nav.archive">Archive versions</div>
+            <a href="#overview" data-i18n="overview">Overview</a>
+            <a href="#note" data-i18n="note">Important note</a>
+            <a href="#versions" data-i18n="versions">Version list</a>
+            <a href="https://www.redstone-launcher.com/" data-i18n="current">Current launcher</a>
+        </div>
+        <div class="mobile-nav-section">
+            <div class="mobile-nav-title" data-i18n="nav.socials">Socials</div>
+            <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank" rel="noopener" data-i18n="nav.github">GitHub</a>
+            <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" rel="noopener" data-i18n="nav.discord">Discord</a>
+        </div>
+        <div class="mobile-nav-section">
+            <div class="mobile-nav-title" data-i18n="nav.supportBug">Support</div>
+            <a href="../support/" data-i18n="nav.helpCenter">Help Center</a>
+            <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" rel="noopener" data-i18n="nav.discordSupport">Discord Support</a>
+            <a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank" rel="noopener" data-i18n="nav.githubBug">GitHub Bug Report</a>
+            <a href="/cdn-cgi/l/email-protection#81e2eeeff5e0e2f5c1f3e4e5f2f5eeefe4acede0f4efe2e9e4f3afe2eeec" data-i18n="nav.emailSupport">Email Support</a>
+        </div>
     </div>
 
-    <div id="layout">
-        <aside id="sidebar">
-            <div class="sidebar-section">
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="https://redstone-launcher.com">Main page</a></li>
-                    <li><a href="https://github.com/TGGamesYT/redstone-launcher/blob/main/README.md">Installation</a>
-                    </li>
-                    <li><a href="https://redstone-launcher.com/config">Configuration</a></li>
-                    <li><a href="https://redstone-launcher.com/blog">Changelog</a></li>
-                    <li><a href="" class="active">Archive</a></li>
-                </ul>
-            </div>
-            <div class="sidebar-section">
-                <h4>Releases</h4>
-                <ul>
-                    <li><a href="https://github.com/TGGamesYT/redstone-launcher/releases/latest">Latest</a></li>
-                    <li><a href="https://github.com/TGGamesYT/redstone-launcher/releases/tag/pre-1.10.5">Archive
-                            versions</a></li>
-                </ul>
-            </div>
-            <div class="sidebar-section">
-                <h4>Links</h4>
-                <ul>
-                    <li><a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank">GitHub</a></li>
-                    <li><a href="https://redstone-launcher.com" target="_blank">Official Site</a></li>
-                </ul>
-            </div>
+    <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+    <div class="docs-shell">
+        <aside class="docs-sidebar" id="docsSidebar">
+            <button type="button" class="sidebar-search" id="openVersionSearch">
+                <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <span data-i18n="search">Search version…</span>
+                <kbd>/</kbd>
+            </button>
+            <nav id="sidebarNav" aria-label="Archive"></nav>
         </aside>
 
-        <main id="main">
-            <div class="page-header">
-                <div class="breadcrumb">
-                    <a href="https://redstone-launcher.com">Redstone Launcher</a> › Archive
-                </div>
-                <h1>Archive</h1>
+        <div class="docs-main">
+            <div class="article-row">
+                <div class="article-wrap" id="article"></div>
             </div>
-
-            <div class="toc">
-                <div class="toc-title">Contents</div>
-                <ol>
-                    <li><a href="#overview">Overview</a></li>
-                    <li><a href="#note">Important note</a></li>
-                    <li><a href="#versions">Version list</a></li>
-                </ol>
-            </div>
-
-            <div class="content-section" id="overview">
-                <h2>Overview</h2>
-                <p>
-                    This page lists all previous builds of Redstone Launcher from versions
-                    <strong>1.1.0</strong> through <strong>1.10.5</strong>. These builds were compiled for
-                    <strong>Windows only</strong> and were originally distributed via Google Drive before
-                    the GitHub repository was created.
-                </p>
-            </div>
-
-            <div class="content-section" id="note">
-                <h2>Important note</h2>
-                <div class="note">
-                    <strong>Note:</strong> These are legacy builds hosted on Google Drive.
-                    If any link is broken or returns an error, please report it via
-                    <a href="https://github.com/TGGamesYT/redstone-launcher/issues/new" style="color:var(--link)">GitHub
-                        Issues</a>
-                    or contact the maintainer directly. Always prefer the latest release for stability.
-                </div>
-            </div>
-
-            <div class="content-section" id="versions">
-                <h2>Version list</h2>
-                <p>All versions listed below were built for <strong>Windows</strong> only.</p>
-
-                <div class="search-wrap">
-                    <input type="text" id="search" placeholder="Search version…" autocomplete="off" spellcheck="false">
-                    <span class="search-status" id="search-status"></span>
-                </div>
-
-                <table class="version-table" id="vtable">
-                    <thead>
-                        <tr>
-                            <th>Version</th>
-                            <th>Status</th>
-                            <th>Platform</th>
-                            <th>Download</th>
-                        </tr>
-                    </thead>
-                    <tbody id="vtbody">
-                        <tr data-v="1.10.5">
-                            <td>1.10.5</td>
-                            <td class="tag-cell"><span class="tag tag-legacy">legacy</span></td>
-                            <td>Windows</td>
-                            <td><a class="dl-btn"
-                                    href="https://drive.google.com/file/d/1J24DsFwSUNX6QPTjlkRCdfKxJW1Ni0JB/view?usp=drivesdk"
-                                    target="_blank"><svg viewBox="0 0 16 16" fill="currentColor">
-                                        <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z" />
-                                        <path d="M2 13h12v1.5H2z" />
-                                    </svg>Download</a></td>
-                        </tr>
-                        <tr data-v="1.9.3">
-                            <td>1.9.3</td>
-                            <td class="tag-cell"><span class="tag tag-legacy">legacy</span></td>
-                            <td>Windows</td>
-                            <td><a class="dl-btn"
-                                    href="https://drive.google.com/file/d/1Lz7_wquga6_HZATiY5l3Nj_vSWIbaTJu/view?usp=drivesdk"
-                                    target="_blank"><svg viewBox="0 0 16 16" fill="currentColor">
-                                        <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z" />
-                                        <path d="M2 13h12v1.5H2z" />
-                                    </svg>Download</a></td>
-                        </tr>
-                        <tr data-v="1.9.1">
-                            <td>1.9.1</td>
-                            <td class="tag-cell"><span class="tag tag-legacy">legacy</span></td>
-                            <td>Windows</td>
-                            <td><a class="dl-btn"
-                                    href="https://drive.google.com/file/d/1SnQto3XtKHj1MdLlDnnaI9SGRR0ZKEYZ/view?usp=drivesdk"
-                                    target="_blank"><svg viewBox="0 0 16 16" fill="currentColor">
-                                        <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z" />
-                                        <path d="M2 13h12v1.5H2z" />
-                                    </svg>Download</a></td>
-                        </tr>
-                        <tr data-v="1.9.0">
-                            <td>1.9.0</td>
-                            <td class="tag-cell"><span class="tag tag-legacy">legacy</span></td>
-                            <td>Windows</td>
-                            <td><a class="dl-btn"
-                                    href="https://drive.google.com/file/d/19gCx7R6kQBf3yZHP9TdtBGCTIvFIdi5w/view?usp=drivesdk"
-                                    target="_blank"><svg viewBox="0 0 16 16" fill="currentColor">
-                                        <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z" />
-                                        <path d="M2 13h12v1.5H2z" />
-                                    </svg>Download</a></td>
-                        </tr>
-                        <tr data-v="1.8.6">
-                            <td>1.8.6</td>
-                            <td class="tag-cell"><span class="tag tag-legacy">legacy</span></td>
-                            <td>Windows</td>
-                            <td><a class="dl-btn"
-                                    href="https://drive.google.com/file/d/10szDTq-sua7PXIg04MyOyU6aqraZf1Ti/view?usp=drivesdk"
-                                    target="_blank"><svg viewBox="0 0 16 16" fill="currentColor">
-                                        <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z" />
-                                        <path d="M2 13h12v1.5H2z" />
-                                    </svg>Download</a></td>
-                        </tr>
-                        <tr data-v="1.8.3">
-                            <td>1.8.3</td>
-                            <td class="tag-cell"><span class="tag tag-legacy">legacy</span></td>
-                            <td>Windows</td>
-                            <td><a class="dl-btn"
-                                    href="https://drive.google.com/file/d/1039AuIH9Rqx2dNrgMuW41-OLFh8KpbvZ/view?usp=drivesdk"
-                                    target="_blank"><svg viewBox="0 0 16 16" fill="currentColor">
-                                        <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z" />
-                                        <path d="M2 13h12v1.5H2z" />
-                                    </svg>Download</a></td>
-                        </tr>
-                        <tr data-v="1.8.0">
-                            <td>1.8.0</td>
-                            <td class="tag-cell"><span class="tag tag-legacy">legacy</span></td>
-                            <td>Windows</td>
-                            <td><a class="dl-btn"
-                                    href="https://drive.google.com/file/d/1jGLXJFBYQbZRxVbg6gHklYPNNs240YnP/view?usp=drivesdk"
-                                    target="_blank"><svg viewBox="0 0 16 16" fill="currentColor">
-                                        <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z" />
-                                        <path d="M2 13h12v1.5H2z" />
-                                    </svg>Download</a></td>
-                        </tr>
-                        <tr data-v="1.7.6">
-                            <td>1.7.6</td>
-                            <td class="tag-cell"><span class="tag tag-legacy">legacy</span></td>
-                            <td>Windows</td>
-                            <td><a class="dl-btn"
-                                    href="https://drive.google.com/file/d/1VwIn75VHg7YRsCe3sYPEqaBHgDephOuY/view?usp=drivesdk"
-                                    target="_blank"><svg viewBox="0 0 16 16" fill="currentColor">
-                                        <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z" />
-                                        <path d="M2 13h12v1.5H2z" />
-                                    </svg>Download</a></td>
-                        </tr>
-                        <tr data-v="1.7.0">
-                            <td>1.7.0</td>
-                            <td class="tag-cell"><span class="tag tag-legacy">legacy</span></td>
-                            <td>Windows</td>
-                            <td><a class="dl-btn"
-                                    href="https://drive.google.com/file/d/1NWFCgrONfwX3dp9V5kQjXcYUhQawaDq1/view?usp=drivesdk"
-                                    target="_blank"><svg viewBox="0 0 16 16" fill="currentColor">
-                                        <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z" />
-                                        <path d="M2 13h12v1.5H2z" />
-                                    </svg>Download</a></td>
-                        </tr>
-                        <tr data-v="1.6.11">
-                            <td>1.6.11</td>
-                            <td class="tag-cell"><span class="tag tag-legacy">legacy</span></td>
-                            <td>Windows</td>
-                            <td><a class="dl-btn"
-                                    href="https://drive.google.com/file/d/1YHMByiUAWqilIcOEFh1pIjfzfC2JewEv/view?usp=drivesdk"
-                                    target="_blank"><svg viewBox="0 0 16 16" fill="currentColor">
-                                        <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z" />
-                                        <path d="M2 13h12v1.5H2z" />
-                                    </svg>Download</a></td>
-                        </tr>
-                        <tr data-v="1.6.0">
-                            <td>1.6.0</td>
-                            <td class="tag-cell"><span class="tag tag-legacy">legacy</span></td>
-                            <td>Windows</td>
-                            <td><a class="dl-btn"
-                                    href="https://drive.google.com/file/d/10VYMMzN-7BuF7kNb-Ne1NGe4l-Mdk-bp/view?usp=drivesdk"
-                                    target="_blank"><svg viewBox="0 0 16 16" fill="currentColor">
-                                        <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z" />
-                                        <path d="M2 13h12v1.5H2z" />
-                                    </svg>Download</a></td>
-                        </tr>
-                        <tr data-v="1.4.0">
-                            <td>1.4.0</td>
-                            <td class="tag-cell"><span class="tag tag-legacy">legacy</span></td>
-                            <td>Windows</td>
-                            <td><a class="dl-btn"
-                                    href="https://drive.google.com/file/d/1ZyYptK27Uj7jyX1Rz3YI71NYTnrfIP2y/view?usp=drivesdk"
-                                    target="_blank"><svg viewBox="0 0 16 16" fill="currentColor">
-                                        <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z" />
-                                        <path d="M2 13h12v1.5H2z" />
-                                    </svg>Download</a></td>
-                        </tr>
-                        <tr data-v="1.3.0">
-                            <td>1.3.0</td>
-                            <td class="tag-cell"><span class="tag tag-legacy">legacy</span></td>
-                            <td>Windows</td>
-                            <td><a class="dl-btn"
-                                    href="https://drive.google.com/file/d/1ryu62KTvdK1dHCAjDgp9wv5h3ZfOfm-i/view?usp=drivesdk"
-                                    target="_blank"><svg viewBox="0 0 16 16" fill="currentColor">
-                                        <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z" />
-                                        <path d="M2 13h12v1.5H2z" />
-                                    </svg>Download</a></td>
-                        </tr>
-                        <tr data-v="1.1.0">
-                            <td>1.1.0</td>
-                            <td class="tag-cell"><span class="tag tag-legacy">legacy</span></td>
-                            <td>Windows</td>
-                            <td><a class="dl-btn"
-                                    href="https://drive.google.com/file/d/1-iMFKLUJ2tPoW3_pE2yUDBvmYmCzGTDW/view?usp=drivesdk"
-                                    target="_blank"><svg viewBox="0 0 16 16" fill="currentColor">
-                                        <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z" />
-                                        <path d="M2 13h12v1.5H2z" />
-                                    </svg>Download</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="note">
-                    <strong>Note:</strong> These versions are no longer maintained and may contain security
-                    vulnerabilities. (If you
-                    encounter any issues, please consider updating to a more recent version. or create and issue on the
-                    <a href="https://github.com/TGGamesYT/redstone-launcher/issues/new" target="_blank" style="color: whitesmoke;">GitHub
-                        repository</a>)
-                </div>
-                <div class="note">
-                    <strong>Note:</strong> If you cant download a version, it may be due to Google Drive's policies or
-                    the file being
-                    removed. Please report any broken links via
-                    <a href="https://github.com/TGGamesYT/redstone-launcher/issues/new" target="_blank" style="color: whitesmoke; ">GitHub
-                        Issues</a>.
-                </div>
-
-                
-                <div id="no-results">No versions match your search.</div>
-            </div>
-        </main>
+            <footer>
+                <span data-i18n="nav.rights">© Redstone Launcher. All rights reserved - Created by Muavees and TGGamesYT</span>
+                <span class="status">
+                    <a href="https://redstone-launcher.com/" data-i18n="nav.allSystems">Last updated: 2026-08-29</a>
+                </span>
+            </footer>
+        </div>
     </div>
 
-    <div id="footer">
-        <span>Redstone Launcher · redstone-launcher.com</span>
-        <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank">GitHub</a>
-        <a href="#">Contact</a>
-        <span style="margin-left:auto">Windows-only builds · Google Drive hosted</span>
-    </div>
-
-    <script>
-        const input = document.getElementById('search');
-        const rows = document.querySelectorAll('#vtbody tr');
-        const status = document.getElementById('search-status');
-        const noResults = document.getElementById('no-results');
-
-        input.addEventListener('input', () => {
-            const q = input.value.trim().toLowerCase();
-            let visible = 0;
-            rows.forEach(row => {
-                const v = row.dataset.v;
-                const match = !q || v.includes(q);
-                row.classList.toggle('hidden', !match);
-                if (match) visible++;
-            });
-            noResults.style.display = visible === 0 ? 'block' : 'none';
-            status.textContent = q ? `${visible} result${visible !== 1 ? 's' : ''}` : '';
-        });
-    </script>
-</body>
-
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="archive.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a32ac711ce375ad3',t:'MTc4Nzk5ODM0OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

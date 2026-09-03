@@ -1,0 +1,218 @@
+.archive-page .docs-shell {
+    grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+}
+
+.archive-page .article-row {
+    grid-template-columns: minmax(1rem, 1fr) minmax(0, 880px) minmax(1rem, 1fr);
+}
+
+.archive-page .article-wrap {
+    max-width: 880px;
+}
+
+.archive-page .nav-item.current {
+    color: var(--foreground);
+}
+
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.7rem;
+    margin: 0 0 1.8rem;
+}
+
+.stat-card {
+    padding: 0.95rem 1rem;
+    border-radius: 9px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+}
+
+.stat-card .k {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+}
+
+.stat-card .v {
+    font-size: 1.02rem;
+    font-weight: 750;
+    letter-spacing: -0.02em;
+}
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0.4rem 0 1.1rem;
+}
+
+.filter-bar .search-field {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    flex: 1;
+    min-width: 220px;
+    padding: 0.7rem 0.9rem;
+    border-radius: 0.85rem;
+    border: 1px solid var(--border);
+    background: var(--card);
+}
+
+.filter-bar .search-field:focus-within {
+    border-color: hsla(0, 72%, 51%, 0.45);
+}
+
+.filter-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--foreground);
+    font: inherit;
+    font-size: 0.92rem;
+}
+
+.filter-bar input::placeholder {
+    color: var(--muted);
+}
+
+.filter-bar .search-field svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--muted);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    flex-shrink: 0;
+}
+
+.search-status {
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.table-wrap {
+    overflow-x: auto;
+    border-radius: 9px;
+    margin: 0 0 1.4rem;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+}
+
+.version-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.version-table th,
+.version-table td {
+    padding: 0.78rem 1rem;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border);
+}
+
+.version-table thead th {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: hsla(0, 72%, 51%, 0.06);
+}
+
+.version-table tbody tr {
+    scroll-margin-top: calc(var(--nav-h) + 18px);
+    transition: background 0.2s;
+}
+
+.version-table tbody tr:hover {
+    background: var(--accent);
+}
+
+.version-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.version-id {
+    font-size: 1.02rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.18rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 650;
+    border: 1px solid var(--border);
+    color: var(--muted);
+}
+
+.pill-legacy {
+    color: var(--accent-foreground);
+    background: var(--accent);
+    border-color: hsla(0, 72%, 51%, 0.28);
+}
+
+.pill-win {
+    color: var(--foreground);
+}
+
+.version-table .btn {
+    padding: 0.48rem 0.85rem;
+    font-size: 0.82rem;
+}
+
+.archive-empty {
+    display: none;
+    padding: 1.1rem 1.2rem;
+    border-radius: 9px;
+    color: var(--muted);
+    border: 1px dashed var(--border);
+}
+
+.archive-empty.show {
+    display: block;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin: 1.1rem 0 1.6rem;
+}
+
+.nav-dropdown a[aria-current="page"] {
+    color: var(--foreground);
+    background: var(--accent);
+}
+
+@media (max-width: 860px) {
+    .stat-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .version-table th,
+    .version-table td {
+        padding: 0.7rem 0.75rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .stat-grid {
+        grid-template-columns: 1fr;
+    }
+}
