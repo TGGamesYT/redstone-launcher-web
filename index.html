@@ -222,55 +222,71 @@
             </p>
         </div>
         <div class="features-grid">
-            <div class="feature-card glass ios-spring reveal">
-                <div class="feature-icon"><svg viewBox="0 0 24 24">
-                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                    </svg></div>
-                <h3 class="feature-title" data-i18n="f1_title">Dual Editions: Fancy & Fast</h3>
-                <p class="feature-desc" data-i18n="f1_desc">Choose your vibe. Fancy Edition offers a sleek UI built with
-                    Electron, while Fast Edition uses NodeGui for raw performance and minimal resource usage.</p>
-            </div>
-            <div class="feature-card glass ios-spring reveal">
-                <div class="feature-icon"><svg viewBox="0 0 24 24">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    </svg></div>
-                <h3 class="feature-title" data-i18n="f2_title">Total Instance Freedom</h3>
-                <p class="feature-desc" data-i18n="f2_desc">Create, clone, and customize Minecraft instances with
-                    separate mods, profiles, versions and settings.</p>
-            </div>
-            <div class="feature-card glass ios-spring reveal">
-                <div class="feature-icon"><svg viewBox="0 0 24 24">
-                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-                    </svg></div>
-                <h3 class="feature-title" data-i18n="f3_title">Privacy First</h3>
-                <p class="feature-desc" data-i18n="f3_desc">No tracking. No analytics. Everything stays 100% local on
-                    your device.</p>
-            </div>
-            <div class="feature-card glass ios-spring reveal">
-                <div class="feature-icon"><svg viewBox="0 0 24 24">
-                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
-                    </svg></div>
-                <h3 class="feature-title" data-i18n="f4_title">Modular Tools</h3>
-                <p class="feature-desc" data-i18n="f4_desc">Built-in tools like world editors and resource pack
-                    optimizers simplify your Minecraft experience.</p>
-            </div>
-            <div class="feature-card glass ios-spring reveal">
-                <div class="feature-icon"><svg viewBox="0 0 24 24">
-                        <rect x="4" y="4" width="16" height="16" rx="2" />
-                        <rect x="9" y="9" width="6" height="6" />
-                        <line x1="9" y1="1" x2="9" y2="4" />
-                        <line x1="15" y1="1" x2="15" y2="4" />
-                        <line x1="9" y1="20" x2="9" y2="23" />
-                        <line x1="15" y1="20" x2="15" y2="23" />
-                        <line x1="20" y1="9" x2="23" y2="9" />
-                        <line x1="20" y1="14" x2="23" y2="14" />
-                        <line x1="1" y1="9" x2="4" y2="9" />
-                        <line x1="1" y1="14" x2="4" y2="14" />
-                    </svg></div>
-                <h3 class="feature-title" data-i18n="f5_title">Seamless Mod & Profile Management</h3>
-                <p class="feature-desc" data-i18n="f5_desc">Install, update, and organize mods or entire profiles with a
-                    single click.</p>
-            </div>
+            <article class="feature-card glass ios-spring reveal" data-feature="instances">
+                <div class="feature-preview" aria-hidden="true">
+                    <img class="feature-screenshot" src="img/rslc_instances.png" alt="" loading="lazy">
+                </div>
+                <div class="feature-copy">
+                    <h3 class="feature-title" data-i18n="f1_title">Instances, your way</h3>
+                    <p class="feature-desc" data-i18n="f1_desc">Keep the versions, loaders, mods, settings and icons all separate for each Minecraft instance.</p>
+                </div>
+            </article>
+            <article class="feature-card glass ios-spring reveal" data-feature="imports">
+                <div class="feature-preview" aria-hidden="true">
+                    <img class="feature-screenshot" src="img/rslc_main.png" alt="" loading="lazy">
+                </div>
+                <div class="feature-copy">
+                    <h3 class="feature-title" data-i18n="f2_title">Bring your modpacks along</h3>
+                    <p class="feature-desc" data-i18n="f2_desc">Import profiles from other launchers or install a modpack into an instance or server.</p>
+                </div>
+            </article>
+            <article class="feature-card glass ios-spring reveal" data-feature="mods">
+                <div class="feature-preview" aria-hidden="true">
+                    <img class="feature-screenshot" src="img/rslc_modrinth.png" alt="" loading="lazy">
+                </div>
+                <div class="feature-copy">
+                    <h3 class="feature-title" data-i18n="f3_title">Find your next favorite mod</h3>
+                    <p class="feature-desc" data-i18n="f3_desc">Search Modrinth and CurseForge, check loader compatibility and install with confidence.</p>
+                </div>
+            </article>
+            <article class="feature-card glass ios-spring reveal" data-feature="skins">
+                <div class="feature-preview" aria-hidden="true">
+                    <img class="feature-screenshot" src="img/rslc_skin.png" alt="" loading="lazy">
+                </div>
+                <div class="feature-copy">
+                    <h3 class="feature-title" data-i18n="f4_title">A skin studio built in</h3>
+                    <p class="feature-desc" data-i18n="f4_desc">Edit and preview skins in 3D. Manage capes. Keep your skin library in sync.</p>
+                </div>
+            </article>
+            <article class="feature-card glass ios-spring reveal" data-feature="servers">
+                <div class="feature-preview" aria-hidden="true">
+                    <img class="feature-screenshot" src="img/rslc_servers.png" alt="" loading="lazy">
+                </div>
+                <div class="feature-copy">
+                    <h3 class="feature-title" data-i18n="f5_title">Your worlds, connected</h3>
+                    <p class="feature-desc" data-i18n="f5_desc">Let instances share server lists. Then, join a server that matches your Minecraft setup.</p>
+                </div>
+            </article>
+           
+            <article class="feature-card glass ios-spring reveal" data-feature="themes">
+                <div class="feature-preview" aria-hidden="true">
+                    <img class="feature-screenshot" src="img/rslc_settings.png" alt="" loading="lazy">
+                </div>
+                <div class="feature-copy">
+                    <h3 class="feature-title" data-i18n="f7_title">Make the launcher yours</h3>
+                    <p class="feature-desc" data-i18n="f7_desc">Adjust the tune themes. Swap out backgrounds. Change app icons. You can even tweak the custom CSS. Once you’re happy with how it looks, save it. Then share your new style.</p>
+                </div>
+            </article>
+            <article class="feature-card glass ios-spring reveal" data-feature="sync">
+                <div class="feature-preview" aria-hidden="true">
+                    <img class="feature-screenshot" src="img/rslc_main.png" alt="" loading="lazy">
+                </div>
+                <div class="feature-copy">
+                    <h3 class="feature-title" data-i18n="f8_title">Take your settings with you</h3>
+                    <p class="feature-desc" data-i18n="f8_desc">Sync game options and multiplayer servers between instances and computers.</p>
+                </div>
+            </article>
+            
         </div>
     </section>
     <section id="gallery">
