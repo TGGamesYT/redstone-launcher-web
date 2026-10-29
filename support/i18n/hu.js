@@ -120,6 +120,7 @@ window.RL_I18N.hu = {
     ]},
     { group: "more", items: [
       { id: "privacy", title: "Adatvédelem" },
+      { id: "recent-updates", title: "Legutóbbi frissítések" },
       { id: "contact", title: "Kapcsolat" }
     ]}
   ],

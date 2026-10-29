@@ -120,6 +120,7 @@ window.RL_I18N.it = {
     ]},
     { group: "more", items: [
       { id: "privacy", title: "Privacy" },
+      { id: "recent-updates", title: "Aggiornamenti recenti" },
       { id: "contact", title: "Contatti" }
     ]}
   ],

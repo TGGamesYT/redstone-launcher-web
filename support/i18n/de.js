@@ -120,6 +120,7 @@ window.RL_I18N.de = {
     ]},
     { group: "more", items: [
       { id: "privacy", title: "Datenschutz" },
+      { id: "recent-updates", title: "Aktuelle Änderungen" },
       { id: "contact", title: "Kontakt" }
     ]}
   ],

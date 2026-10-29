@@ -121,6 +121,7 @@ window.RL_I18N.en = {
     ]},
     { group: "more", items: [
       { id: "privacy", title: "Privacy" },
+      { id: "recent-updates", title: "Recent updates" },
       { id: "contact", title: "Contact" }
     ]}
   ],
@@ -437,6 +438,45 @@ window.RL_I18N.en = {
         { type: "p", text: "Microsoft sign-in still talks to Microsoft (that is how Java authentication works). Mod browsing talks to Modrinth and CurseForge. Optional relay features for server resource packs expose a download URL; pack bytes are not stored on the relay." },
         { type: "p", text: "The launcher does not need an extra Redstone account. Supporting the project on [Patreon](https://www.patreon.com/tgdoescode/join) is optional and separate from playing." },
         { type: "p", text: "Source is public: [github.com/TGGamesYT/redstone-launcher](https://github.com/TGGamesYT/redstone-launcher)." }
+      ]
+    },
+    "recent-updates": {
+      category: "More",
+      title: "Recent updates and known issues (July–October 2026)",
+      lede: "A support-focused guide to three months of launcher development: what changed, fixes that landed, and what may still depend on the release you installed.",
+      keywords: "recent updates changelog 1.16 1.17 1.18 skin editor modpack import CurseForge Modrinth event servers join relay icon WebGL crash downloads",
+      blocks: [
+        { type: "p", text: "This guide reviews upstream commits from **July 29 to October 29, 2026**. It covers the released 1.16.0, 1.17.0, and 1.18.0 milestones plus later development. A commit appearing here does **not** by itself mean that feature is in your installed build." },
+        { type: "h2", text: "Instances, imports, and mods" },
+        { type: "ul", items: [
+          "The create-instance flow and instance grid were refined, and work added importing profiles from the Modrinth App and Lunar Client. Import results can depend on the source profile and available files.",
+          "Modpack installation gained clearer progress, loader/version handling, and cancellation safeguards. CurseForge downloads also gained a CDN fallback for API failures.",
+          "If a pack fails or offers the wrong loader, update first and check that its Minecraft version and loader match the target instance. Include the pack link and selected version when reporting it.",
+          "The launcher added developer-mod workflows for testing locally-built mods. These are development tools, not a requirement for ordinary mod installation."
+        ]},
+        { type: "p", text: "Examples: [launcher import and onboarding](https://github.com/TGGamesYT/redstone-launcher/commit/0935de723a2a), [modpack install progress](https://github.com/TGGamesYT/redstone-launcher/commit/b632fcc90a1c), and the [CurseForge CDN fallback](https://github.com/TGGamesYT/redstone-launcher/commit/ff5d47ecbc3c)." },
+        { type: "h2", text: "Skins, editor, and appearance" },
+        { type: "ul", items: [
+          "The skin area grew into a full editor with 2D and 3D painting, layers, selection tools, image wrapping, undo, and a simpler creator for assembling looks.",
+          "Skin libraries, account-specific skins, cape handling, and optional library syncing through the relay received updates. Sync and online account actions need the relevant network service; local editing and remote account updates are separate operations.",
+          "The icon picker expanded to include screenshots, panoramas, blocks, items, mobs, and installed content. Home-screen layouts, backgrounds, and theme customization also changed."
+        ]},
+        { type: "p", text: "The 3D preview code was updated to limit simultaneous WebGL contexts after reports of blank renders in large galleries. If previews remain blank, try closing other 3D-heavy views and relaunching the latest release." },
+        { type: "h2", text: "Servers and sharing" },
+        { type: "ul", items: [
+          "Server work included resource-pack browsing, ordering and merging packs, server-list/config syncing, and improvements to relay-based sharing.",
+          "Commits on **October 27** added event servers described by a file and a Join view for checking whether one of your own instances can join a launcher-managed server. These are recent development commits; check [GitHub Releases](https://github.com/TGGamesYT/redstone-launcher/releases) to confirm whether your build includes them.",
+          "If relay sharing or syncing does not work, check your connection and report whether the problem affects a local server, a hosted server, or only relay access."
+        ]},
+        { type: "p", text: "See the [event-server definition](https://github.com/TGGamesYT/redstone-launcher/commit/32314c766afe9be3da6b7a9d42ac347084ca5781), [event-server interface](https://github.com/TGGamesYT/redstone-launcher/commit/832c173157d0a2d420662a98d59f2bb93d9da816), and [Join view](https://github.com/TGGamesYT/redstone-launcher/commit/bc9b2cfe06373339cfa4f8d37357cca581a32aa7)." },
+        { type: "h2", text: "Fixes and known caveats" },
+        { type: "ul", items: [
+          "A startup crash caused by reading a constant before initialization was fixed on October 26. If startup still fails, report the exact launcher version and error rather than assuming it is the same issue.",
+          "The October 28 skin-head fix converts PNG data to sRGB before image processing to avoid a colourspace failure on some Linux libvips builds. It addresses backend skin-image generation; it does not establish that every desktop Linux libvips installation issue is fixed.",
+          "Recent commits also addressed interrupted downloads, launch-related file limits, mod-browser races, and blank 3D renders. These are fixes recorded in development history, not a guarantee that every failure has disappeared from every older release.",
+          "Some newer commits are still ahead of the latest release. Features such as event servers and joining a managed server may not yet be present in your installed build."
+        ]},
+        { type: "p", text: "For help, include your **OS**, **launcher version**, Minecraft version, loader, and the steps that reproduce the problem. Attach the relevant log with private tokens removed, then use [GitHub Issues](https://github.com/TGGamesYT/redstone-launcher/issues) or [Discord](https://discord.gg/S9H2Z6SuEA). For the exact current release, check [GitHub Releases](https://github.com/TGGamesYT/redstone-launcher/releases)." }
       ]
     },
     contact: {

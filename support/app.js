@@ -126,7 +126,7 @@
   }
 
   function articleById(id) {
-    return tRoot().articles[id];
+    return tRoot().articles[id] || window.RL_I18N[DEFAULT_LANG].articles[id];
   }
 
   function currentId() {
@@ -411,8 +411,12 @@
     const rows = [
       { id: "home", title: L.home.title, snippet: L.home.lede, hay: (L.home.title + " " + L.home.lede).toLowerCase() }
     ];
-    Object.keys(L.articles).forEach((id) => {
-      const art = L.articles[id];
+    const articleIds = new Set([
+      ...Object.keys(L.articles),
+      ...Object.keys(window.RL_I18N[DEFAULT_LANG].articles)
+    ]);
+    articleIds.forEach((id) => {
+      const art = articleById(id);
       rows.push({
         id,
         title: art.title,
