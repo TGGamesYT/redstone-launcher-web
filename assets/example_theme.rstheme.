@@ -23,8 +23,8 @@
         "angle": 135
       },
       "image": {
-        "file": "/home/muaves/.config/Redstone Launcher/background/wallpaper-mvtbmmr3.png",
-        "url": "file:///home/muaves/.config/Redstone%20Launcher/background/wallpaper-mvtbmmr3.png",
+        "file": "/home/example/.config/Redstone Launcher/background/wallpaper-mvtbmmr3.png",
+        "url": "file:///home/example/.config/Redstone%20Launcher/background/wallpaper-mvtbmmr3.png",
         "fit": "cover",
         "followColors": true
       },
