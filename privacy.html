@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Redstone Launcher</title>
+    <meta name="description"
+        content="What Redstone Launcher does with your data, and what it does not. Cloud syncing is optional and off until you turn it on.">
+    <meta name="author" content="Redstone Launcher Team">
+    <meta property="og:title" content="Privacy Policy — Redstone Launcher">
+    <meta property="og:description" content="What Redstone Launcher does with your data, and what it does not.">
+    <meta property="og:type" content="article">
+    <meta name="theme-color" content="#d60505">
+    <link rel="icon" href="img/redstone_logo.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- The policy itself lives in the launcher's repository, because that is
+         where it is kept in step with the code it describes. This page is the
+         public address for it: it fetches that one file and renders it, so
+         there is never a second copy to drift out of date. -->
+    <style>
+        .policy-wrap {
+            max-width: 52rem;
+            margin: 0 auto;
+            padding: 7rem 1.5rem 4rem;
+        }
+
+        .policy-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+
+        .policy-top a.home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--foreground);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .policy-top img {
+            height: 34px;
+            width: auto;
+        }
+
+        .policy-top .source {
+            font-size: 0.82rem;
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        .policy-top .source:hover {
+            color: var(--primary);
+        }
+
+        /* The rendered document. Deliberately plain: it is a legal text and
+           has to be easy to read straight down, not decorated. */
+        .policy h1 {
+            font-size: 2.1rem;
+            line-height: 1.2;
+            margin: 0 0 1.2rem;
+        }
+
+        .policy h2 {
+            font-size: 1.4rem;
+            margin: 2.6rem 0 0.9rem;
+            padding-top: 1.4rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .policy h3 {
+            font-size: 1.08rem;
+            margin: 1.8rem 0 0.6rem;
+        }
+
+        .policy p {
+            margin: 0 0 1rem;
+            color: var(--muted);
+        }
+
+        .policy strong {
+            color: var(--foreground);
+        }
+
+        .policy a {
+            color: var(--primary);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            overflow-wrap: anywhere;
+        }
+
+        .policy ul {
+            margin: 0 0 1.2rem 1.2rem;
+            color: var(--muted);
+        }
+
+        .policy li {
+            margin-bottom: 0.5rem;
+        }
+
+        .policy hr {
+            border: 0;
+            border-top: 1px solid var(--border);
+            margin: 2.2rem 0;
+            opacity: 0;
+            /* The document separates its sections with rules AND headings;
+               showing both doubles every divider. The headings carry it. */
+            height: 0;
+            margin: 0;
+        }
+
+        .policy code {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 4px;
+            padding: 0.1em 0.38em;
+            font-size: 0.88em;
+        }
+
+        .policy blockquote {
+            margin: 0 0 1.2rem;
+            padding: 0.9rem 1.1rem;
+            border-left: 3px solid var(--primary);
+            background: var(--glass-bg);
+            border-radius: 0 8px 8px 0;
+            color: var(--muted);
+        }
+
+        .policy table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0 1.4rem;
+            font-size: 0.92rem;
+        }
+
+        .policy th,
+        .policy td {
+            border: 1px solid var(--border);
+            padding: 0.6rem 0.75rem;
+            text-align: left;
+            vertical-align: top;
+            color: var(--muted);
+        }
+
+        .policy th {
+            color: var(--foreground);
+            background: var(--glass-bg);
+        }
+
+        .policy-state {
+            color: var(--muted);
+            padding: 2rem 0;
+        }
+
+        .policy-state a {
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="policy-wrap">
+        <div class="policy-top">
+            <a class="home" href="/">
+                <img src="img/redstone_logo.png" alt="">
+                Redstone Launcher
+            </a>
+            <a class="source" href="https://github.com/TGGamesYT/redstone-launcher/blob/main/PRIVACY.md"
+                target="_blank" rel="noopener">View the source of this document on GitHub</a>
+        </div>
+
+        <main class="policy" id="policy">
+            <p class="policy-state" id="state">Loading the policy…</p>
+            <noscript>
+                <p class="policy-state">
+                    This page renders the policy from the launcher's repository and needs JavaScript to do it.
+                    You can read exactly the same document here:
+                    <a href="https://github.com/TGGamesYT/redstone-launcher/blob/main/PRIVACY.md">PRIVACY.md</a>.
+                </p>
+            </noscript>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-bottom">
+                <p>© <span id="year"></span> Redstone Launcher. All rights reserved — Created by <a
+                        href="https://muaves.com">Muavees</a> and <a href="https://tggamesyt.dev">TGGamesYT</a>
+                </p>
+                <div class="status">
+                    <a href="mailto:contact@redstone-launcher.com">contact@redstone-launcher.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // The light/dark choice is kept in localStorage by the rest of the
+        // site. This page is standalone -- it does not load scripts.js, which
+        // expects a nav this page does not have -- so it reads the choice
+        // itself rather than coming up in the wrong one.
+        try {
+            if (localStorage.getItem('theme') === 'light') {
+                document.documentElement.classList.add('light');
+            }
+        } catch (e) { /* no storage; dark is the default */ }
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // ── Markdown, as much of it as this document uses ──
+        //
+        // Small and on purpose. A legal page that goes blank because a CDN is
+        // having a bad morning is worse than one that renders a slightly
+        // plainer document, so there is no third-party script here.
+        //
+        // Everything is escaped BEFORE any of it is turned into HTML, so a
+        // fetched file can never inject markup -- the document is ours, but
+        // "it is ours" is not a security model.
+        const esc = (s) => s
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+
+        function inline(text) {
+            let out = esc(text);
+            // Code first, and held aside, so nothing below reformats what is
+            // inside a code span.
+            const held = [];
+            out = out.replace(/`([^`]+)`/g, (_, code) => {
+                held.push('<code>' + code + '</code>');
+                return '\u0000' + (held.length - 1) + '\u0000';
+            });
+            // <https://…> autolinks, which the document uses for every URL,
+            // and <someone@example.com>, which markdown also autolinks and
+            // which the contact address is written as. Already escaped by
+            // this point, hence the entities.
+            out = out.replace(/&lt;(https?:\/\/[^\s&]+|mailto:[^\s&]+|[^\s@&]+@[^\s@&]+\.[^\s@&]+)&gt;/g,
+                (_, target) => {
+                    const mail = !/^(https?:|mailto:)/.test(target);
+                    const href = mail ? 'mailto:' + target : target;
+                    const text = target.replace(/^mailto:/, '');
+                    return `<a href="${href}"${mail ? '' : ' target="_blank" rel="noopener"'}>${text}</a>`;
+                });
+            // [text](url)
+            out = out.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g,
+                (_, t, url) => `<a href="${url}"${/^https?:/.test(url) ? ' target="_blank" rel="noopener"' : ''}>${t}</a>`);
+            out = out.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+            out = out.replace(/(^|[\s(])\*([^*\n]+)\*/g, '$1<em>$2</em>');
+            return out.replace(/\u0000(\d+)\u0000/g, (_, i) => held[Number(i)]);
+        }
+
+        function render(md) {
+            const lines = md.replace(/\r\n/g, '\n').split('\n');
+            const out = [];
+            let para = [];
+            const flush = () => {
+                if (para.length) out.push('<p>' + inline(para.join(' ')) + '</p>');
+                para = [];
+            };
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+
+                if (!line.trim()) { flush(); continue; }
+
+                const h = /^(#{1,4})\s+(.*)$/.exec(line);
+                if (h) { flush(); const n = h[1].length; out.push(`<h${n}>${inline(h[2])}</h${n}>`); continue; }
+
+                if (/^---+\s*$/.test(line)) { flush(); out.push('<hr>'); continue; }
+
+                // A table: a header row, a |---|---| rule, then rows.
+                if (/^\s*\|/.test(line) && /^\s*\|[\s:|-]+\|\s*$/.test(lines[i + 1] || '')) {
+                    flush();
+                    const cells = (r) => r.trim().replace(/^\||\|$/g, '').split('|').map(c => c.trim());
+                    const head = cells(line);
+                    i += 2;
+                    const body = [];
+                    while (i < lines.length && /^\s*\|/.test(lines[i])) { body.push(cells(lines[i])); i++; }
+                    i--;
+                    out.push('<table><thead><tr>'
+                        + head.map(c => `<th>${inline(c)}</th>`).join('')
+                        + '</tr></thead><tbody>'
+                        + body.map(r => '<tr>' + r.map(c => `<td>${inline(c)}</td>`).join('') + '</tr>').join('')
+                        + '</tbody></table>');
+                    continue;
+                }
+
+                if (/^\s*[-*]\s+/.test(line)) {
+                    flush();
+                    const items = [];
+                    while (i < lines.length && (/^\s*[-*]\s+/.test(lines[i]) || (items.length && /^\s{2,}\S/.test(lines[i])))) {
+                        if (/^\s*[-*]\s+/.test(lines[i])) items.push(lines[i].replace(/^\s*[-*]\s+/, ''));
+                        else items[items.length - 1] += ' ' + lines[i].trim();   // a wrapped item
+                        i++;
+                    }
+                    i--;
+                    out.push('<ul>' + items.map(t => `<li>${inline(t)}</li>`).join('') + '</ul>');
+                    continue;
+                }
+
+                if (/^\s*>\s?/.test(line)) {
+                    flush();
+                    const quote = [];
+                    while (i < lines.length && /^\s*>\s?/.test(lines[i])) { quote.push(lines[i].replace(/^\s*>\s?/, '')); i++; }
+                    i--;
+                    out.push('<blockquote>' + inline(quote.join(' ')) + '</blockquote>');
+                    continue;
+                }
+
+                para.push(line.trim());
+            }
+            flush();
+            return out.join('\n');
+        }
+
+        const SOURCE = 'https://raw.githubusercontent.com/TGGamesYT/redstone-launcher/main/PRIVACY.md';
+        const ON_GITHUB = 'https://github.com/TGGamesYT/redstone-launcher/blob/main/PRIVACY.md';
+
+        (async () => {
+            const box = document.getElementById('policy');
+            const state = document.getElementById('state');
+            try {
+                const res = await fetch(SOURCE, { cache: 'no-cache' });
+                if (!res.ok) throw new Error('GitHub answered ' + res.status);
+                const md = await res.text();
+                if (!/privacy/i.test(md)) throw new Error('that does not look like the policy');
+                box.innerHTML = render(md);
+                document.documentElement.lang = 'en';
+            } catch (err) {
+                // Said plainly, with somewhere to go. A legal page that fails
+                // silently is a legal page nobody can read.
+                state.innerHTML = 'The policy could not be loaded just now ('
+                    + esc(String(err && err.message || err)) + ').<br>'
+                    + 'You can read exactly the same document here: '
+                    + `<a href="${ON_GITHUB}" target="_blank" rel="noopener">PRIVACY.md</a>.`;
+            }
+        })();
+    </script>
+</body>
+
+</html>
