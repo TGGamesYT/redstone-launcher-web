@@ -1167,7 +1167,9 @@ footer {
 }
 
 .footer-bottom a {
-    color: aliceblue;
+    /* Was a hardcoded aliceblue, which is all but invisible on the light
+       theme's white footer. */
+    color: var(--foreground);
 }
 
 .status {

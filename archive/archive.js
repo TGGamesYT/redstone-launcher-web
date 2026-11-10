@@ -71,7 +71,7 @@
         githubBug: "GitHub Bug Report",
         emailSupport: "Email Support",
         openMenu: "Open menu",
-        rights: "© Redstone Launcher. All rights reserved - Created by Muavees and TGGamesYT",
+        rights: "© Redstone Launcher. All rights reserved - Created by Muavees and TGdoesCode",
         allSystems: "Last update: 2026-08-29"
       }
     },
@@ -129,7 +129,7 @@
         githubBug: "GitHub hibajelentés",
         emailSupport: "Email támogatás",
         openMenu: "Menü megnyitása",
-        rights: "© Redstone Launcher. Minden jog fenntartva - Készítette: Muavees és TGGamesYT",
+        rights: "© Redstone Launcher. Minden jog fenntartva - Készítette: Muavees és TGdoesCode",
         allSystems: "Utolsó frissítés: 2026-08-29"
       }
     },
@@ -187,7 +187,7 @@
         githubBug: "Segnalazione bug su GitHub",
         emailSupport: "Supporto email",
         openMenu: "Apri menu",
-        rights: "© Redstone Launcher. Tutti i diritti riservati - Creato da Muavees e TGGamesYT",
+        rights: "© Redstone Launcher. Tutti i diritti riservati - Creato da Muavees e TGdoesCode",
         allSystems: "Ultimo aggiornamento: 2026-08-29"
       }
     },
@@ -245,7 +245,7 @@
         githubBug: "GitHub Fehlerbericht",
         emailSupport: "E-Mail Support",
         openMenu: "Menü öffnen",
-        rights: "© Redstone Launcher. Alle Rechte vorbehalten - Erstellt von Muavees und TGGamesYT",
+        rights: "© Redstone Launcher. Alle Rechte vorbehalten - Erstellt von Muavees und TGdoesCode",
         allSystems: "Letztes Update: 2026-08-29"
       }
     }

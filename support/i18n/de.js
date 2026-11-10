@@ -44,7 +44,7 @@ window.RL_I18N.de = {
     popular: "Häufige Fragen",
     contact: "Team kontaktieren",
     allSystems: "Alle Systeme betriebsbereit",
-    rights: "© Redstone Launcher. Alle Rechte vorbehalten - Erstellt von Muavees und TGGamesYT",
+    rights: "© Redstone Launcher. Alle Rechte vorbehalten - Erstellt von Muavees und TGdoesCode",
     openMenu: "Menü öffnen",
     openDocs: "Themen durchsuchen",
     langNote: "Das Hilfezentrum ist in mehreren Sprachen verfügbar.",
@@ -132,7 +132,7 @@ window.RL_I18N.de = {
       lede: "Vom Download zur ersten Welt in wenigen Minuten. Du brauchst einen offiziellen Minecraft: Java Edition Account.",
       keywords: "start erste schritte start download spielen setup intro",
       blocks: [
-        { type: "p", text: "Redstone Launcher ist ein inoffizieller Minecraft-Launcher von Muavees und TGGamesYT. Er ist **100 % kostenlos**, **Open Source** und **datenschutzfreundlich** - kein Tracking, keine Analytics. Alles bleibt auf deinem Gerät." },
+        { type: "p", text: "Redstone Launcher ist ein inoffizieller Minecraft-Launcher von Muavees und TGdoesCode. Er ist **100 % kostenlos**, **Open Source** und **datenschutzfreundlich** - kein Tracking, keine Analytics. Alles bleibt auf deinem Gerät." },
         { type: "h2", text: "Was du brauchst" },
         { type: "ul", items: [
           "Einen PC mit **Windows**, **Linux** oder **macOS**.",
@@ -447,7 +447,7 @@ window.RL_I18N.de = {
       lede: "Menschen, kein Ticket-Bot. Wähl den Kanal, der zum Problem passt.",
       keywords: "kontakt discord email github support team patreon",
       blocks: [
-        { type: "p", text: "Redstone Launcher bauen **Muavees** und **TGGamesYT**, mit Community-Testern und Unterstützern (Gruß an frühe Patreons wie The Blue Panda)." },
+        { type: "p", text: "Redstone Launcher bauen **Muavees** und **TGdoesCode**, mit Community-Testern und Unterstützern (Gruß an frühe Patreons wie The Blue Panda)." },
         { type: "h2", text: "Wohin schreiben" },
         { type: "ul", items: [
           "**Discord** - [discord.gg/S9H2Z6SuEA](https://discord.gg/S9H2Z6SuEA) - am schnellsten für „liegt das nur an mir?“.",

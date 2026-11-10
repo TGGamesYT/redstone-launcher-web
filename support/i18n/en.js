@@ -45,7 +45,7 @@ window.RL_I18N.en = {
     popular: "Popular questions",
     contact: "Contact the team",
     allSystems: "All systems operational",
-    rights: "© Redstone Launcher. All rights reserved - Created by Muavees and TGGamesYT",
+    rights: "© Redstone Launcher. All rights reserved - Created by Muavees and TGdoesCode",
     openMenu: "Open menu",
     openDocs: "Browse topics",
     langNote: "More languages can be added later - the page is wired for i18n.",
@@ -133,7 +133,7 @@ window.RL_I18N.en = {
       lede: "From download to first world in a few minutes. You need a Microsoft account that owns Minecraft: Java Edition.",
       keywords: "start begin first launch download play setup intro",
       blocks: [
-        { type: "p", text: "Redstone Launcher is a third-party Minecraft launcher by Muavees and TGGamesYT. It is **100% free**, **open source**, and **privacy-first** - no tracking or analytics. Everything stays on your device." },
+        { type: "p", text: "Redstone Launcher is a third-party Minecraft launcher by Muavees and TGdoesCode. It is **100% free**, **open source**, and **privacy-first** - no tracking or analytics. Everything stays on your device." },
         { type: "h2", text: "What you need" },
         { type: "ul", items: [
           "A PC running **Windows**, **Linux**, or **macOS**.",
@@ -487,7 +487,7 @@ window.RL_I18N.en = {
       lede: "Humans, not a ticket bot. Pick the channel that matches the problem.",
       keywords: "contact discord email github support team patreon",
       blocks: [
-        { type: "p", text: "Redstone Launcher is built by **Muavees** and **TGGamesYT**, with community testers and supporters (shout-out to early Patreon folks like The Blue Panda)." },
+        { type: "p", text: "Redstone Launcher is built by **Muavees** and **TGdoesCode**, with community testers and supporters (shout-out to early Patreon folks like The Blue Panda)." },
         { type: "h2", text: "Where to write" },
         { type: "ul", items: [
           "**Discord** - [discord.gg/S9H2Z6SuEA](https://discord.gg/S9H2Z6SuEA) - fastest for “is it just me?” questions.",

@@ -44,7 +44,7 @@ window.RL_I18N.it = {
     popular: "Domande frequenti",
     contact: "Contatta il team",
     allSystems: "Tutti i sistemi sono operativi",
-    rights: "© Redstone Launcher. Tutti i diritti riservati - Creato da Muavees e TGGamesYT",
+    rights: "© Redstone Launcher. Tutti i diritti riservati - Creato da Muavees e TGdoesCode",
     openMenu: "Apri menu",
     openDocs: "Sfoglia gli argomenti",
     langNote: "Il centro assistenza è disponibile in più lingue.",
@@ -132,7 +132,7 @@ window.RL_I18N.it = {
       lede: "Dal download al primo mondo in pochi minuti. Serve un account Microsoft che possiede Minecraft: Java Edition.",
       keywords: "inizio primo avvio download giocare setup intro",
       blocks: [
-        { type: "p", text: "Redstone Launcher è un launcher Minecraft di terze parti di Muavees e TGGamesYT. È **100% gratuito**, **open source** e **privacy-first** - niente tracciamento né analitiche. Tutto resta sul tuo dispositivo." },
+        { type: "p", text: "Redstone Launcher è un launcher Minecraft di terze parti di Muavees e TGdoesCode. È **100% gratuito**, **open source** e **privacy-first** - niente tracciamento né analitiche. Tutto resta sul tuo dispositivo." },
         { type: "h2", text: "Cosa ti serve" },
         { type: "ul", items: [
           "Un PC con **Windows**, **Linux** o **macOS**.",
@@ -447,7 +447,7 @@ window.RL_I18N.it = {
       lede: "Persone, non un bot dei ticket. Scegli il canale adatto al problema.",
       keywords: "contatti discord email github supporto team patreon",
       blocks: [
-        { type: "p", text: "Redstone Launcher è costruito da **Muavees** e **TGGamesYT**, con tester e sostenitori della community (un saluto ai primi Patreon come The Blue Panda)." },
+        { type: "p", text: "Redstone Launcher è costruito da **Muavees** e **TGdoesCode**, con tester e sostenitori della community (un saluto ai primi Patreon come The Blue Panda)." },
         { type: "h2", text: "Dove scrivere" },
         { type: "ul", items: [
           "**Discord** - [discord.gg/S9H2Z6SuEA](https://discord.gg/S9H2Z6SuEA) - il più veloce per “succede solo a me?”.",

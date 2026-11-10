@@ -44,7 +44,7 @@ window.RL_I18N.hu = {
     popular: "Gyakori kérdések",
     contact: "Kapcsolat a csapattal",
     allSystems: "Minden rendszer üzemel",
-    rights: "© Redstone Launcher. Minden jog fenntartva - Készítette: Muavees és TGGamesYT",
+    rights: "© Redstone Launcher. Minden jog fenntartva - Készítette: Muavees és TGdoesCode",
     openMenu: "Menü megnyitása",
     openDocs: "Témák",
     langNote: "A súgó több nyelven elérhető.",
@@ -132,7 +132,7 @@ window.RL_I18N.hu = {
       lede: "Letöltéstől az első világig pár perc alatt. Kell egy Microsoft-fiók, amin megvan a Minecraft: Java Edition licence.",
       keywords: "kezdes elso inditas letoltes jatek setup intro",
       blocks: [
-        { type: "p", text: "A Redstone Launcher egy harmadik féltől származó Minecraft launcher Muavees és TGGamesYT keze alól. **100% ingyenes**, **nyílt forráskódú** és **adatvédelem-központú** - nincs követés, nincs analitika. Minden adat gépeden marad." },
+        { type: "p", text: "A Redstone Launcher egy harmadik féltől származó Minecraft launcher Muavees és TGdoesCode keze alól. **100% ingyenes**, **nyílt forráskódú** és **adatvédelem-központú** - nincs követés, nincs analitika. Minden adat gépeden marad." },
         { type: "h2", text: "Amire szükséged van" },
         { type: "ul", items: [
           "Egy PC **Windows**, **Linux** vagy **macOS** rendszerrel.",
@@ -447,7 +447,7 @@ window.RL_I18N.hu = {
       lede: "Emberek, nem ticketbot. Válaszd a problémához illő csatornát.",
       keywords: "kapcsolat discord email github tamogatas csapat patreon",
       blocks: [
-        { type: "p", text: "A Redstone Launchert **Muavees** és **TGGamesYT** készíti, közösségi tesztelőkkel és támogatókkal (köszönet a korai Patreonosoknak, például The Blue Panda)." },
+        { type: "p", text: "A Redstone Launchert **Muavees** és **TGdoesCode** készíti, közösségi tesztelőkkel és támogatókkal (köszönet a korai Patreonosoknak, például The Blue Panda)." },
         { type: "h2", text: "Hová írj" },
         { type: "ul", items: [
           "**Discord** - [discord.gg/S9H2Z6SuEA](https://discord.gg/S9H2Z6SuEA) - a leggyorsabb „csak nálam van?” kérdésekre.",

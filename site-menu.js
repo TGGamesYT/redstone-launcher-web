@@ -310,7 +310,7 @@
         line.appendChild(document.createTextNode(
             "© " + new Date().getFullYear() + " Redstone Launcher. "
             + say("rights", "All rights reserved — Created by", lang) + " "));
-        [["Muavees", "https://muaves.com"], ["TGGamesYT", "https://tggamesyt.dev"]]
+        [["Muavees", "https://muaves.com"], ["TGdoesCode", "https://tggamesyt.dev"]]
             .forEach(function (who, i) {
                 if (i) line.appendChild(document.createTextNode(lang === "hu" ? " és " : lang === "it" ? " e " : lang === "de" ? " und " : " and "));
                 var a = document.createElement("a");
