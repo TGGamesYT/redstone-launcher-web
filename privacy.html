@@ -12,6 +12,7 @@
     <meta property="og:description" content="What Redstone Launcher does with your data, and what it does not.">
     <meta property="og:type" content="article">
     <meta name="theme-color" content="#d60505">
+    <link rel="canonical" href="https://redstone-launcher.com/privacy">
     <link rel="icon" href="img/redstone_logo.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,36 +30,15 @@
             padding: 7rem 1.5rem 4rem;
         }
 
-        .policy-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 2.5rem;
-        }
-
-        .policy-top a.home {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            color: var(--foreground);
-            text-decoration: none;
-            font-weight: 700;
-        }
-
-        .policy-top img {
-            height: 34px;
-            width: auto;
-        }
-
-        .policy-top .source {
+        .policy-source {
+            display: block;
             font-size: 0.82rem;
             color: var(--muted);
             text-decoration: none;
+            margin-bottom: 2.5rem;
         }
 
-        .policy-top .source:hover {
+        .policy-source:hover {
             color: var(--primary);
         }
 
@@ -107,15 +87,10 @@
             margin-bottom: 0.5rem;
         }
 
+        /* The document separates its sections with rules AND headings;
+           showing both doubles every divider. The headings carry it. */
         .policy hr {
-            border: 0;
-            border-top: 1px solid var(--border);
-            margin: 2.2rem 0;
-            opacity: 0;
-            /* The document separates its sections with rules AND headings;
-               showing both doubles every divider. The headings carry it. */
-            height: 0;
-            margin: 0;
+            display: none;
         }
 
         .policy code {
@@ -124,6 +99,12 @@
             border-radius: 4px;
             padding: 0.1em 0.38em;
             font-size: 0.88em;
+            /* The scope table holds full googleapis.com URLs in code spans.
+               Without this they are single unbreakable words, and on a phone
+               they push the table -- and the whole page with it -- off the
+               side of the screen. */
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
 
         .policy blockquote {
@@ -135,10 +116,18 @@
             color: var(--muted);
         }
 
+        /* A table is the one block that cannot always be made narrow enough,
+           so it scrolls inside its own box rather than widening the page. */
+        .policy .table-wrap {
+            max-width: 100%;
+            overflow-x: auto;
+            margin: 0 0 1.4rem;
+            -webkit-overflow-scrolling: touch;
+        }
+
         .policy table {
             width: 100%;
             border-collapse: collapse;
-            margin: 0 0 1.4rem;
             font-size: 0.92rem;
         }
 
@@ -156,6 +145,17 @@
             background: var(--glass-bg);
         }
 
+        /* The scope URLs are long enough to wrap inside a cell, and a bordered
+           chip that wraps is drawn as several boxes with edges through the
+           middle of the text. In a table the chip earns nothing anyway. */
+        .policy td code,
+        .policy th code {
+            background: none;
+            border: 0;
+            padding: 0;
+            color: var(--foreground);
+        }
+
         .policy-state {
             color: var(--muted);
             padding: 2rem 0;
@@ -164,19 +164,56 @@
         .policy-state a {
             color: var(--primary);
         }
+
+        @media (max-width: 600px) {
+            .policy-wrap {
+                padding: 5.5rem 1rem 3rem;
+            }
+
+            .policy h1 {
+                font-size: 1.7rem;
+            }
+
+            .policy th,
+            .policy td {
+                padding: 0.5rem 0.55rem;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <div class="policy-wrap">
-        <div class="policy-top">
-            <a class="home" href="/">
-                <img src="img/redstone_logo.png" alt="">
-                Redstone Launcher
-            </a>
-            <a class="source" href="https://github.com/TGGamesYT/redstone-launcher/blob/main/PRIVACY.md"
-                target="_blank" rel="noopener">View the source of this document on GitHub</a>
+    <nav class="glass">
+        <a class="nav-brand" href="/">
+            <img src="img/redstone_logo.png" alt="Redstone Launcher Logo">
+        </a>
+
+        <!-- Filled in by site-menu.js, which holds the site's one menu. -->
+        <div class="nav-center"></div>
+
+        <div class="nav-actions">
+            <button id="themeToggle" class="theme-toggle glass" aria-label="Toggle theme">
+                <svg class="sun-icon" viewBox="0 0 24 24" style="display:none">
+                    <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2" />
+                    <path stroke="currentColor" stroke-width="2"
+                        d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                </svg>
+                <svg class="moon-icon" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-width="2" fill="none"
+                        d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+            </button>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
+    </nav>
+
+    <div class="mobile-nav glass" id="mobileNav"></div>
+
+    <div class="policy-wrap">
+        <a class="policy-source" href="https://github.com/TGGamesYT/redstone-launcher/blob/main/PRIVACY.md"
+            target="_blank" rel="noopener">View the source of this document on GitHub</a>
 
         <main class="policy" id="policy">
             <p class="policy-state" id="state">Loading the policy…</p>
@@ -190,31 +227,32 @@
         </main>
     </div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-bottom">
-                <p>© <span id="year"></span> Redstone Launcher. All rights reserved — Created by <a
-                        href="https://muaves.com">Muavees</a> and <a href="https://tggamesyt.dev">TGGamesYT</a>
-                </p>
-                <div class="status">
-                    <a href="mailto:contact@redstone-launcher.com">contact@redstone-launcher.com</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <footer data-site-footer></footer>
 
     <script>
         // The light/dark choice is kept in localStorage by the rest of the
-        // site. This page is standalone -- it does not load scripts.js, which
-        // expects a nav this page does not have -- so it reads the choice
-        // itself rather than coming up in the wrong one.
-        try {
-            if (localStorage.getItem('theme') === 'light') {
-                document.documentElement.classList.add('light');
-            }
-        } catch (e) { /* no storage; dark is the default */ }
+        // site -- under "theme" here, "rl-theme" in the help centre and the
+        // archive. Read both so arriving from either does not flip the page.
+        const themeToggle = document.getElementById('themeToggle');
+        const sunIcon = themeToggle.querySelector('.sun-icon');
+        const moonIcon = themeToggle.querySelector('.moon-icon');
 
-        document.getElementById('year').textContent = new Date().getFullYear();
+        function applyTheme(theme) {
+            const light = theme === 'light';
+            document.documentElement.classList.toggle('light', light);
+            sunIcon.style.display = light ? 'none' : 'block';
+            moonIcon.style.display = light ? 'block' : 'none';
+        }
+
+        let saved = 'dark';
+        try { saved = localStorage.getItem('theme') || localStorage.getItem('rl-theme') || 'dark'; } catch (e) { }
+        applyTheme(saved);
+
+        themeToggle.addEventListener('click', () => {
+            const next = document.documentElement.classList.contains('light') ? 'dark' : 'light';
+            applyTheme(next);
+            try { localStorage.setItem('theme', next); } catch (e) { }
+        });
 
         // ── Markdown, as much of it as this document uses ──
         //
@@ -276,7 +314,9 @@
 
                 if (/^---+\s*$/.test(line)) { flush(); out.push('<hr>'); continue; }
 
-                // A table: a header row, a |---|---| rule, then rows.
+                // A table: a header row, a |---|---| rule, then rows. Wrapped
+                // in a box of its own so that on a narrow screen the table
+                // scrolls instead of the page.
                 if (/^\s*\|/.test(line) && /^\s*\|[\s:|-]+\|\s*$/.test(lines[i + 1] || '')) {
                     flush();
                     const cells = (r) => r.trim().replace(/^\||\|$/g, '').split('|').map(c => c.trim());
@@ -285,11 +325,11 @@
                     const body = [];
                     while (i < lines.length && /^\s*\|/.test(lines[i])) { body.push(cells(lines[i])); i++; }
                     i--;
-                    out.push('<table><thead><tr>'
+                    out.push('<div class="table-wrap"><table><thead><tr>'
                         + head.map(c => `<th>${inline(c)}</th>`).join('')
                         + '</tr></thead><tbody>'
                         + body.map(r => '<tr>' + r.map(c => `<td>${inline(c)}</td>`).join('') + '</tr>').join('')
-                        + '</tbody></table>');
+                        + '</tbody></table></div>');
                     continue;
                 }
 
@@ -333,7 +373,6 @@
                 const md = await res.text();
                 if (!/privacy/i.test(md)) throw new Error('that does not look like the policy');
                 box.innerHTML = render(md);
-                document.documentElement.lang = 'en';
             } catch (err) {
                 // Said plainly, with somewhere to go. A legal page that fails
                 // silently is a legal page nobody can read.
@@ -344,6 +383,7 @@
             }
         })();
     </script>
+    <script src="/site-menu.js" defer></script>
 </body>
 
 </html>
