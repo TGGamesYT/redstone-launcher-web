@@ -24,35 +24,7 @@
             <span>Help Center</span>
         </a>
 
-        <div class="nav-center">
-            <div class="nav-item">
-                <span data-i18n="nav.socials">Socials</span>
-                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-                <div class="nav-dropdown glass">
-                    <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank" rel="noopener" data-i18n="nav.github">GitHub</a>
-                    <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" rel="noopener" data-i18n="nav.discord">Discord</a>
-                </div>
-            </div>
-            <div class="nav-item">
-                <span data-i18n="nav.indicators">Indicators</span>
-                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-                <div class="nav-dropdown glass">
-                    <a href="https://redstone-launcher.com/#news" data-i18n="nav.blog">News</a>
-                    <a href="https://redstone-launcher.com/archive/" data-i18n="nav.archive">Archive versions</a>
-                    <a href="https://redstone-launcher.com/team.html" data-i18n="nav.team">Our Team</a>
-                </div>
-            </div>
-            <div class="nav-item active">
-                <span data-i18n="nav.supportBug">Support &amp; Bug Report</span>
-                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-                <div class="nav-dropdown glass">
-                    <a href="#home" data-i18n="nav.helpCenter">Help Center</a>
-                    <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" rel="noopener" data-i18n="nav.discordSupport">Discord Support</a>
-                    <a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank" rel="noopener" data-i18n="nav.githubBug">GitHub Bug Report</a>
-                    <a href="mailto:contact@redstone-launcher.com" data-i18n="nav.emailSupport">Email Support</a>
-                </div>
-            </div>
-        </div>
+        <div class="nav-center"></div>
 
         <div class="nav-actions">
             <button type="button" class="sidebar-toggle glass" id="sidebarToggle" aria-label="Browse topics">
@@ -80,7 +52,7 @@
     </nav>
 
     <div class="mobile-nav glass" id="mobileNav">
-        <div class="mobile-nav-section">
+        <div class="mobile-nav-section" data-page-menu>
             <div class="mobile-nav-title" data-i18n="nav.helpCenter">Help Center</div>
             <a href="#home">Help Center</a>
             <a href="#getting-started">Getting started</a>
@@ -88,17 +60,6 @@
             <a href="#troubleshoot">Troubleshooting</a>
             <a href="#faq">FAQ</a>
             <a href="#contact">Contact</a>
-        </div>
-        <div class="mobile-nav-section">
-            <div class="mobile-nav-title" data-i18n="nav.socials">Socials</div>
-            <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank" rel="noopener" data-i18n="nav.github">GitHub</a>
-            <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" rel="noopener" data-i18n="nav.discord">Discord</a>
-        </div>
-        <div class="mobile-nav-section">
-            <div class="mobile-nav-title" data-i18n="nav.supportBug">Support</div>
-            <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" rel="noopener" data-i18n="nav.discordSupport">Discord Support</a>
-            <a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank" rel="noopener" data-i18n="nav.githubBug">GitHub Bug Report</a>
-            <a href="mailto:contact@redstone-launcher.com" data-i18n="nav.emailSupport">Email Support</a>
         </div>
     </div>
 
@@ -125,7 +86,7 @@
             <footer>
                 <span data-i18n="common.rights">© Redstone Launcher. All rights reserved - Created by Muavees and TGGamesYT</span>
                 <span class="status">
-                    <a href="/privacy.html" data-i18n="common.privacy">Privacy Policy</a>
+                    <a href="/privacy" data-i18n="common.privacy">Privacy Policy</a>
                     <span aria-hidden="true">·</span>
                     <a href="https://redstone-launcher.com/">Last update: 2026-10-29</a>
                 </span>
@@ -146,5 +107,6 @@
     <script src="i18n/it.js"></script>
     <script src="i18n/de.js"></script>
     <script src="app.js"></script>
+    <script src="/site-menu.js" defer></script>
 </body>
 </html>

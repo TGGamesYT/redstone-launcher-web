@@ -932,35 +932,8 @@
 <body>
 
     <nav class="glass">
-        <a href="index.html" class="nav-brand">Redstone Launcher</a>
-        <div class="nav-center">
-            <div class="nav-item">
-                <span>Socials</span>
-                <svg style="width:12px;height:12px;margin-left:4px;display:inline;stroke:currentColor;stroke-width:2;fill:none"
-                    viewBox="0 0 24 24">
-                    <path d="M6 9l6 6 6-6" />
-                </svg>
-                <div class="nav-dropdown glass">
-                    <a href="https://youtube.com/@tgdoescode" target="_blank">YouTube</a>
-                    <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank">GitHub</a>
-                    <a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord</a>
-                </div>
-            </div>
-            <a href="team.html" class="nav-item active">Our Team</a>
-            <div class="nav-item">
-                <span>Support &amp; Bug Report</span>
-                <svg style="width:12px;height:12px;margin-left:4px;display:inline;stroke:currentColor;stroke-width:2;fill:none"
-                    viewBox="0 0 24 24">
-                    <path d="M6 9l6 6 6-6" />
-                </svg>
-                <div class="nav-dropdown glass">
-                    <a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord Support</a>
-                    <a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank">GitHub Bug
-                        Report</a>
-                    <a href="mailto:contact@redstone-launcher.com">Email Support</a>
-                </div>
-            </div>
-        </div>
+        <a href="/" class="nav-brand">Redstone Launcher</a>
+        <div class="nav-center"></div>
         <div class="nav-actions">
             <button id="themeToggle" class="theme-toggle glass" aria-label="Toggle theme">
                 <svg class="sun-icon" viewBox="0 0 24 24"
@@ -977,24 +950,7 @@
         </div>
     </nav>
 
-    <div class="mobile-nav glass" id="mobileNav">
-        <div class="mobile-nav-section">
-            <div class="mobile-nav-title">Socials</div>
-            <a href="https://youtube.com/@tgdoescode" target="_blank">YouTube</a>
-            <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank">GitHub</a>
-            <a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord</a>
-        </div>
-        <div class="mobile-nav-section">
-            <div class="mobile-nav-title">Pages</div>
-            <a href="team.html">Our Team</a>
-            <a href="blog.html">Blog</a>
-        </div>
-        <div class="mobile-nav-section">
-            <div class="mobile-nav-title">Support</div>
-            <a href="https://discord.gg/S9H2Z6SuEA" target="_blank">Discord Support</a>
-            <a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank">GitHub Bug Report</a>
-        </div>
-    </div>
+    <div class="mobile-nav glass" id="mobileNav"></div>
 
     <section class="page-hero">
         <div class="hero-bg"></div>
@@ -1285,8 +1241,8 @@
                         </li>
                         <li><a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank">Report a
                                 Bug</a></li>
-                        <li><a href="team.html">Our Team</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="/team">Our Team</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -1348,18 +1304,14 @@
             }
         }
 
-        const mobileToggle = document.getElementById('mobileToggle');
-        const mobileNav = document.getElementById('mobileNav');
-        mobileToggle.addEventListener('click', () => {
-            mobileToggle.classList.toggle('active');
-            mobileNav.classList.toggle('active');
-        });
+        // The hamburger is opened and closed by site-menu.js.
 
         const obs = new IntersectionObserver(entries => {
             entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
         }, { threshold: 0.07 });
         document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     </script>
+    <script src="/site-menu.js" defer></script>
 </body>
 
 </html>

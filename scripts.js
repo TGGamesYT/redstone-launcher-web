@@ -171,12 +171,7 @@ function applyTheme(theme) {
     }
 }
 
-const mobileToggle = document.getElementById('mobileToggle');
-const mobileNav = document.getElementById('mobileNav');
-mobileToggle.addEventListener('click', () => {
-    mobileToggle.classList.toggle('active');
-    mobileNav.classList.toggle('active');
-});
+// The hamburger is opened and closed by site-menu.js, which owns the menu.
 
 const reveals = document.querySelectorAll('.reveal');
 const revealOnScroll = () => {

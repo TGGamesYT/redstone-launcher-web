@@ -72,46 +72,7 @@
     <nav class="glass">
         <div class="nav-brand"><img src="img/redstone_logo.png" alt="Redstone Launcher Logo"></div>
 
-        <div class="nav-center">
-            <div class="nav-item">
-                <span data-i18n="socials">Socials</span>
-                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24">
-                    <path d="M6 9l6 6 6-6" />
-                </svg>
-                <div class="nav-dropdown glass">
-                    <a href="https://youtube.com/@tgdoescode" target="_blank" data-i18n="youtube">YouTube</a>
-                    <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank"
-                        data-i18n="github">GitHub</a>
-                    <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" data-i18n="discord">Discord</a>
-                </div>
-            </div>
-            <div class="nav-item">
-                <span data-i18n="indicators">Indicators</span>
-                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24">
-                    <path d="M6 9l6 6 6-6" />
-                </svg>
-                <div class="nav-dropdown glass">
-                    <a href="https://redstone-launcher.com/blog" data-i18n="blog">Blog</a>
-                    <a href="./archive/" data-i18n="archive">Archive versions</a>
-                    <a href="team.html" data-i18n="our_team">Our Team</a>
-                </div>
-            </div>
-            <div class="nav-item">
-                <span data-i18n="support_bug">Support & Bug Report</span>
-                <svg class="icon" style="width:12px;height:12px;margin-left:4px;display:inline" viewBox="0 0 24 24">
-                    <path d="M6 9l6 6 6-6" />
-                </svg>
-                <div class="nav-dropdown glass">
-                    <a href="https://redstone-launcher.com/support" target="_blank" data-i18n="support">
-                        Support</a>
-                    <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" data-i18n="discord_support">Discord
-                        Support</a>
-                    <a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank"
-                        data-i18n="github_bug">GitHub Bug Report</a>
-                    <a href="mailto:contact@redstone-launcher.com" data-i18n="email_support">Email Support</a>
-                </div>
-            </div>
-        </div>
+        <div class="nav-center"></div>
         <div class="nav-actions">
             <select id="langSwitcher" class="glass nav-select">
                 <option value="en">🇬🇧 English</option>
@@ -135,25 +96,7 @@
             </button>
         </div>
     </nav>
-    <div class="mobile-nav glass" id="mobileNav">
-        <div class="mobile-nav-section">
-            <div class="mobile-nav-title" data-i18n="socials">Socials</div>
-            <a href="https://youtube.com/@tgdoescode" target="_blank" data-i18n="youtube">YouTube</a>
-            <a href="https://github.com/TGGamesYT/redstone-launcher" target="_blank" data-i18n="github">GitHub</a>
-            <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" data-i18n="discord">Discord</a>
-        </div>
-        <div class="mobile-nav-section">
-            <div class="mobile-nav-title" data-i18n="indicators">Indicators</div>
-            <a href="./archive/" data-i18n="blog">Archive versions</a>
-            <a href="blog.html" data-i18n="blog">Blog</a>
-        </div>
-        <div class="mobile-nav-section">
-            <div class="mobile-nav-title" data-i18n="support_bug">Support</div>
-            <a href="https://discord.gg/S9H2Z6SuEA" target="_blank" data-i18n="discord_support">Discord Support</a>
-            <a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank"
-                data-i18n="github_bug">GitHub Bug Report</a>
-        </div>
-    </div>
+    <div class="mobile-nav glass" id="mobileNav"></div>
     <section class="hero">
         <div class="hero-bg parallax-layer" id="heroBg"></div>
         <div class="hero-overlay"></div>
@@ -420,8 +363,8 @@
                                 data-i18n="source_code">Source Code</a></li>
                         <li><a href="https://github.com/TGGamesYT/redstone-launcher/issues" target="_blank"
                                 data-i18n="report_bug">Report a Bug</a></li>
-                        <li><a href="#" data-i18n="blog">Blog</a></li>
-                        <li><a href="privacy.html" data-i18n="privacy">Privacy Policy</a></li>
+                        <li><a href="/blog" data-i18n="blog">Blog</a></li>
+                        <li><a href="/privacy" data-i18n="privacy">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -455,6 +398,7 @@
         </div>
     </footer>
     <script src="scripts.js"></script>
+    <script src="/site-menu.js" defer></script>
 </body>
 
 </html>

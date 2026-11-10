@@ -512,18 +512,7 @@
       setLang(next);
     });
 
-    const mobileToggle = document.getElementById("mobileToggle");
-    const mobileNav = document.getElementById("mobileNav");
-    mobileToggle.addEventListener("click", () => {
-      mobileToggle.classList.toggle("active");
-      mobileNav.classList.toggle("active");
-    });
-    mobileNav.querySelectorAll("a").forEach((a) => {
-      a.addEventListener("click", () => {
-        mobileToggle.classList.remove("active");
-        mobileNav.classList.remove("active");
-      });
-    });
+    // The hamburger is opened and closed by site-menu.js.
 
     document.getElementById("openVersionSearch").addEventListener("click", () => {
       const input = document.getElementById("versionSearch");
