@@ -34,6 +34,7 @@ window.RL_I18N.en = {
     wasHelpful: "Did this answer it?",
     askDiscord: "Ask on Discord",
     reportBug: "Report a bug",
+    privacy: "Privacy Policy",
     emailUs: "Email us",
     copy: "Copy",
     copied: "Copied",
@@ -431,10 +432,11 @@ window.RL_I18N.en = {
     privacy: {
       category: "More",
       title: "Privacy",
-      lede: "No tracking. No analytics. Game files and settings stay on your device.",
+      lede: "No tracking. No analytics. Nothing leaves your device unless you switch on Cloud syncing.",
       keywords: "privacy tracking analytics local data telemetry",
       blocks: [
-        { type: "p", text: "The homepage promise is literal: **Privacy First** - no tracking, no analytics, everything stays **100% local** on your device." },
+        { type: "p", text: "The homepage promise is literal: **Privacy First** - no tracking, no analytics, and by default everything stays **100% local** on your device." },
+        { type: "p", text: "**Cloud syncing** is the one feature that sends anything anywhere, and it is **off until you turn it on**. It signs in with *your* Google account and keeps your settings, themes, instances and worlds in *your own* Google Drive - we run no server that receives any of it, and the launcher can only see the folder it creates. Your signed-in Minecraft accounts are encrypted before upload with a key in two halves, one of which never touches Google. Full details, and how to delete everything: [Privacy Policy](https://github.com/TGGamesYT/redstone-launcher/blob/main/PRIVACY.md)." },
         { type: "p", text: "Microsoft sign-in still talks to Microsoft (that is how Java authentication works). Mod browsing talks to Modrinth and CurseForge. Optional relay features for server resource packs expose a download URL; pack bytes are not stored on the relay." },
         { type: "p", text: "The launcher does not need an extra Redstone account. Supporting the project on [Patreon](https://www.patreon.com/tgdoescode/join) is optional and separate from playing." },
         { type: "p", text: "Source is public: [github.com/TGGamesYT/redstone-launcher](https://github.com/TGGamesYT/redstone-launcher)." }

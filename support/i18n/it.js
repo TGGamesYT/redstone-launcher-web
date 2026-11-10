@@ -33,6 +33,7 @@ window.RL_I18N.it = {
     wasHelpful: "Questo ha risolto?",
     askDiscord: "Chiedi su Discord",
     reportBug: "Segnala un bug",
+    privacy: "Informativa sulla privacy",
     emailUs: "Scrivici",
     copy: "Copia",
     copied: "Copiato",
@@ -430,10 +431,11 @@ window.RL_I18N.it = {
     privacy: {
       category: "Altro",
       title: "Privacy",
-      lede: "Niente tracciamento. Niente analitiche. File di gioco e impostazioni restano sul dispositivo.",
+      lede: "Niente tracciamento. Niente analitiche. Nulla lascia il tuo dispositivo finché non attivi la sincronizzazione cloud.",
       keywords: "privacy tracciamento analitiche dati locali telemetria",
       blocks: [
-        { type: "p", text: "La promessa in homepage è letterale: **Privacy prima di tutto** - niente tracciamento, niente analitiche, tutto resta **100% locale** sul tuo dispositivo." },
+        { type: "p", text: "La promessa in homepage è letterale: **Privacy prima di tutto** - niente tracciamento, niente analitiche, e per impostazione predefinita tutto resta **100% locale** sul tuo dispositivo." },
+        { type: "p", text: "La **sincronizzazione cloud** è l'unica funzione che invia qualcosa da qualche parte, ed è **disattivata finché non la attivi**. Accede con il *tuo* account Google e conserva impostazioni, temi, istanze e mondi nel *tuo* Google Drive - non gestiamo alcun server che li riceva, e il launcher vede soltanto la cartella che crea. Gli account Minecraft a cui hai effettuato l'accesso vengono cifrati prima del caricamento con una chiave divisa in due metà, una delle quali non raggiunge mai Google. Dettagli completi e come cancellare tutto: [Informativa sulla privacy](https://github.com/TGGamesYT/redstone-launcher/blob/main/PRIVACY.md)." },
         { type: "p", text: "L’accesso Microsoft parla comunque con Microsoft (è così che funziona l’autenticazione Java). La navigazione mod parla con Modrinth e CurseForge. Il relay opzionale per i resource pack dei server espone un URL di download; i byte del pack non restano sul relay." },
         { type: "p", text: "Il launcher non richiede un account Redstone extra. Supportare su [Patreon](https://www.patreon.com/tgdoescode/join) è opzionale e separato dal gioco." },
         { type: "p", text: "Il codice è pubblico: [github.com/TGGamesYT/redstone-launcher](https://github.com/TGGamesYT/redstone-launcher)." }

@@ -33,6 +33,7 @@ window.RL_I18N.de = {
     wasHelpful: "Hat das geholfen?",
     askDiscord: "Auf Discord fragen",
     reportBug: "Fehler melden",
+    privacy: "Datenschutzerklärung",
     emailUs: "E-Mail schreiben",
     copy: "Kopieren",
     copied: "Kopiert",
@@ -430,10 +431,11 @@ window.RL_I18N.de = {
     privacy: {
       category: "Mehr",
       title: "Datenschutz",
-      lede: "Kein Tracking. Keine Analytics. Spieldateien und Einstellungen bleiben auf deinem Gerät.",
+      lede: "Kein Tracking. Keine Analytics. Nichts verlässt dein Gerät, solange du die Cloud-Synchronisierung nicht einschaltest.",
       keywords: "datenschutz tracking analytics lokale daten telemetrie",
       blocks: [
-        { type: "p", text: "Das Homepage-Versprechen gilt wörtlich: **Datenschutz zuerst** - kein Tracking, keine Analytics, alles bleibt **100 % lokal** auf deinem Gerät." },
+        { type: "p", text: "Das Homepage-Versprechen gilt wörtlich: **Datenschutz zuerst** - kein Tracking, keine Analytics, und standardmäßig bleibt alles **100 % lokal** auf deinem Gerät." },
+        { type: "p", text: "Die **Cloud-Synchronisierung** ist die einzige Funktion, die überhaupt etwas irgendwohin sendet, und sie ist **aus, bis du sie einschaltest**. Sie meldet sich mit *deinem* Google-Konto an und legt Einstellungen, Themes, Instanzen und Welten in *deinem eigenen* Google Drive ab - wir betreiben keinen Server, der davon etwas erhält, und der Launcher sieht nur den Ordner, den er selbst anlegt. Deine angemeldeten Minecraft-Konten werden vor dem Hochladen mit einem zweigeteilten Schlüssel verschlüsselt, dessen eine Hälfte Google nie erreicht. Alle Einzelheiten und wie du alles löschst: [Datenschutzerklärung](https://github.com/TGGamesYT/redstone-launcher/blob/main/PRIVACY.md)." },
         { type: "p", text: "Die Microsoft-Anmeldung spricht trotzdem mit Microsoft (so funktioniert Java-Auth). Mod-Browsing spricht mit Modrinth und CurseForge. Optionales Relay für Server-Resource-Packs legt eine Download-URL offen; Pack-Bytes liegen nicht auf dem Relay." },
         { type: "p", text: "Der Launcher braucht kein extra Redstone-Konto. Support auf [Patreon](https://www.patreon.com/tgdoescode/join) ist optional und getrennt vom Spielen." },
         { type: "p", text: "Öffentlicher Quellcode: [github.com/TGGamesYT/redstone-launcher](https://github.com/TGGamesYT/redstone-launcher)." }

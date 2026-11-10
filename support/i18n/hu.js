@@ -33,6 +33,7 @@ window.RL_I18N.hu = {
     wasHelpful: "Ez megoldotta?",
     askDiscord: "Kérdezz Discordon",
     reportBug: "Hiba jelentése",
+    privacy: "Adatvédelmi irányelvek",
     emailUs: "Írj emailt",
     copy: "Másolás",
     copied: "Másolva",
@@ -430,10 +431,11 @@ window.RL_I18N.hu = {
     privacy: {
       category: "Továbbiak",
       title: "Adatvédelem",
-      lede: "Nincs követés. Nincs analitika. A játékfájlok és beállítások a gépeden maradnak.",
+      lede: "Nincs követés. Nincs analitika. Semmi nem hagyja el a gépedet, amíg be nem kapcsolod a felhőszinkronizálást.",
       keywords: "adatvedelem kovetes analitika helyi adat telemetria",
       blocks: [
-        { type: "p", text: "A főoldali ígéret szó szerinti: **Adatvédelem mindenekelőtt** - nincs követés, nincs analitika, minden **100%-ban helyben** marad az eszközödön." },
+        { type: "p", text: "A főoldali ígéret szó szerinti: **Adatvédelem mindenekelőtt** - nincs követés, nincs analitika, és alapértelmezés szerint minden **100%-ban helyben** marad az eszközödön." },
+        { type: "p", text: "A **felhőszinkronizálás** az egyetlen funkció, amely bárhová küld bármit, és **alapból ki van kapcsolva**. A *saját* Google-fiókoddal lép be, és a beállításaidat, témáidat, példányaidat és világaidat a *saját* Google Drive-odban tartja - nálunk nincs szerver, amely bármit is megkapna ebből, és a launcher csak az általa létrehozott mappát látja. A bejelentkezett Minecraft-fiókjaid feltöltés előtt titkosítva lesznek egy kétfelé osztott kulccsal, amelynek egyik fele soha nem jut el a Google-höz. Részletek és a törlés módja: [Adatvédelmi irányelvek](https://github.com/TGGamesYT/redstone-launcher/blob/main/PRIVACY.md)." },
         { type: "p", text: "A Microsoft-belépés ettől még a Microsofthoz beszél (így működik a Java-hitelesítés). A modböngészés a Modrinthhez és a CurseForge-hoz. Az opcionális relay a szerveres resource packekhez letöltési URL-t ad; a pack bájtjai nem tárolódnak a relayen." },
         { type: "p", text: "A launcherhez nem kell külön Redstone-fiók. A [Patreon](https://www.patreon.com/tgdoescode/join) támogatás opcionális, és külön van a játéktól." },
         { type: "p", text: "A forrás nyilvános: [github.com/TGGamesYT/redstone-launcher](https://github.com/TGGamesYT/redstone-launcher)." }
