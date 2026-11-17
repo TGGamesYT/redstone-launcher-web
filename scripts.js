@@ -11,7 +11,7 @@ document.querySelectorAll('[data-i18n]').forEach(el => {
 const translations = {
     en: {}, // English is the page default — originals are used as fallback
 
-    hu: {
+    hu: {   
         badge_beta: "…-s Verzió", title: "Redstone Launcher",
         hero_desc: "Modern és erőteljes Minecraft launcher fejlett funkciókkal és kiváló teljesítménnyel.",
         download: "Letöltés az operációs rendszeredhez", other_downloads: "Egyéb letöltések", discord: "Discord",
@@ -20,8 +20,10 @@ const translations = {
         f1_title: "Saját Minecraft-példányok", f1_desc: "Tartsd külön a verziókat, betöltőket, modokat, beállításokat és ikonokat minden összeállításhoz.",
         f2_title: "Hozd magaddal a modpackjeidet", f2_desc: "Importálj profilokat más launcherekből, vagy telepíts modpackeket példányokra és szerverekre.",
         f3_title: "Találd meg a következő kedvenc mododat", f3_desc: "Keress a Modrinth és a CurseForge kínálatában, ellenőrizd a betöltő kompatibilitását, és telepíts magabiztosan.",
-        f4_title: "Beépített skinműhely", f4_desc: "Szerkeszd és nézd meg 3D-ben a skineket, kezeld a köpenyeket, és szinkronizáld a skin könyvtáradat.",
-        f5_title: "Kapcsolódó világok", f5_desc: "Oszd meg a szerverlistákat a példányok között, és a megfelelő Minecraft-összeállítással csatlakozz.",
+        f4_title: "Skinek egyszerű kezelése", f4_desc: "Szerkeszd és nézd meg 3D-ben a skineket, kezeld a köpenyeket, és szinkronizáld a skin könyvtáradat.",
+        f4_editor_title: "Beépített skinműhely", f4_editor_desc: "Használd a beépített skinműhelyt saját skinek készítéséhez és testreszabásához.",
+        f5_title: "Egyszerű példányszinkronizálás", f5_desc: "Szinkronizáld a szervereket és beállításokat a példányok között, valamint a launcher beállításait, témáit, fiókjait és skinjeit az eszközeid között a Google Drive felhőszinkronizálásával.",
+        f5_play_title: "Játsszatok együtt egyszerűen", f5_play_desc: "Hozz létre szervereket, és hívd meg barátaidat a közös játékhoz.",
         f6_title: "Indíts eseményszervert", f6_desc: "Írd le a szervert egy fájlban, hagyd, hogy a launcher beállítsa, majd hívd meg barátaidat a relén keresztül.",
         f7_title: "Tedd sajátoddá a launchert", f7_desc: "Állítsd be a témákat, háttereket, ikonokat és egyéni CSS-t, majd mentsd és oszd meg a megjelenést.",
         f8_title: "Vidd magaddal a beállításaidat", f8_desc: "Szinkronizáld a játékbeállításokat és a többjátékos szervereket a példányaid és számítógépeid között.",
@@ -49,8 +51,10 @@ const translations = {
         f1_title: "Istanze Minecraft, a modo tuo", f1_desc: "Tieni versioni, loader, mod, impostazioni e icone separati per ogni configurazione.",
         f2_title: "Porta con te i tuoi modpack", f2_desc: "Importa profili da altri launcher o installa modpack in un'istanza o su un server.",
         f3_title: "Trova il tuo prossimo mod preferito", f3_desc: "Cerca su Modrinth e CurseForge, verifica la compatibilità dei loader e installa senza dubbi.",
-        f4_title: "Un editor di skin integrato", f4_desc: "Modifica e visualizza le skin in 3D, gestisci le mantelle e sincronizza la tua raccolta.",
-        f5_title: "I tuoi mondi, connessi", f5_desc: "Condividi gli elenchi server tra le istanze e accedi con la configurazione Minecraft giusta.",
+        f4_title: "Gestisci facilmente le skin", f4_desc: "Modifica e visualizza le skin in 3D, gestisci le mantelle e sincronizza la tua raccolta.",
+        f4_editor_title: "Editor di skin integrato", f4_editor_desc: "Usa l'editor di skin integrato per creare e personalizzare le tue skin.",
+        f5_title: "Sincronizzazione semplice delle istanze", f5_desc: "Sincronizza server e opzioni tra le istanze, oltre a impostazioni del launcher, temi, account e skin tra i dispositivi tramite la sincronizzazione cloud di Google Drive.",
+        f5_play_title: "Giocare insieme è facile", f5_play_desc: "Crea server e invita gli amici a giocare insieme senza problemi.",
         f6_title: "Avvia un server per eventi", f6_desc: "Descrivi un server in un file, lascia che il launcher lo configuri e invita gli amici tramite relay.",
         f7_title: "Personalizza il launcher", f7_desc: "Scegli temi, sfondi, icone e CSS personalizzato, poi salva e condividi il tuo stile.",
         f8_title: "Porta con te le impostazioni", f8_desc: "Sincronizza opzioni di gioco e server multiplayer tra istanze e computer.",
@@ -78,8 +82,10 @@ const translations = {
         f1_title: "Minecraft-Instanzen nach Wunsch", f1_desc: "Halte Versionen, Loader, Mods, Einstellungen und Symbole für jedes Setup getrennt.",
         f2_title: "Modpacks einfach mitnehmen", f2_desc: "Importiere Profile aus anderen Launchern oder installiere Modpacks in Instanzen und Servern.",
         f3_title: "Finde deinen nächsten Lieblingsmod", f3_desc: "Durchsuche Modrinth und CurseForge, prüfe die Loader-Kompatibilität und installiere gezielt.",
-        f4_title: "Integriertes Skin-Studio", f4_desc: "Bearbeite und betrachte Skins in 3D, verwalte Umhänge und synchronisiere deine Skin-Bibliothek.",
-        f5_title: "Deine Welten, verbunden", f5_desc: "Teile Serverlisten zwischen Instanzen und tritt mit dem passenden Minecraft-Setup bei.",
+        f4_title: "Skins einfach verwalten", f4_desc: "Bearbeite und betrachte Skins in 3D, verwalte Umhänge und synchronisiere deine Skin-Bibliothek.",
+        f4_editor_title: "Integrierter Skin-Editor", f4_editor_desc: "Nutze den integrierten Skin-Editor, um eigene Skins zu erstellen und anzupassen.",
+        f5_title: "Instanzen einfach synchronisieren", f5_desc: "Synchronisiere Server und Optionen zwischen Instanzen sowie Launcher-Einstellungen, Designs, Konten und Skins zwischen Geräten über die Google-Drive-Cloud-Synchronisierung.",
+        f5_play_title: "Gemeinsam spielen leicht gemacht", f5_play_desc: "Erstelle Server und lade Freunde ein, nahtlos zusammenzuspielen.",
         f6_title: "Event-Server starten", f6_desc: "Beschreibe einen Server in einer Datei, lass ihn vom Launcher einrichten und lade Freunde über das Relay ein.",
         f7_title: "Mach den Launcher zu deinem", f7_desc: "Passe Designs, Hintergründe, App-Symbole und eigenes CSS an und teile deinen Look.",
         f8_title: "Einstellungen überall dabei", f8_desc: "Synchronisiere Spieloptionen und Multiplayer-Server zwischen Instanzen und Computern.",
